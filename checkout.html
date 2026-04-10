@@ -1,0 +1,3438 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Checkout — MATIKALA · Handcrafted Clay</title>
+    <link rel="shortcut icon" href="./matikala.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* ══ DESIGN TOKENS ══ */
+        :root {
+            --clay: #B5622A;
+            --clay-l: #D07A40;
+            --clay-d: #8C4A1C;
+            --clay-bg: rgba(181, 98, 42, .08);
+            --clay-glow: rgba(181, 98, 42, .18);
+            --gold: #C9A040;
+            --bg: #F8F4EF;
+            --bg1: #FFFFFF;
+            --bg2: #F2EDE6;
+            --bg3: #E8E1D8;
+            --bg4: #DDD5C8;
+            --tx: #1A1510;
+            --tx2: #5A4E42;
+            --tx3: #9A8E82;
+            --tx4: #C4B9AE;
+            --border: #E2D9CE;
+            --border2: #CFC5B8;
+            --sh: 0 2px 8px rgba(0, 0, 0, .08);
+            --sh2: 0 8px 32px rgba(0, 0, 0, .12);
+            --sh3: 0 20px 60px rgba(0, 0, 0, .18);
+            --nav-h: 60px;
+            --cat-h: 42px;
+            --r: 4px;
+            --r2: 8px;
+            --green: #2D7A4A;
+            --red: #C0392B;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0C0A08;
+            --bg1: #141210;
+            --bg2: #1C1916;
+            --bg3: #25221E;
+            --bg4: #302D27;
+            --tx: #F0E8DE;
+            --tx2: #B0A090;
+            --tx3: #706050;
+            --tx4: #504540;
+            --border: #302D27;
+            --border2: #403C35;
+            --sh: 0 2px 8px rgba(0, 0, 0, .3);
+            --sh2: 0 8px 32px rgba(0, 0, 0, .5);
+            --sh3: 0 20px 60px rgba(0, 0, 0, .7);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 15px
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--tx);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+            transition: background .3s, color .3s;
+            line-height: 1.5
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+            background: none;
+            outline: none
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: cover
+        }
+
+        ul {
+            list-style: none
+        }
+
+        input,
+        select,
+        textarea {
+            font-family: inherit;
+            outline: none
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg2)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--clay);
+            border-radius: 2px
+        }
+
+        /* ══ NAVBAR ══ */
+        .ham-btn {
+            display: none !important
+        }
+
+        .mob-glob {
+            display: none !important
+        }
+
+        #topnav {
+            background: var(--clay);
+            height: var(--nav-h);
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .2)
+        }
+
+        .tn-wrap {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            height: 100%;
+            padding: 0 1.2rem;
+            max-width: 1600px;
+            margin: 0 auto
+        }
+
+        .tn-logo {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            flex-shrink: 0
+        }
+
+        .tn-logo-img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain
+        }
+
+        .tn-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            color: #fff;
+            white-space: nowrap;
+            line-height: 1
+        }
+
+        .tn-brand small {
+            display: block;
+            font-size: .5rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 400;
+            opacity: .65;
+            margin-top: .1rem
+        }
+
+        .tn-secure-badge {
+            display: flex;
+            align-items: center;
+            gap: .42rem;
+            color: rgba(255, 255, 255, .85);
+            font-size: .72rem;
+            margin-left: auto
+        }
+
+        .tn-secure-badge i {
+            font-size: .8rem;
+            color: #7EDD9A
+        }
+
+        .tn-right-co {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            flex-shrink: 0
+        }
+
+        .tnb-sm {
+            display: flex;
+            align-items: center;
+            gap: .35rem;
+            color: rgba(255, 255, 255, .85);
+            font-size: .75rem;
+            padding: .3rem .65rem;
+            border-radius: var(--r);
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all .15s
+        }
+
+        .tnb-sm:hover {
+            background: rgba(255, 255, 255, .14);
+            border-color: rgba(255, 255, 255, .22)
+        }
+
+        .tn-theme {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .18);
+            color: #fff;
+            font-size: .82rem;
+            transition: all .2s;
+            flex-shrink: 0
+        }
+
+        .tn-theme:hover {
+            background: rgba(255, 255, 255, .22)
+        }
+
+        .dp {
+            position: relative
+        }
+
+        .dp-menu {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            background: var(--bg1);
+            border: 1px solid var(--border);
+            border-radius: var(--r2);
+            min-width: 200px;
+            box-shadow: var(--sh3);
+            z-index: 999;
+            overflow: hidden;
+            display: none
+        }
+
+        .dp-menu.open {
+            display: block
+        }
+
+        .dp-hd {
+            font-size: .58rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--clay);
+            padding: .7rem 1rem;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .dp-li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .58rem 1rem;
+            font-size: .8rem;
+            color: var(--tx2);
+            cursor: pointer;
+            transition: all .15s;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .dp-li:last-child {
+            border-bottom: none
+        }
+
+        .dp-li:hover,
+        .dp-li.on {
+            background: var(--clay-bg);
+            color: var(--clay)
+        }
+
+        .dp-li .code {
+            font-size: .62rem;
+            font-weight: 700;
+            color: var(--tx3)
+        }
+
+        .dp-li.on .code {
+            color: var(--clay)
+        }
+
+        /* ══ STEPS INDICATOR ══ */
+        .cart-steps {
+            background: var(--bg1);
+            border-bottom: 1px solid var(--border);
+            padding: .85rem 1.2rem
+        }
+
+        .steps-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+            font-size: .75rem;
+            font-weight: 500;
+            color: var(--tx3);
+            flex-shrink: 0
+        }
+
+        .step-num {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid var(--border2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .7rem;
+            font-weight: 700;
+            transition: all .25s
+        }
+
+        .step.done .step-num {
+            background: var(--green);
+            border-color: var(--green);
+            color: #fff
+        }
+
+        .step.active .step-num {
+            background: var(--clay);
+            border-color: var(--clay);
+            color: #fff
+        }
+
+        .step.active {
+            color: var(--clay);
+            font-weight: 600
+        }
+
+        .step.done {
+            color: var(--green)
+        }
+
+        .step-line {
+            flex: 1;
+            height: 2px;
+            background: var(--border2);
+            margin: 0 .5rem;
+            min-width: 40px;
+            transition: background .25s
+        }
+
+        .step-line.done {
+            background: var(--green)
+        }
+
+        /* ══ BREADCRUMB ══ */
+        .breadcrumb {
+            background: var(--bg1);
+            border-bottom: 1px solid var(--border);
+            padding: .6rem 1.2rem
+        }
+
+        .bc-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: .45rem;
+            flex-wrap: wrap
+        }
+
+        .bc-item {
+            font-size: .72rem;
+            color: var(--tx3)
+        }
+
+        .bc-item a {
+            color: var(--tx3);
+            transition: color .15s
+        }
+
+        .bc-item a:hover {
+            color: var(--clay)
+        }
+
+        .bc-item.cur {
+            color: var(--clay);
+            font-weight: 500
+        }
+
+        .bc-sep {
+            font-size: .6rem;
+            color: var(--tx4)
+        }
+
+        /* ══ MAIN LAYOUT ══ */
+        .co-outer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.8rem 1.2rem 3rem;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start
+        }
+
+        .co-left {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem
+        }
+
+        .co-right {
+            width: 360px;
+            flex-shrink: 0;
+            position: sticky;
+            top: calc(var(--nav-h) + .75rem);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem
+        }
+
+        /* ══ SECTION CARD ══ */
+        .co-card {
+            background: var(--bg1);
+            border: 1px solid var(--border);
+            border-radius: var(--r2);
+            overflow: hidden;
+            transition: box-shadow .2s
+        }
+
+        .co-card.active-section {
+            box-shadow: 0 0 0 2px var(--clay), var(--sh2)
+        }
+
+        .co-card-hd {
+            padding: .95rem 1.2rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg2)
+        }
+
+        .co-card-hd-l {
+            display: flex;
+            align-items: center;
+            gap: .6rem
+        }
+
+        .co-step-bubble {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--clay);
+            color: #fff;
+            font-size: .68rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0
+        }
+
+        .co-step-bubble.done {
+            background: var(--green)
+        }
+
+        .co-card-title {
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--tx)
+        }
+
+        .co-card-edit {
+            font-size: .72rem;
+            font-weight: 600;
+            color: var(--clay);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+            transition: color .15s
+        }
+
+        .co-card-edit:hover {
+            color: var(--clay-d)
+        }
+
+        .co-card-body {
+            padding: 1.2rem
+        }
+
+        .co-card-body.collapsed {
+            display: none
+        }
+
+        /* ══ FORM ══ */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .85rem
+        }
+
+        .form-grid.col3 {
+            grid-template-columns: 1fr 1fr 1fr
+        }
+
+        .fg-full {
+            grid-column: 1/-1
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: .35rem
+        }
+
+        .form-label {
+            font-size: .7rem;
+            font-weight: 600;
+            color: var(--tx2);
+            letter-spacing: .04em;
+            display: flex;
+            align-items: center;
+            gap: .3rem
+        }
+
+        .form-label .req {
+            color: var(--red)
+        }
+
+        .form-input {
+            background: var(--bg1);
+            border: 1.5px solid var(--border2);
+            border-radius: var(--r);
+            padding: .6rem .9rem;
+            font-size: .85rem;
+            color: var(--tx);
+            transition: border-color .2s, box-shadow .2s;
+            width: 100%
+        }
+
+        .form-input:focus {
+            border-color: var(--clay);
+            box-shadow: 0 0 0 3px var(--clay-bg)
+        }
+
+        .form-input.error {
+            border-color: var(--red);
+            box-shadow: 0 0 0 3px rgba(192, 57, 43, .1)
+        }
+
+        .form-input.ok {
+            border-color: var(--green)
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239A8E82'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right .8rem center;
+            padding-right: 2.2rem;
+            cursor: pointer
+        }
+
+        .form-err {
+            font-size: .68rem;
+            color: var(--red);
+            display: flex;
+            align-items: center;
+            gap: .28rem;
+            display: none
+        }
+
+        .form-err.show {
+            display: flex
+        }
+
+        .form-hint {
+            font-size: .67rem;
+            color: var(--tx3);
+            margin-top: .1rem
+        }
+
+        .form-input-wrap {
+            position: relative
+        }
+
+        .form-input-wrap .fi-icon {
+            position: absolute;
+            right: .8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: .8rem;
+            color: var(--tx4);
+            pointer-events: none
+        }
+
+        .form-input-wrap .fi-icon.ok {
+            color: var(--green)
+        }
+
+        .form-input-wrap .fi-icon.err {
+            color: var(--red)
+        }
+
+        /* saved addresses */
+        .saved-addr-list {
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+            margin-bottom: 1rem
+        }
+
+        .addr-card {
+            border: 1.5px solid var(--border2);
+            border-radius: var(--r2);
+            padding: .85rem 1rem;
+            cursor: pointer;
+            transition: all .2s;
+            position: relative
+        }
+
+        .addr-card:hover {
+            border-color: var(--clay);
+            background: var(--clay-bg)
+        }
+
+        .addr-card.selected {
+            border-color: var(--clay);
+            background: var(--clay-bg);
+            box-shadow: 0 0 0 2px var(--clay-glow)
+        }
+
+        .addr-card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: .5rem;
+            margin-bottom: .4rem
+        }
+
+        .addr-name {
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--tx);
+            display: flex;
+            align-items: center;
+            gap: .45rem
+        }
+
+        .addr-tag {
+            font-size: .56rem;
+            font-weight: 700;
+            padding: .1rem .4rem;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: .06em
+        }
+
+        .addr-tag.home {
+            background: rgba(45, 122, 74, .12);
+            color: var(--green)
+        }
+
+        .addr-tag.work {
+            background: rgba(41, 128, 185, .12);
+            color: #2980B9
+        }
+
+        .addr-tag.other {
+            background: var(--clay-bg);
+            color: var(--clay)
+        }
+
+        .addr-text {
+            font-size: .76rem;
+            color: var(--tx3);
+            line-height: 1.6
+        }
+
+        .addr-phone {
+            font-size: .74rem;
+            color: var(--tx2);
+            margin-top: .28rem;
+            display: flex;
+            align-items: center;
+            gap: .3rem
+        }
+
+        .addr-phone i {
+            font-size: .68rem;
+            color: var(--clay)
+        }
+
+        .addr-radio {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid var(--border2);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .2s;
+            margin-top: .12rem
+        }
+
+        .addr-card.selected .addr-radio {
+            border-color: var(--clay);
+            background: var(--clay)
+        }
+
+        .addr-card.selected .addr-radio::after {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #fff
+        }
+
+        .addr-actions {
+            display: flex;
+            gap: .5rem;
+            margin-top: .6rem
+        }
+
+        .addr-act-btn {
+            font-size: .68rem;
+            color: var(--tx3);
+            padding: .22rem .55rem;
+            border-radius: var(--r);
+            border: 1px solid var(--border);
+            transition: all .15s;
+            display: flex;
+            align-items: center;
+            gap: .25rem
+        }
+
+        .addr-act-btn:hover {
+            border-color: var(--clay);
+            color: var(--clay);
+            background: var(--clay-bg)
+        }
+
+        .addr-act-btn.del:hover {
+            border-color: var(--red);
+            color: var(--red);
+            background: rgba(192, 57, 43, .06)
+        }
+
+        .add-addr-btn {
+            width: 100%;
+            border: 1.5px dashed var(--border2);
+            background: none;
+            color: var(--tx3);
+            border-radius: var(--r2);
+            padding: .68rem;
+            font-size: .78rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .45rem;
+            transition: all .2s;
+            cursor: pointer
+        }
+
+        .add-addr-btn:hover {
+            border-color: var(--clay);
+            color: var(--clay);
+            background: var(--clay-bg)
+        }
+
+        .new-addr-form {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border)
+        }
+
+        .new-addr-form.show {
+            display: block
+        }
+
+        /* delivery type */
+        .delivery-opts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .65rem;
+            margin-bottom: 1rem
+        }
+
+        .del-opt {
+            border: 1.5px solid var(--border2);
+            border-radius: var(--r2);
+            padding: .9rem 1rem;
+            cursor: pointer;
+            transition: all .2s;
+            position: relative
+        }
+
+        .del-opt:hover {
+            border-color: var(--clay);
+            background: var(--clay-bg)
+        }
+
+        .del-opt.selected {
+            border-color: var(--clay);
+            background: var(--clay-bg);
+            box-shadow: 0 0 0 2px var(--clay-glow)
+        }
+
+        .del-opt-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: .35rem
+        }
+
+        .del-opt-name {
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--tx);
+            display: flex;
+            align-items: center;
+            gap: .45rem
+        }
+
+        .del-opt-name i {
+            font-size: .78rem;
+            color: var(--clay)
+        }
+
+        .del-opt-price {
+            font-size: .82rem;
+            font-weight: 700;
+            color: var(--clay)
+        }
+
+        .del-opt-price.free {
+            color: var(--green)
+        }
+
+        .del-opt-eta {
+            font-size: .7rem;
+            color: var(--tx3)
+        }
+
+        .del-radio {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid var(--border2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .2s
+        }
+
+        .del-opt.selected .del-radio {
+            border-color: var(--clay);
+            background: var(--clay)
+        }
+
+        .del-opt.selected .del-radio::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #fff
+        }
+
+        /* ══ GIFT & SPECIAL INSTRUCTIONS ══ */
+        .toggle-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .7rem 0;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            user-select: none
+        }
+
+        .toggle-row:last-of-type {
+            border-bottom: none
+        }
+
+        .toggle-row-l {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            font-size: .82rem;
+            color: var(--tx2)
+        }
+
+        .toggle-row-l i {
+            font-size: .82rem;
+            color: var(--clay);
+            width: 18px;
+            text-align: center
+        }
+
+        .tog-sm {
+            width: 38px;
+            height: 20px;
+            background: var(--bg3);
+            border: 1px solid var(--border2);
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transition: all .3s;
+            flex-shrink: 0
+        }
+
+        .tog-sm.on {
+            background: var(--clay);
+            border-color: var(--clay)
+        }
+
+        .tog-sm-knob {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 14px;
+            height: 14px;
+            background: var(--bg1);
+            border-radius: 50%;
+            transition: all .3s;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .2)
+        }
+
+        .tog-sm.on .tog-sm-knob {
+            left: 20px
+        }
+
+        .extra-panel {
+            display: none;
+            padding: .8rem 0 .3rem
+        }
+
+        .extra-panel.show {
+            display: block
+        }
+
+        .gift-msg-area {
+            width: 100%;
+            background: var(--bg2);
+            border: 1.5px solid var(--border2);
+            border-radius: var(--r);
+            padding: .65rem .9rem;
+            font-size: .82rem;
+            color: var(--tx);
+            resize: vertical;
+            min-height: 70px;
+            transition: border-color .2s
+        }
+
+        .gift-msg-area:focus {
+            border-color: var(--clay);
+            outline: none
+        }
+
+        .char-count {
+            font-size: .65rem;
+            color: var(--tx3);
+            text-align: right;
+            margin-top: .28rem
+        }
+
+        /* ══ PAYMENT SECTION ══ */
+        .pay-methods {
+            display: flex;
+            flex-direction: column;
+            gap: .55rem
+        }
+
+        .pay-method {
+            border: 1.5px solid var(--border2);
+            border-radius: var(--r2);
+            overflow: hidden;
+            transition: all .2s
+        }
+
+        .pay-method.selected {
+            border-color: var(--clay);
+            box-shadow: 0 0 0 2px var(--clay-glow)
+        }
+
+        .pm-hd {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            padding: .88rem 1rem;
+            cursor: pointer;
+            transition: background .15s
+        }
+
+        .pm-hd:hover {
+            background: var(--bg2)
+        }
+
+        .pay-method.selected .pm-hd {
+            background: var(--clay-bg)
+        }
+
+        .pm-radio {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid var(--border2);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .2s
+        }
+
+        .pay-method.selected .pm-radio {
+            border-color: var(--clay);
+            background: var(--clay)
+        }
+
+        .pay-method.selected .pm-radio::after {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #fff
+        }
+
+        .pm-name {
+            font-size: .84rem;
+            font-weight: 600;
+            color: var(--tx);
+            flex: 1
+        }
+
+        .pm-icons {
+            display: flex;
+            gap: .3rem;
+            align-items: center
+        }
+
+        .pm-icon {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: .16rem .42rem;
+            font-size: .58rem;
+            font-weight: 700;
+            color: var(--tx2);
+            display: inline-flex;
+            align-items: center;
+            gap: .22rem;
+            white-space: nowrap
+        }
+
+        .pm-badge {
+            font-size: .58rem;
+            font-weight: 700;
+            padding: .12rem .42rem;
+            border-radius: 3px
+        }
+
+        .pm-badge.rec {
+            background: rgba(45, 122, 74, .12);
+            color: var(--green)
+        }
+
+        .pm-badge.pop {
+            background: rgba(181, 98, 42, .12);
+            color: var(--clay)
+        }
+
+        .pm-body {
+            display: none;
+            padding: .2rem 1rem 1rem;
+            border-top: 1px solid var(--border)
+        }
+
+        .pay-method.selected .pm-body {
+            display: block
+        }
+
+        /* UPI */
+        .upi-apps {
+            display: flex;
+            gap: .55rem;
+            flex-wrap: wrap;
+            margin-bottom: .85rem
+        }
+
+        .upi-app {
+            border: 1.5px solid var(--border2);
+            border-radius: var(--r2);
+            padding: .5rem .85rem;
+            font-size: .74rem;
+            font-weight: 600;
+            color: var(--tx2);
+            cursor: pointer;
+            transition: all .18s;
+            display: flex;
+            align-items: center;
+            gap: .38rem
+        }
+
+        .upi-app:hover,
+        .upi-app.sel {
+            border-color: var(--clay);
+            background: var(--clay-bg);
+            color: var(--clay)
+        }
+
+        .upi-app i {
+            font-size: .78rem
+        }
+
+        /* card */
+        .card-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .7rem
+        }
+
+        .card-form .fg-full {
+            grid-column: 1/-1
+        }
+
+        .card-num-wrap {
+            position: relative
+        }
+
+        .card-num-wrap .card-type-icon {
+            position: absolute;
+            right: .8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            color: var(--tx4)
+        }
+
+        .card-num-wrap .card-type-icon.visa {
+            color: #1A1F71
+        }
+
+        .card-num-wrap .card-type-icon.mc {
+            color: #EB001B
+        }
+
+        /* netbanking */
+        .bank-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: .5rem;
+            margin-bottom: .7rem
+        }
+
+        .bank-tile {
+            border: 1.5px solid var(--border2);
+            border-radius: var(--r);
+            padding: .55rem .4rem;
+            font-size: .68rem;
+            font-weight: 600;
+            color: var(--tx2);
+            text-align: center;
+            cursor: pointer;
+            transition: all .18s
+        }
+
+        .bank-tile:hover,
+        .bank-tile.sel {
+            border-color: var(--clay);
+            background: var(--clay-bg);
+            color: var(--clay)
+        }
+
+        /* wallet */
+        .wallet-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: .5rem
+        }
+
+        .wallet-tile {
+            border: 1.5px solid var(--border2);
+            border-radius: var(--r2);
+            padding: .6rem .5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all .18s;
+            font-size: .72rem;
+            font-weight: 600;
+            color: var(--tx2)
+        }
+
+        .wallet-tile:hover,
+        .wallet-tile.sel {
+            border-color: var(--clay);
+            background: var(--clay-bg);
+            color: var(--clay)
+        }
+
+        /* COD */
+        .cod-note {
+            background: var(--bg2);
+            border: 1px solid var(--border2);
+            border-radius: var(--r);
+            padding: .75rem 1rem;
+            font-size: .78rem;
+            color: var(--tx2);
+            line-height: 1.6;
+            display: flex;
+            gap: .6rem;
+            align-items: flex-start
+        }
+
+        .cod-note i {
+            color: var(--clay);
+            margin-top: .15rem;
+            flex-shrink: 0
+        }
+
+        /* razorpay official button */
+        .rzp-btn {
+            width: 100%;
+            background: #3395FF;
+            color: #fff;
+            border: none;
+            padding: .85rem;
+            border-radius: var(--r2);
+            font-size: .88rem;
+            font-weight: 700;
+            letter-spacing: .04em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .55rem;
+            cursor: pointer;
+            transition: all .22s;
+            box-shadow: 0 4px 16px rgba(51, 149, 255, .35);
+            margin-top: .85rem
+        }
+
+        .rzp-btn:hover {
+            background: #1C7FE0;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px rgba(51, 149, 255, .42)
+        }
+
+        .rzp-btn:active {
+            transform: none
+        }
+
+        .rzp-powered {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .35rem;
+            margin-top: .55rem;
+            font-size: .64rem;
+            color: var(--tx3)
+        }
+
+        .rzp-powered i {
+            color: #3395FF;
+            font-size: .7rem
+        }
+
+        /* ══ ORDER SUMMARY PANEL ══ */
+        .os-panel {
+            background: var(--bg1);
+            border: 1px solid var(--border);
+            border-radius: var(--r2);
+            overflow: hidden
+        }
+
+        .os-panel-hd {
+            padding: .9rem 1.1rem;
+            background: linear-gradient(135deg, var(--clay-d), var(--clay));
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .os-panel-title {
+            font-family: 'Playfair Display', serif;
+            font-size: .95rem;
+            font-weight: 600;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: .5rem
+        }
+
+        .os-toggle {
+            font-size: .7rem;
+            color: rgba(255, 255, 255, .75);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+            transition: color .15s
+        }
+
+        .os-toggle:hover {
+            color: #fff
+        }
+
+        .os-items {
+            border-bottom: 1px solid var(--border)
+        }
+
+        .os-item {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            padding: .75rem 1.1rem;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .os-item:last-child {
+            border-bottom: none
+        }
+
+        .os-item-img {
+            width: 52px;
+            height: 64px;
+            border-radius: var(--r);
+            overflow: hidden;
+            background: var(--bg2);
+            flex-shrink: 0
+        }
+
+        .os-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .os-item-info {
+            flex: 1;
+            min-width: 0
+        }
+
+        .os-item-name {
+            font-size: .78rem;
+            font-weight: 500;
+            color: var(--tx);
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .os-item-meta {
+            font-size: .65rem;
+            color: var(--tx3);
+            margin-top: .18rem
+        }
+
+        .os-item-qty {
+            font-size: .66rem;
+            background: var(--bg2);
+            border-radius: 3px;
+            padding: .1rem .4rem;
+            color: var(--tx2);
+            flex-shrink: 0;
+            font-weight: 600
+        }
+
+        .os-item-price {
+            font-size: .84rem;
+            font-weight: 600;
+            color: var(--tx);
+            flex-shrink: 0
+        }
+
+        .os-body {
+            padding: 1rem 1.1rem
+        }
+
+        .os-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: .8rem;
+            color: var(--tx2);
+            margin-bottom: .6rem
+        }
+
+        .os-row.total {
+            font-size: .95rem;
+            font-weight: 700;
+            color: var(--tx);
+            padding-top: .6rem;
+            margin-top: .4rem;
+            border-top: 2px solid var(--border)
+        }
+
+        .os-row.saving {
+            color: var(--green);
+            font-weight: 600
+        }
+
+        .os-row .lbl {
+            display: flex;
+            align-items: center;
+            gap: .38rem
+        }
+
+        .os-row .lbl i {
+            font-size: .68rem;
+            color: var(--tx3)
+        }
+
+        .os-sep {
+            height: 1px;
+            background: var(--border);
+            margin: .45rem 0
+        }
+
+        /* edit cart link */
+        .edit-cart-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .42rem;
+            font-size: .72rem;
+            color: var(--clay);
+            padding: .55rem;
+            border: 1px solid rgba(181, 98, 42, .25);
+            border-radius: var(--r);
+            transition: all .18s;
+            cursor: pointer;
+            margin-top: .7rem
+        }
+
+        .edit-cart-link:hover {
+            background: var(--clay-bg)
+        }
+
+        /* secure checkout banner */
+        .secure-banner {
+            background: linear-gradient(135deg, rgba(45, 122, 74, .08), rgba(45, 122, 74, .04));
+            border: 1px solid rgba(45, 122, 74, .2);
+            border-radius: var(--r2);
+            padding: .75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: .6rem
+        }
+
+        .secure-banner i {
+            color: var(--green);
+            font-size: 1.1rem;
+            flex-shrink: 0
+        }
+
+        .secure-banner-text {
+            font-size: .74rem;
+            color: var(--tx2);
+            line-height: 1.45
+        }
+
+        .secure-banner-text strong {
+            color: var(--green);
+            font-weight: 600
+        }
+
+        /* ══ PLACE ORDER STICKY MOBILE ══ */
+        .mob-place-order {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 800;
+            background: var(--bg1);
+            border-top: 1px solid var(--border);
+            padding: .75rem 1rem calc(.75rem + env(safe-area-inset-bottom));
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, .1)
+        }
+
+        .mob-place-order-inner {
+            display: flex;
+            align-items: center;
+            gap: .75rem
+        }
+
+        .mob-total {
+            flex: 1
+        }
+
+        .mob-total .lbl {
+            font-size: .64rem;
+            color: var(--tx3);
+            letter-spacing: .06em;
+            text-transform: uppercase
+        }
+
+        .mob-total .amt {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--tx)
+        }
+
+        .mob-place-btn {
+            background: linear-gradient(135deg, var(--clay-d), var(--clay-l));
+            color: #fff;
+            padding: .72rem 1.4rem;
+            border-radius: var(--r2);
+            font-size: .82rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            white-space: nowrap;
+            transition: all .2s;
+            box-shadow: 0 4px 14px rgba(181, 98, 42, .3)
+        }
+
+        .mob-place-btn:hover {
+            transform: translateY(-1px)
+        }
+
+        /* ══ ORDER CONFIRMATION OVERLAY ══ */
+        .confirm-ov {
+            position: fixed;
+            inset: 0;
+            z-index: 1100;
+            background: rgba(0, 0, 0, .65);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .35s
+        }
+
+        .confirm-ov.show {
+            opacity: 1;
+            pointer-events: all
+        }
+
+        .confirm-modal {
+            background: var(--bg1);
+            border-radius: 16px;
+            max-width: 480px;
+            width: 100%;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            transform: scale(.92);
+            transition: transform .35s;
+            box-shadow: var(--sh3)
+        }
+
+        .confirm-ov.show .confirm-modal {
+            transform: scale(1)
+        }
+
+        .confirm-check {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), #48BB78);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            box-shadow: 0 8px 24px rgba(45, 122, 74, .35);
+            animation: popIn .5s cubic-bezier(.68, -.55, .27, 1.55) forwards
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0)
+            }
+
+            100% {
+                transform: scale(1)
+            }
+        }
+
+        .confirm-check i {
+            color: #fff;
+            font-size: 2rem
+        }
+
+        .confirm-modal h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--tx);
+            margin-bottom: .5rem
+        }
+
+        .confirm-modal p {
+            font-size: .82rem;
+            color: var(--tx3);
+            margin-bottom: 1.4rem;
+            line-height: 1.65
+        }
+
+        .confirm-order-id {
+            background: var(--clay-bg);
+            border: 1px solid rgba(181, 98, 42, .22);
+            border-radius: var(--r);
+            padding: .55rem 1rem;
+            font-size: .82rem;
+            color: var(--clay);
+            font-weight: 700;
+            letter-spacing: .1em;
+            margin-bottom: 1.4rem;
+            display: inline-block
+        }
+
+        .confirm-btns {
+            display: flex;
+            gap: .65rem;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .btn-clay {
+            background: var(--clay);
+            color: #fff;
+            padding: .72rem 1.5rem;
+            border-radius: var(--r2);
+            font-size: .82rem;
+            font-weight: 600;
+            transition: background .2s;
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem
+        }
+
+        .btn-clay:hover {
+            background: var(--clay-d)
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--clay);
+            color: var(--clay);
+            padding: .7rem 1.5rem;
+            border-radius: var(--r2);
+            font-size: .82rem;
+            font-weight: 600;
+            transition: all .2s;
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem
+        }
+
+        .btn-outline:hover {
+            background: var(--clay-bg)
+        }
+
+        .confetti-item {
+            position: absolute;
+            border-radius: 2px;
+            animation: confettiFall linear forwards
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 1
+            }
+
+            100% {
+                transform: translateY(350px) rotate(720deg);
+                opacity: 0
+            }
+        }
+
+        /* ══ LOADING OVERLAY ══ */
+        .pay-loading {
+            position: fixed;
+            inset: 0;
+            z-index: 1200;
+            background: rgba(0, 0, 0, .65);
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s
+        }
+
+        .pay-loading.show {
+            opacity: 1;
+            pointer-events: all
+        }
+
+        .pay-spinner {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, .2);
+            border-top-color: #3395FF;
+            animation: spin .9s linear infinite
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .pay-loading-text {
+            color: #fff;
+            font-size: .9rem;
+            font-weight: 500;
+            text-align: center
+        }
+
+        .pay-loading-sub {
+            color: rgba(255, 255, 255, .6);
+            font-size: .75rem
+        }
+
+        /* ══ TOAST ══ */
+        .toast {
+            position: fixed;
+            bottom: 5.5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(16px);
+            z-index: 1300;
+            background: var(--tx);
+            color: var(--bg);
+            border-radius: var(--r2);
+            padding: .65rem 1.2rem;
+            font-size: .78rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            opacity: 0;
+            transition: all .3s;
+            pointer-events: none;
+            white-space: nowrap;
+            box-shadow: var(--sh2)
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0)
+        }
+
+        .toast i {
+            color: var(--clay-l)
+        }
+
+        /* ══ MOBILE BOTTOM NAV ══ */
+        .mob-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 700;
+            background: var(--bg1);
+            border-top: 1px solid var(--border);
+            padding: .5rem 0 calc(.5rem + env(safe-area-inset-bottom))
+        }
+
+        .mob-row {
+            display: flex;
+            justify-content: space-around
+        }
+
+        .mb-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .14rem;
+            color: var(--tx3);
+            font-size: .54rem;
+            font-weight: 500;
+            padding: .22rem .65rem;
+            transition: color .15s;
+            position: relative
+        }
+
+        .mb-btn i {
+            font-size: 1.1rem
+        }
+
+        .mb-btn.on,
+        .mb-btn:hover {
+            color: var(--clay)
+        }
+
+        .mb-badge {
+            position: absolute;
+            top: 0;
+            right: 4px;
+            background: var(--clay);
+            color: #fff;
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+            font-size: .46rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        /* ══ REVEAL ══ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity .5s ease, transform .5s ease
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: none
+        }
+
+        /* ══ BACK TO TOP ══ */
+        #bttBtn {
+            position: fixed;
+            bottom: 5rem;
+            right: 1.15rem;
+            z-index: 850;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--clay);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .9rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity .3s, transform .3s;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(181, 98, 42, .38)
+        }
+
+        #bttBtn.show {
+            opacity: 1;
+            transform: none
+        }
+
+        #bttBtn:hover {
+            background: var(--clay-d)
+        }
+
+        /* ══ MOBILE DRAWER ══ */
+        .m-ov {
+            position: fixed;
+            inset: 0;
+            z-index: 960;
+            background: rgba(0, 0, 0, .52);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s
+        }
+
+        .m-ov.open {
+            opacity: 1;
+            pointer-events: all
+        }
+
+        .m-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: min(88vw, 310px);
+            background: var(--bg1);
+            z-index: 970;
+            transform: translateX(-100%);
+            transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+            border-right: 1px solid var(--border);
+            -webkit-overflow-scrolling: touch
+        }
+
+        .m-ov.open .m-drawer {
+            transform: none
+        }
+
+        .mdr-hd {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .9rem 1.1rem;
+            background: linear-gradient(135deg, var(--clay-d) 0%, var(--clay) 55%, var(--clay-l) 100%);
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            flex-shrink: 0
+        }
+
+        .mdr-brand {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            color: #fff
+        }
+
+        .mdr-brand img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .2);
+            padding: 3px
+        }
+
+        .mdr-brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: .07em
+        }
+
+        .mdr-brand-tag {
+            display: block;
+            font-size: .48rem;
+            opacity: .75;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            font-family: 'DM Sans', sans-serif
+        }
+
+        .mdr-close {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .18);
+            border: 1px solid rgba(255, 255, 255, .3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: .88rem
+        }
+
+        .mdr-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .68rem 1.05rem;
+            font-size: .84rem;
+            color: var(--tx2);
+            border-bottom: 1px solid var(--border);
+            transition: all .15s
+        }
+
+        .mdr-link-l {
+            display: flex;
+            align-items: center;
+            gap: .65rem
+        }
+
+        .mdr-link .arr {
+            font-size: .6rem;
+            color: var(--tx4)
+        }
+
+        .mdr-link:hover {
+            background: var(--bg2);
+            color: var(--clay)
+        }
+
+        .mdr-ico {
+            width: 28px;
+            height: 28px;
+            border-radius: var(--r);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            flex-shrink: 0
+        }
+
+        .mdr-ico.ic1 {
+            background: #FFF0E6;
+            color: #B5622A
+        }
+
+        .mdr-ico.ic2 {
+            background: #E8F4FB;
+            color: #2980B9
+        }
+
+        .mdr-ico.ic3 {
+            background: #EAF7ED;
+            color: #27AE60
+        }
+
+        .mdr-ico.ic4 {
+            background: #FDF0F6;
+            color: #C0392B
+        }
+
+        .mdr-ico.ic7 {
+            background: #FFF0E0;
+            color: #E65100
+        }
+
+        .mdr-ico.ic8 {
+            background: #FEF9E7;
+            color: #B7950B
+        }
+
+        .mdr-tog {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .9rem 1.05rem;
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+            flex-shrink: 0
+        }
+
+        .mdr-tog-lbl {
+            font-size: .8rem;
+            color: var(--tx2);
+            display: flex;
+            align-items: center;
+            gap: .5rem
+        }
+
+        .mdr-tog-lbl i {
+            color: var(--clay)
+        }
+
+        .tog {
+            width: 42px;
+            height: 22px;
+            background: var(--bg3);
+            border: 1px solid var(--border2);
+            border-radius: 11px;
+            position: relative;
+            cursor: pointer;
+            transition: all .3s
+        }
+
+        .tog.on {
+            background: var(--clay);
+            border-color: var(--clay)
+        }
+
+        .tog-knob {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 14px;
+            height: 14px;
+            background: var(--bg1);
+            border-radius: 50%;
+            transition: all .3s;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .2)
+        }
+
+        .tog.on .tog-knob {
+            left: 23px
+        }
+
+        /* ══ FOOTER ══ */
+        footer {
+            background: var(--bg1);
+            border-top: 1px solid var(--border);
+            margin-top: 2rem
+        }
+
+        .ft-bot-co {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: .75rem;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .ft-tbadges {
+            display: flex;
+            gap: .4rem;
+            flex-wrap: wrap
+        }
+
+        .ftb {
+            display: flex;
+            align-items: center;
+            gap: .32rem;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: .22rem .55rem;
+            font-size: .6rem;
+            color: var(--tx2)
+        }
+
+        .ftb i {
+            font-size: .65rem;
+            color: var(--clay)
+        }
+
+        .ft-pay-co {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            flex-wrap: wrap
+        }
+
+        .pchip {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: .18rem .52rem;
+            font-size: .58rem;
+            font-weight: 600;
+            color: var(--tx2);
+            display: inline-flex;
+            align-items: center;
+            gap: .22rem
+        }
+
+        .ft-copy-row {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: .7rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: .5rem
+        }
+
+        .ft-copy {
+            font-size: .68rem;
+            color: var(--tx3)
+        }
+
+        .ft-leg {
+            display: flex;
+            gap: 1rem
+        }
+
+        .ft-leg a {
+            font-size: .68rem;
+            color: var(--tx3);
+            transition: color .15s
+        }
+
+        .ft-leg a:hover {
+            color: var(--clay)
+        }
+
+        /* ══ RESPONSIVE ══ */
+        @media(max-width:1024px) {
+            .co-right {
+                width: 320px
+            }
+        }
+
+        @media(max-width:860px) {
+            .co-outer {
+                flex-direction: column
+            }
+
+            .co-right {
+                width: 100%;
+                position: static
+            }
+
+            .mob-place-order {
+                display: block
+            }
+
+            body {
+                padding-bottom: 120px
+            }
+
+            .delivery-opts {
+                grid-template-columns: 1fr
+            }
+        }
+
+        @media(max-width:768px) {
+            :root {
+                --nav-h: 52px
+            }
+
+            .mob-bar {
+                display: block
+            }
+
+            body {
+                padding-bottom: 130px
+            }
+
+            .tn-secure-badge {
+                display: none
+            }
+
+            .co-outer {
+                padding: 1rem .85rem 2rem
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr
+            }
+
+            .form-grid.col3 {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .bank-grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
+
+            .ham-btn {
+                display: flex !important
+            }
+
+            #mobGlob {
+                display: flex !important;
+                position: relative
+            }
+
+            .steps-inner .step span {
+                display: none
+            }
+
+            .step-line {
+                min-width: 20px
+            }
+        }
+
+        @media(max-width:480px) {
+            :root {
+                --nav-h: 48px
+            }
+
+            .tn-brand small {
+                display: none
+            }
+
+            .co-outer {
+                padding: .85rem .65rem 1.5rem
+            }
+
+            .co-card-body {
+                padding: .9rem
+            }
+
+            .bank-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .wallet-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .confirm-modal {
+                padding: 1.8rem 1.2rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════════ NAVBAR (Checkout-simplified) ══════════════ -->
+    <nav id="topnav">
+        <div class="tn-wrap">
+            <a href="index.html" class="tn-logo">
+                <img class="tn-logo-img" src="matikala.png" alt="Matikala" onerror="this.style.display='none'" />
+                <div class="tn-brand">MATIKALA<small>Secure Checkout</small></div>
+            </a>
+            <div class="tn-secure-badge">
+                <i class="fa-solid fa-lock"></i>
+                <span>SSL Encrypted · Secure Checkout</span>
+            </div>
+            <div class="tn-right-co">
+                <div class="dp">
+                    <div class="tnb-sm" onclick="toggleDrop('langDrop')">
+                        <i class="fa-solid fa-globe" style="font-size:.8rem"></i>
+                        <span id="curLang">EN</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size:.5rem;opacity:.7"></i>
+                    </div>
+                    <div class="dp-menu" id="langDrop">
+                        <div class="dp-hd">Language</div>
+                        <div class="dp-li on" onclick="setLang('EN',this)">English <span class="code">EN</span></div>
+                        <div class="dp-li" onclick="setLang('HI',this)">हिन्दी <span class="code">HI</span></div>
+                        <div class="dp-li" onclick="setLang('TA',this)">தமிழ் <span class="code">TA</span></div>
+                        <div class="dp-li" onclick="setLang('TE',this)">తెలుగు <span class="code">TE</span></div>
+                        <div class="dp-li" onclick="setLang('KN',this)">ಕನ್ನಡ <span class="code">KN</span></div>
+                        <div class="dp-li" onclick="setLang('ML',this)">മലയാളം <span class="code">ML</span></div>
+                        <div class="dp-li" onclick="setLang('BN',this)">বাংলা <span class="code">BN</span></div>
+                        <div class="dp-li" onclick="setLang('MR',this)">मराठी <span class="code">MR</span></div>
+                    </div>
+                </div>
+                <button class="tn-theme" onclick="toggleTheme()"><i class="fa-solid fa-sun" id="themeIcon"></i></button>
+                <button class="tnb-sm ham-btn" id="hamBtn" onclick="openDr()" style="display:none">
+                    <i class="fa-solid fa-bars" style="font-size:1rem"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ══════════════ STEPS ══════════════ -->
+    <div class="cart-steps">
+        <div class="steps-inner">
+            <div class="step done">
+                <div class="step-num"><i class="fa-solid fa-check" style="font-size:.6rem"></i></div><span>Cart</span>
+            </div>
+            <div class="step-line done"></div>
+            <div class="step active">
+                <div class="step-num">2</div><span>Address</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step">
+                <div class="step-num">3</div><span>Payment</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step">
+                <div class="step-num">4</div><span>Confirmation</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════ BREADCRUMB ══════════════ -->
+    <div class="breadcrumb">
+        <div class="bc-inner">
+            <div class="bc-item"><a href="index.html"><i class="fa-solid fa-house" style="font-size:.65rem"></i>
+                    Home</a></div>
+            <span class="bc-sep"><i class="fa-solid fa-chevron-right"></i></span>
+            <div class="bc-item"><a href="cart.html">Cart</a></div>
+            <span class="bc-sep"><i class="fa-solid fa-chevron-right"></i></span>
+            <div class="bc-item cur">Checkout</div>
+        </div>
+    </div>
+
+    <!-- ══════════════ MAIN ══════════════ -->
+    <div class="co-outer">
+
+        <!-- LEFT: FORM SECTIONS -->
+        <div class="co-left">
+
+            <!-- ① CONTACT -->
+            <div class="co-card active-section reveal" id="sec-contact">
+                <div class="co-card-hd">
+                    <div class="co-card-hd-l">
+                        <div class="co-step-bubble" id="bubble-contact">1</div>
+                        <div class="co-card-title">Contact Information</div>
+                    </div>
+                    <div class="co-card-edit" id="edit-contact" style="display:none" onclick="expandSection('contact')">
+                        <i class="fa-solid fa-pen"></i> Edit
+                    </div>
+                </div>
+                <div class="co-card-body" id="body-contact">
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label class="form-label">Full Name <span class="req">*</span></label>
+                            <div class="form-input-wrap">
+                                <input class="form-input" id="fn" type="text" placeholder="Shivank Singh"
+                                    oninput="validateField(this,'name')" />
+                                <i class="fa-solid fa-circle-check fi-icon" id="fi-fn" style="display:none"></i>
+                            </div>
+                            <div class="form-err" id="err-fn"><i class="fa-solid fa-circle-xmark"></i> Please enter your
+                                full name</div>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label">Mobile Number <span class="req">*</span></label>
+                            <div class="form-input-wrap">
+                                <input class="form-input" id="mobile" type="tel" placeholder="+91 94585 09527"
+                                    maxlength="13" oninput="validateField(this,'phone')" />
+                                <i class="fa-solid fa-circle-check fi-icon" id="fi-mobile" style="display:none"></i>
+                            </div>
+                            <div class="form-err" id="err-mobile"><i class="fa-solid fa-circle-xmark"></i> Enter a valid
+                                10-digit mobile number</div>
+                        </div>
+                        <div class="form-field fg-full">
+                            <label class="form-label">Email Address <span class="req">*</span></label>
+                            <div class="form-input-wrap">
+                                <input class="form-input" id="email" type="email" placeholder="you@example.com"
+                                    oninput="validateField(this,'email')" />
+                                <i class="fa-solid fa-circle-check fi-icon" id="fi-email" style="display:none"></i>
+                            </div>
+                            <div class="form-err" id="err-email"><i class="fa-solid fa-circle-xmark"></i> Enter a valid
+                                email address</div>
+                            <div class="form-hint">Order confirmation & shipping updates will be sent here</div>
+                        </div>
+                    </div>
+                    <button class="rzp-btn"
+                        style="background:var(--clay);box-shadow:0 4px 16px rgba(181,98,42,.3);margin-top:1.1rem"
+                        onclick="saveContact()">
+                        <i class="fa-solid fa-arrow-right"></i> Continue to Address
+                    </button>
+                </div>
+                <!-- collapsed summary -->
+                <div class="co-card-body" id="summary-contact" style="display:none;padding:.75rem 1.2rem">
+                    <div style="font-size:.82rem;color:var(--tx2)" id="summary-contact-text"></div>
+                </div>
+            </div>
+
+            <!-- ② SHIPPING ADDRESS -->
+            <div class="co-card reveal" id="sec-address" style="opacity:.55;pointer-events:none">
+                <div class="co-card-hd">
+                    <div class="co-card-hd-l">
+                        <div class="co-step-bubble" id="bubble-address">2</div>
+                        <div class="co-card-title">Shipping Address</div>
+                    </div>
+                    <div class="co-card-edit" id="edit-address" style="display:none" onclick="expandSection('address')">
+                        <i class="fa-solid fa-pen"></i> Edit
+                    </div>
+                </div>
+                <div class="co-card-body" id="body-address">
+
+                    <!-- saved addresses -->
+                    <div
+                        style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tx3);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem">
+                        <i class="fa-solid fa-bookmark" style="color:var(--clay)"></i> Saved Addresses
+                    </div>
+                    <div class="saved-addr-list">
+                        <div class="addr-card selected" onclick="selectAddr(this,0)" id="addrCard0">
+                            <div class="addr-card-top">
+                                <div class="addr-name"><i class="fa-solid fa-house"
+                                        style="font-size:.72rem;color:var(--clay)"></i> Shivank Singh <span
+                                        class="addr-tag home">Home</span></div>
+                                <div class="addr-radio"></div>
+                            </div>
+                            <div class="addr-text">47, Sector 12, Noida<br />Uttar Pradesh — 201301</div>
+                            <div class="addr-phone"><i class="fa-solid fa-phone"></i> +91 94585 09527</div>
+                            <div class="addr-actions">
+                                <button class="addr-act-btn"><i class="fa-solid fa-pen"></i> Edit</button>
+                                <button class="addr-act-btn del"><i class="fa-solid fa-trash-can"></i> Delete</button>
+                            </div>
+                        </div>
+                        <div class="addr-card" onclick="selectAddr(this,1)" id="addrCard1">
+                            <div class="addr-card-top">
+                                <div class="addr-name"><i class="fa-solid fa-briefcase"
+                                        style="font-size:.72rem;color:#2980B9"></i> Mayank Prashar <span
+                                        class="addr-tag work">Work</span></div>
+                                <div class="addr-radio"></div>
+                            </div>
+                            <div class="addr-text">Plot 22B, Cyber City, DLF Phase 2<br />Gurugram, Haryana — 122002
+                            </div>
+                            <div class="addr-phone"><i class="fa-solid fa-phone"></i> +91 94585 09527</div>
+                            <div class="addr-actions">
+                                <button class="addr-act-btn"><i class="fa-solid fa-pen"></i> Edit</button>
+                                <button class="addr-act-btn del"><i class="fa-solid fa-trash-can"></i> Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- add new address -->
+                    <button class="add-addr-btn" onclick="toggleNewAddr()"><i class="fa-solid fa-plus"></i> Add a New
+                        Address</button>
+                    <div class="new-addr-form" id="newAddrForm">
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label class="form-label">Full Name <span class="req">*</span></label>
+                                <input class="form-input" id="a-name" type="text" placeholder="Recipient name" />
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label">Mobile <span class="req">*</span></label>
+                                <input class="form-input" id="a-phone" type="tel" placeholder="+91 XXXXX XXXXX" />
+                            </div>
+                            <div class="form-field fg-full">
+                                <label class="form-label">Address Line 1 <span class="req">*</span></label>
+                                <input class="form-input" id="a-l1" type="text"
+                                    placeholder="House/Flat No., Building, Street" />
+                            </div>
+                            <div class="form-field fg-full">
+                                <label class="form-label">Address Line 2</label>
+                                <input class="form-input" id="a-l2" type="text"
+                                    placeholder="Area, Colony, Landmark (optional)" />
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label">City <span class="req">*</span></label>
+                                <input class="form-input" id="a-city" type="text" placeholder="City" />
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label">Pincode <span class="req">*</span></label>
+                                <input class="form-input" id="a-pin" type="text" placeholder="6-digit pincode"
+                                    maxlength="6" oninput="fetchPincode(this.value)" />
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label">State <span class="req">*</span></label>
+                                <select class="form-input form-select" id="a-state">
+                                    <option value="">Select State</option>
+                                    <option>Uttar Pradesh</option>
+                                    <option>Delhi</option>
+                                    <option>Maharashtra</option>
+                                    <option>Karnataka</option>
+                                    <option>Tamil Nadu</option>
+                                    <option>Telangana</option>
+                                    <option>Gujarat</option>
+                                    <option>Rajasthan</option>
+                                    <option>West Bengal</option>
+                                    <option>Haryana</option>
+                                    <option>Punjab</option>
+                                    <option>Madhya Pradesh</option>
+                                    <option>Bihar</option>
+                                    <option>Odisha</option>
+                                    <option>Jharkhand</option>
+                                    <option>Assam</option>
+                                    <option>Kerala</option>
+                                    <option>Andhra Pradesh</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label">Address Type</label>
+                                <select class="form-input form-select" id="a-type">
+                                    <option value="home">Home</option>
+                                    <option value="work">Work</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-field fg-full" style="flex-direction:row;align-items:center;gap:.6rem">
+                                <input type="checkbox" id="a-default"
+                                    style="width:16px;height:16px;accent-color:var(--clay)" />
+                                <label for="a-default" style="font-size:.78rem;color:var(--tx2);cursor:pointer">Set as
+                                    default address</label>
+                            </div>
+                        </div>
+                        <button class="rzp-btn"
+                            style="background:var(--clay);box-shadow:0 4px 16px rgba(181,98,42,.3);margin-top:1rem"
+                            onclick="saveNewAddr()">
+                            <i class="fa-solid fa-floppy-disk"></i> Save Address
+                        </button>
+                    </div>
+
+                    <!-- delivery options -->
+                    <div
+                        style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tx3);margin:1.2rem 0 .65rem;display:flex;align-items:center;gap:.4rem">
+                        <i class="fa-solid fa-truck" style="color:var(--clay)"></i> Delivery Options
+                    </div>
+                    <div class="delivery-opts">
+                        <div class="del-opt selected" onclick="selectDelivery(this,'standard')">
+                            <div class="del-opt-top">
+                                <div class="del-opt-name"><i class="fa-solid fa-truck"></i> Standard</div>
+                                <div class="del-radio"></div>
+                            </div>
+                            <div class="del-opt-eta">Delivered by <strong id="eta-std"></strong></div>
+                            <div class="del-opt-price free" style="margin-top:.3rem" id="del-price-std">FREE</div>
+                        </div>
+                        <div class="del-opt" onclick="selectDelivery(this,'express')">
+                            <div class="del-opt-top">
+                                <div class="del-opt-name"><i class="fa-solid fa-bolt"></i> Express</div>
+                                <div class="del-radio"></div>
+                            </div>
+                            <div class="del-opt-eta">Delivered by <strong id="eta-exp"></strong></div>
+                            <div class="del-opt-price" style="margin-top:.3rem">₹149</div>
+                        </div>
+                    </div>
+
+                    <!-- gift + instructions -->
+                    <div
+                        style="margin-top:.85rem;background:var(--bg2);border-radius:var(--r2);padding:.2rem .85rem .45rem">
+                        <div class="toggle-row" onclick="toggleExtra('gift')">
+                            <div class="toggle-row-l"><i class="fa-solid fa-gift"></i> Add Gift Wrapping (₹49)</div>
+                            <div class="tog-sm" id="tog-gift">
+                                <div class="tog-sm-knob"></div>
+                            </div>
+                        </div>
+                        <div class="extra-panel" id="panel-gift">
+                            <input class="form-input" type="text" placeholder="Recipient name for gift tag"
+                                style="margin-bottom:.6rem" />
+                            <textarea class="gift-msg-area" id="giftMsg"
+                                placeholder="Add a personal message for the recipient… (max 120 chars)" maxlength="120"
+                                oninput="updateChar()"></textarea>
+                            <div class="char-count"><span id="charLeft">120</span> characters remaining</div>
+                        </div>
+                        <div class="toggle-row" onclick="toggleExtra('note')">
+                            <div class="toggle-row-l"><i class="fa-solid fa-note-sticky"></i> Special Instructions for
+                                Delivery</div>
+                            <div class="tog-sm" id="tog-note">
+                                <div class="tog-sm-knob"></div>
+                            </div>
+                        </div>
+                        <div class="extra-panel" id="panel-note">
+                            <textarea class="gift-msg-area" placeholder="e.g. Leave at the gate, call before delivery…"
+                                maxlength="200" style="min-height:55px"></textarea>
+                        </div>
+                    </div>
+
+                    <button class="rzp-btn" style="background:var(--clay);box-shadow:0 4px 16px rgba(181,98,42,.3)"
+                        onclick="saveAddress()">
+                        <i class="fa-solid fa-arrow-right"></i> Continue to Payment
+                    </button>
+                </div>
+                <div class="co-card-body" id="summary-address" style="display:none;padding:.75rem 1.2rem">
+                    <div style="font-size:.82rem;color:var(--tx2)" id="summary-address-text"></div>
+                </div>
+            </div>
+
+            <!-- ③ PAYMENT -->
+            <div class="co-card reveal" id="sec-payment" style="opacity:.55;pointer-events:none">
+                <div class="co-card-hd">
+                    <div class="co-card-hd-l">
+                        <div class="co-step-bubble" id="bubble-payment">3</div>
+                        <div class="co-card-title">Payment Method</div>
+                    </div>
+                    <div class="co-card-edit" id="edit-payment" style="display:none" onclick="expandSection('payment')">
+                        <i class="fa-solid fa-pen"></i> Edit
+                    </div>
+                </div>
+                <div class="co-card-body" id="body-payment">
+                    <div class="pay-methods">
+
+                        <!-- UPI -->
+                        <div class="pay-method selected" id="pm-upi" onclick="selectPayment('upi')">
+                            <div class="pm-hd">
+                                <div class="pm-radio"></div>
+                                <div class="pm-name">UPI</div>
+                                <div class="pm-icons">
+                                    <span class="pm-icon">GPay</span>
+                                    <span class="pm-icon">PhonePe</span>
+                                    <span class="pm-icon">Paytm</span>
+                                    <span class="pm-badge rec">Recommended</span>
+                                </div>
+                            </div>
+                            <div class="pm-body">
+                                <div style="font-size:.72rem;color:var(--tx3);margin-bottom:.55rem">Select your UPI app
+                                    or enter UPI ID</div>
+                                <div class="upi-apps">
+                                    <div class="upi-app sel" id="upi-gpay" onclick="selUpi('gpay',this)"><i
+                                            class="fa-brands fa-google-pay" style="font-size:1rem"></i> GPay</div>
+                                    <div class="upi-app" id="upi-pp" onclick="selUpi('pp',this)"><i
+                                            class="fa-solid fa-mobile-alt" style="color:#5f259f"></i> PhonePe</div>
+                                    <div class="upi-app" id="upi-paytm" onclick="selUpi('paytm',this)"><i
+                                            class="fa-solid fa-mobile-alt" style="color:#00BAF2"></i> Paytm</div>
+                                    <div class="upi-app" id="upi-bhim" onclick="selUpi('bhim',this)"><i
+                                            class="fa-solid fa-mobile-alt" style="color:#0e5fa3"></i> BHIM</div>
+                                </div>
+                                <div style="display:flex;gap:.5rem;align-items:center;margin-top:.3rem">
+                                    <input class="form-input" id="upiId" type="text"
+                                        placeholder="Enter UPI ID (e.g. name@upi)" style="flex:1" />
+                                    <button
+                                        style="background:var(--clay);color:#fff;padding:.58rem 1rem;border-radius:var(--r);font-size:.75rem;font-weight:600;white-space:nowrap;transition:background .18s"
+                                        onmouseover="this.style.background='var(--clay-d)'"
+                                        onmouseout="this.style.background='var(--clay)'"
+                                        onclick="verifyUpi()">Verify</button>
+                                </div>
+                                <div id="upiVerifyMsg" style="font-size:.7rem;margin-top:.35rem;display:none"></div>
+                            </div>
+                        </div>
+
+                        <!-- Debit/Credit Card -->
+                        <div class="pay-method" id="pm-card" onclick="selectPayment('card')">
+                            <div class="pm-hd">
+                                <div class="pm-radio"></div>
+                                <div class="pm-name">Credit / Debit Card</div>
+                                <div class="pm-icons">
+                                    <span class="pm-icon"><i class="fa-brands fa-cc-visa"
+                                            style="color:#1A1F71;font-size:.85rem"></i></span>
+                                    <span class="pm-icon"><i class="fa-brands fa-cc-mastercard"
+                                            style="font-size:.85rem"></i></span>
+                                    <span class="pm-icon"><i class="fa-brands fa-cc-rupay"
+                                            style="font-size:.85rem"></i></span>
+                                </div>
+                            </div>
+                            <div class="pm-body">
+                                <div class="card-form">
+                                    <div class="form-field fg-full">
+                                        <label class="form-label">Card Number <span class="req">*</span></label>
+                                        <div class="card-num-wrap form-input-wrap">
+                                            <input class="form-input" id="cardNum" type="text"
+                                                placeholder="1234 5678 9012 3456" maxlength="19"
+                                                oninput="formatCardNum(this)" />
+                                            <i class="fa-brands fa-cc-visa card-type-icon" id="cardTypeIcon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-field fg-full">
+                                        <label class="form-label">Cardholder Name <span class="req">*</span></label>
+                                        <input class="form-input" type="text" placeholder="Name on card" />
+                                    </div>
+                                    <div class="form-field">
+                                        <label class="form-label">Expiry Date <span class="req">*</span></label>
+                                        <input class="form-input" type="text" placeholder="MM / YY" maxlength="7"
+                                            oninput="formatExpiry(this)" />
+                                    </div>
+                                    <div class="form-field">
+                                        <label class="form-label">CVV <span class="req">*</span></label>
+                                        <div class="form-input-wrap">
+                                            <input class="form-input" type="password" placeholder="•••" maxlength="4" />
+                                            <i class="fa-solid fa-circle-question fi-icon" style="cursor:pointer"
+                                                title="3 digits on back of card"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-field fg-full"
+                                        style="flex-direction:row;align-items:center;gap:.55rem">
+                                        <input type="checkbox" id="saveCard"
+                                            style="width:15px;height:15px;accent-color:var(--clay)" />
+                                        <label for="saveCard"
+                                            style="font-size:.76rem;color:var(--tx2);cursor:pointer">Save card securely
+                                            for future payments</label>
+                                    </div>
+                                </div>
+                                <div
+                                    style="background:rgba(51,149,255,.08);border:1px solid rgba(51,149,255,.22);border-radius:var(--r);padding:.55rem .8rem;font-size:.7rem;color:#1C7FE0;display:flex;align-items:center;gap:.45rem;margin-top:.7rem">
+                                    <i class="fa-solid fa-shield-halved"></i> Your card data is encrypted end-to-end via
+                                    Razorpay. We never store raw card details.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Net Banking -->
+                        <div class="pay-method" id="pm-nb" onclick="selectPayment('nb')">
+                            <div class="pm-hd">
+                                <div class="pm-radio"></div>
+                                <div class="pm-name">Net Banking</div>
+                                <div class="pm-icons"><span class="pm-icon">All Banks</span></div>
+                            </div>
+                            <div class="pm-body">
+                                <div style="font-size:.72rem;color:var(--tx3);margin-bottom:.6rem">Select your bank
+                                </div>
+                                <div class="bank-grid">
+                                    <div class="bank-tile" onclick="selBank(this)">SBI</div>
+                                    <div class="bank-tile" onclick="selBank(this)">HDFC</div>
+                                    <div class="bank-tile" onclick="selBank(this)">ICICI</div>
+                                    <div class="bank-tile" onclick="selBank(this)">Axis</div>
+                                    <div class="bank-tile" onclick="selBank(this)">Kotak</div>
+                                    <div class="bank-tile" onclick="selBank(this)">PNB</div>
+                                    <div class="bank-tile" onclick="selBank(this)">BoB</div>
+                                    <div class="bank-tile" onclick="selBank(this)">Canara</div>
+                                </div>
+                                <select class="form-input form-select" style="font-size:.8rem">
+                                    <option>-- Other Banks --</option>
+                                    <option>Union Bank</option>
+                                    <option>IDBI Bank</option>
+                                    <option>IndusInd</option>
+                                    <option>Yes Bank</option>
+                                    <option>Federal Bank</option>
+                                    <option>South Indian Bank</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Wallets -->
+                        <div class="pay-method" id="pm-wallet" onclick="selectPayment('wallet')">
+                            <div class="pm-hd">
+                                <div class="pm-radio"></div>
+                                <div class="pm-name">Wallets</div>
+                                <div class="pm-icons"><span class="pm-icon">Mobikwik</span><span
+                                        class="pm-icon">Freecharge</span></div>
+                            </div>
+                            <div class="pm-body">
+                                <div class="wallet-grid">
+                                    <div class="wallet-tile" onclick="selWallet(this)"><i class="fa-solid fa-wallet"
+                                            style="font-size:.9rem;margin-bottom:.28rem;display:block;color:var(--clay)"></i>Mobikwik
+                                    </div>
+                                    <div class="wallet-tile" onclick="selWallet(this)"><i class="fa-solid fa-bolt"
+                                            style="font-size:.9rem;margin-bottom:.28rem;display:block;color:var(--gold)"></i>Freecharge
+                                    </div>
+                                    <div class="wallet-tile" onclick="selWallet(this)"><i
+                                            class="fa-solid fa-circle-dollar-to-slot"
+                                            style="font-size:.9rem;margin-bottom:.28rem;display:block;color:var(--green)"></i>Amazon
+                                        Pay</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- EMI -->
+                        <div class="pay-method" id="pm-emi" onclick="selectPayment('emi')">
+                            <div class="pm-hd">
+                                <div class="pm-radio"></div>
+                                <div class="pm-name">No-Cost EMI</div>
+                                <div class="pm-icons"><span class="pm-badge pop">0% Interest</span></div>
+                            </div>
+                            <div class="pm-body">
+                                <div style="font-size:.72rem;color:var(--tx3);margin-bottom:.6rem">Select your EMI plan
+                                </div>
+                                <div style="display:flex;flex-direction:column;gap:.45rem" id="emiPlans"></div>
+                                <div style="font-size:.68rem;color:var(--tx3);margin-top:.65rem">EMI processed via
+                                    Razorpay. Available on Visa, Mastercard & RuPay credit cards from HDFC, ICICI, SBI,
+                                    Axis, Kotak & more.</div>
+                            </div>
+                        </div>
+
+                        <!-- Cash on Delivery -->
+                        <div class="pay-method" id="pm-cod" onclick="selectPayment('cod')">
+                            <div class="pm-hd">
+                                <div class="pm-radio"></div>
+                                <div class="pm-name">Cash on Delivery</div>
+                                <div class="pm-icons"><span class="pm-icon"><i class="fa-solid fa-money-bill-wave"
+                                            style="color:var(--green)"></i> COD</span></div>
+                            </div>
+                            <div class="pm-body">
+                                <div class="cod-note">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    <span>Pay in cash when your order is delivered. COD charges of <strong>₹49</strong>
+                                        will be added. Please keep exact change ready. COD not available for orders
+                                        above <strong>₹20,000</strong>.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Razorpay pay button -->
+                    <button class="rzp-btn" onclick="initiatePayment()">
+                        <i class="fa-solid fa-lock"></i> Pay Securely — <span id="rzpPayAmt">₹27,349</span>
+                    </button>
+                    <div class="rzp-powered">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Powered by <strong style="color:#3395FF">Razorpay</strong> · 256-bit SSL Encryption
+                    </div>
+
+                </div>
+                <div class="co-card-body" id="summary-payment" style="display:none;padding:.75rem 1.2rem">
+                    <div style="font-size:.82rem;color:var(--tx2)" id="summary-payment-text"></div>
+                </div>
+            </div>
+
+        </div><!-- /co-left -->
+
+        <!-- RIGHT: ORDER SUMMARY -->
+        <div class="co-right">
+
+            <!-- secure badge -->
+            <div class="secure-banner reveal">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div class="secure-banner-text">
+                    <strong>Safe & Secure Checkout</strong><br />
+                    Your data is encrypted. We never store payment info.
+                </div>
+            </div>
+
+            <!-- order summary panel -->
+            <div class="os-panel reveal">
+                <div class="os-panel-hd">
+                    <div class="os-panel-title"><i class="fa-solid fa-receipt"></i> Order Summary</div>
+                    <div class="os-toggle" onclick="toggleOsItems()"><i class="fa-solid fa-chevron-down"
+                            id="osToggleIcon"></i> <span id="osToggleLbl">Hide</span></div>
+                </div>
+                <div id="osItemsWrap">
+                    <div class="os-items" id="osItemsList"></div>
+                </div>
+                <div class="os-body">
+                    <div class="os-row"><span class="lbl"><i class="fa-solid fa-list"></i> Subtotal (<span
+                                id="osItemCount">3</span> items)</span><span id="osSubtotal">₹26,200</span></div>
+                    <div class="os-row saving" id="osDiscRow" style="display:none"><span class="lbl"><i
+                                class="fa-solid fa-tags"></i> You Save</span><span id="osDisc">–₹0</span></div>
+                    <div class="os-row saving" id="osCouponRow" style="display:none"><span class="lbl"><i
+                                class="fa-solid fa-tag"></i> Coupon (CLAY10)</span><span id="osCouponAmt">–₹0</span>
+                    </div>
+                    <div class="os-row"><span class="lbl"><i class="fa-solid fa-truck"></i> Delivery</span><span
+                            id="osDelivery">FREE</span></div>
+                    <div class="os-row"><span class="lbl"><i class="fa-solid fa-box"></i>
+                            Packaging</span><span>₹49</span></div>
+                    <div class="os-row" id="osCodRow" style="display:none"><span class="lbl"><i
+                                class="fa-solid fa-money-bill"></i> COD Charges</span><span>₹49</span></div>
+                    <div class="os-row" id="osGiftRow" style="display:none"><span class="lbl"><i
+                                class="fa-solid fa-gift"></i> Gift Wrap</span><span>₹49</span></div>
+                    <div class="os-row" id="osExpressRow" style="display:none"><span class="lbl"><i
+                                class="fa-solid fa-bolt"></i> Express Delivery</span><span>₹149</span></div>
+                    <div class="os-sep"></div>
+                    <div class="os-row total"><span>Total (incl. GST)</span><span id="osTotal"
+                            style="color:var(--clay)">₹26,249</span></div>
+                    <div class="os-row saving" id="osSaveRow" style="display:none;margin-top:.3rem"><span>🎉 Total
+                            Savings</span><span id="osSaveAmt">₹0</span></div>
+                </div>
+                <a href="cart.html" class="edit-cart-link"><i class="fa-solid fa-pen"></i> Edit Cart</a>
+            </div>
+
+        </div>
+
+    </div><!-- /co-outer -->
+
+    <!-- ══════════════ FOOTER (minimal) ══════════════ -->
+    <footer>
+        <div class="ft-bot-co">
+            <div class="ft-tbadges">
+                <div class="ftb"><i class="fa-solid fa-lock"></i> SSL Secured</div>
+                <div class="ftb"><i class="fa-solid fa-shield-halved"></i> PCI-DSS Compliant</div>
+                <div class="ftb"><i class="fa-solid fa-rotate-left"></i> Easy Returns</div>
+                <div class="ftb"><i class="fa-solid fa-award"></i> 100% Authentic</div>
+            </div>
+            <div class="ft-pay-co">
+                <span style="font-size:.62rem;font-weight:700;color:var(--tx3);">Secure Payments via</span>
+                <span class="pchip"><i class="fa-solid fa-lock" style="color:#3395FF"></i> Razorpay</span>
+                <span class="pchip">UPI</span>
+                <span class="pchip"><i class="fa-brands fa-cc-visa" style="color:#1A1F71"></i></span>
+                <span class="pchip"><i class="fa-brands fa-cc-mastercard"></i></span>
+                <span class="pchip">PhonePe</span><span class="pchip">GPay</span>
+            </div>
+        </div>
+        <div class="ft-copy-row">
+            <span class="ft-copy">© 2026 Matikala. All rights reserved. Handcrafted with love in India.</span>
+            <div class="ft-leg"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Returns</a></div>
+        </div>
+    </footer>
+
+    <!-- ══════════════ MOBILE BOTTOM NAV ══════════════ -->
+    <nav class="mob-bar">
+        <div class="mob-row">
+            <a href="index.html" class="mb-btn"><i class="fa-solid fa-house"></i>Home</a>
+            <a href="shop.html" class="mb-btn"><i class="fa-solid fa-shop"></i>Shop</a>
+            <a href="cart.html" class="mb-btn"><span style="position:relative"><i
+                        class="fa-solid fa-shopping-bag"></i><span class="mb-badge">3</span></span>Cart</a>
+            <button class="mb-btn on"><i class="fa-solid fa-lock"></i>Checkout</button>
+        </div>
+    </nav>
+
+    <!-- ══════════════ MOBILE STICKY PLACE ORDER ══════════════ -->
+    <div class="mob-place-order" id="mobPlaceOrder">
+        <div class="mob-place-order-inner">
+            <div class="mob-total">
+                <div class="lbl">Total Amount</div>
+                <div class="amt" id="mobTotalAmt">₹26,249</div>
+            </div>
+            <button class="mob-place-btn" onclick="initiatePayment()">
+                <i class="fa-solid fa-lock"></i> Pay Securely
+            </button>
+        </div>
+    </div>
+
+    <!-- ══════════════ MINIMAL MOBILE DRAWER ══════════════ -->
+    <div class="m-ov" id="mOv" onclick="closeDr()">
+        <div class="m-drawer" onclick="event.stopPropagation()">
+            <div class="mdr-hd">
+                <div class="mdr-brand">
+                    <img src="matikala.png" alt="" onerror="this.style.display='none'" />
+                    <div>
+                        <div class="mdr-brand-name">MATIKALA</div><span class="mdr-brand-tag">Secure Checkout</span>
+                    </div>
+                </div>
+                <button class="mdr-close" onclick="closeDr()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <a href="index.html" class="mdr-link">
+                <div class="mdr-link-l"><span class="mdr-ico ic1"><i class="fa-solid fa-house"></i></span>Home</div><i
+                    class="fa-solid fa-chevron-right arr"></i>
+            </a>
+            <a href="shop.html" class="mdr-link">
+                <div class="mdr-link-l"><span class="mdr-ico ic2"><i class="fa-solid fa-shop"></i></span>Continue
+                    Shopping</div><i class="fa-solid fa-chevron-right arr"></i>
+            </a>
+            <a href="cart.html" class="mdr-link">
+                <div class="mdr-link-l"><span class="mdr-ico ic4"><i class="fa-solid fa-shopping-bag"></i></span>Back to
+                    Cart</div><i class="fa-solid fa-chevron-right arr"></i>
+            </a>
+            <div class="mdr-tog">
+                <span class="mdr-tog-lbl"><i class="fa-solid fa-moon"></i> Dark / Light Mode</span>
+                <div class="tog" id="togM" onclick="toggleTheme()">
+                    <div class="tog-knob"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════ ORDER CONFIRMATION MODAL ══════════════ -->
+    <div class="confirm-ov" id="confirmOv">
+        <div class="confirm-modal" id="confirmModal">
+            <div class="confirm-check"><i class="fa-solid fa-check"></i></div>
+            <h2>Order Placed! 🎉</h2>
+            <p>Thank you for your purchase. Your handcrafted sculptures are being carefully packed and will be
+                dispatched soon. You'll receive a confirmation email at <strong
+                    id="confirmEmail">you@example.com</strong>.</p>
+            <div class="confirm-order-id" id="confirmOrderId">ORDER #MK-2026-00147</div>
+            <div class="confirm-btns">
+                <a href="index.html" class="btn-clay"><i class="fa-solid fa-house"></i> Back to Home</a>
+                <button class="btn-outline" onclick="closeConfirm()"><i class="fa-solid fa-box"></i> Track
+                    Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════ PAYMENT LOADING ══════════════ -->
+    <div class="pay-loading" id="payLoading">
+        <div class="pay-spinner"></div>
+        <div class="pay-loading-text">Processing your payment…</div>
+        <div class="pay-loading-sub">Please do not close or refresh this page</div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMsg">Done!</span></div>
+    <!-- Back to top -->
+    <button id="bttBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i
+            class="fa-solid fa-chevron-up"></i></button>
+
+    <script>
+        /* ══ CART DATA (passed from cart.html — in Phase 4 this comes from localStorage/Firestore) ══ */
+        const CART = [
+            { id: 1, name: 'Twin Spirit Vessel', cat: 'Figurative Totems', price: 4800, mrp: 5500, qty: 1, finish: 'Natural Clay', size: 'Medium', img: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=200&q=80' },
+            { id: 3, name: 'Orbit Sculpture Series', cat: 'Abstract Forms', price: 8400, mrp: 9800, qty: 1, finish: 'Natural Clay', size: 'Large', img: 'https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?w=200&q=80' },
+            { id: 12, name: 'Festive Gift Curation', cat: 'Gift Sets', price: 6800, mrp: 8500, qty: 2, finish: 'Natural Clay', size: 'Medium', img: 'https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=200&q=80' },
+        ];
+
+        let activePayMethod = 'upi';
+        let activeDelivery = 'standard';
+        let giftWrapping = false;
+        let expressDelivery = false;
+        let codSelected = false;
+        let currentSection = 'contact'; // contact → address → payment
+        const SECTIONS = ['contact', 'address', 'payment'];
+
+        /* ══ ORDER SUMMARY ══ */
+        function calcTotal() {
+            const sub = CART.reduce((s, i) => s + i.price * i.qty, 0);
+            const mrpTotal = CART.reduce((s, i) => s + (i.mrp || i.price) * i.qty, 0);
+            const disc = mrpTotal - sub;
+            const delivery = sub >= 2000 ? 0 : 99;
+            const express = expressDelivery ? 149 : 0;
+            const gift = giftWrapping ? 49 : 0;
+            const cod = codSelected ? 49 : 0;
+            const pack = 49;
+            const total = sub + pack + express + gift + cod + (expressDelivery ? 0 : delivery);
+            return { sub, mrpTotal, disc, delivery, express, gift, cod, pack, total };
+        }
+
+        function renderOrderSummary() {
+            const { sub, disc, delivery, express, gift, cod, total } = calcTotal();
+            // items
+            document.getElementById('osItemsList').innerHTML = CART.map(p => `
+    <div class="os-item">
+      <div class="os-item-img"><img src="${p.img}" alt="${p.name}" loading="lazy"/></div>
+      <div class="os-item-info">
+        <div class="os-item-name">${p.name}</div>
+        <div class="os-item-meta">${p.finish} · ${p.size}</div>
+      </div>
+      <span class="os-item-qty">×${p.qty}</span>
+      <span class="os-item-price">₹${(p.price * p.qty).toLocaleString('en-IN')}</span>
+    </div>`).join('');
+            document.getElementById('osItemCount').textContent = CART.reduce((s, i) => s + i.qty, 0);
+            document.getElementById('osSubtotal').textContent = '₹' + sub.toLocaleString('en-IN');
+            const discRow = document.getElementById('osDiscRow');
+            discRow.style.display = disc > 0 ? 'flex' : 'none';
+            document.getElementById('osDisc').textContent = '–₹' + disc.toLocaleString('en-IN');
+            document.getElementById('osDelivery').textContent = delivery === 0 && !expressDelivery ? 'FREE' : '₹' + (delivery || 0);
+            document.getElementById('osExpressRow').style.display = expressDelivery ? 'flex' : 'none';
+            document.getElementById('osGiftRow').style.display = giftWrapping ? 'flex' : 'none';
+            document.getElementById('osCodRow').style.display = codSelected ? 'flex' : 'none';
+            document.getElementById('osTotal').textContent = '₹' + total.toLocaleString('en-IN');
+            document.getElementById('rzpPayAmt').textContent = '₹' + total.toLocaleString('en-IN');
+            document.getElementById('mobTotalAmt').textContent = '₹' + total.toLocaleString('en-IN');
+            const saveRow = document.getElementById('osSaveRow');
+            const totalSave = disc + (delivery === 0 ? 99 : 0);
+            saveRow.style.display = totalSave > 0 ? 'flex' : 'none';
+            document.getElementById('osSaveAmt').textContent = '₹' + totalSave.toLocaleString('en-IN');
+        }
+
+        function toggleOsItems() {
+            const wrap = document.getElementById('osItemsWrap');
+            const icon = document.getElementById('osToggleIcon');
+            const lbl = document.getElementById('osToggleLbl');
+            const hidden = wrap.style.display === 'none';
+            wrap.style.display = hidden ? '' : 'none';
+            icon.style.transform = hidden ? '' : 'rotate(180deg)';
+            lbl.textContent = hidden ? 'Hide' : 'Show';
+        }
+
+        /* ══ SECTION FLOW ══ */
+        function expandSection(name) {
+            const card = document.getElementById('sec-' + name);
+            card.style.opacity = '1';
+            card.style.pointerEvents = '';
+            card.classList.add('active-section');
+            document.getElementById('body-' + name).style.display = '';
+            document.getElementById('summary-' + name).style.display = 'none';
+            document.getElementById('edit-' + name).style.display = 'none';
+            currentSection = name;
+            // collapse others
+            SECTIONS.filter(s => s !== name).forEach(s => {
+                document.getElementById('sec-' + s).classList.remove('active-section');
+            });
+        }
+
+        function collapseSection(name, summaryHTML) {
+            const card = document.getElementById('sec-' + name);
+            card.classList.remove('active-section');
+            document.getElementById('body-' + name).style.display = 'none';
+            document.getElementById('summary-' + name).style.display = '';
+            document.getElementById('summary-' + name + '-text').innerHTML = summaryHTML;
+            document.getElementById('edit-' + name).style.display = 'flex';
+            document.getElementById('bubble-' + name).innerHTML = '<i class="fa-solid fa-check" style="font-size:.6rem"></i>';
+            document.getElementById('bubble-' + name).classList.add('done');
+        }
+
+        function saveContact() {
+            const fn = document.getElementById('fn').value.trim();
+            const mob = document.getElementById('mobile').value.trim();
+            const em = document.getElementById('email').value.trim();
+            if (!fn) { markFieldError('fn'); showToast('Please enter your name'); return; }
+            if (!validPhone(mob)) { markFieldError('mobile'); showToast('Invalid mobile number'); return; }
+            if (!validEmail(em)) { markFieldError('email'); showToast('Invalid email address'); return; }
+            document.getElementById('confirmEmail').textContent = em;
+            collapseSection('contact', `<strong>${fn}</strong> · ${mob} · ${em}`);
+            // unlock address
+            const addrSec = document.getElementById('sec-address');
+            addrSec.style.opacity = '1';
+            addrSec.style.pointerEvents = '';
+            expandSection('address');
+            addrSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function saveAddress() {
+            const selectedCard = document.querySelector('.addr-card.selected');
+            if (!selectedCard && !document.getElementById('newAddrForm').classList.contains('show')) {
+                showToast('Please select or add a delivery address'); return;
+            }
+            const addrName = selectedCard ? selectedCard.querySelector('.addr-name').childNodes[1].textContent.trim() : 'New Address';
+            const addrText = selectedCard ? selectedCard.querySelector('.addr-text').textContent.replace(/\s+/g, ' ').trim() : '';
+            const delType = activeDelivery === 'express' ? 'Express Delivery' : 'Standard Delivery';
+            collapseSection('address', `${addrName} — ${addrText}<br/><span style="color:var(--clay);font-weight:600">${delType}</span>`);
+            const paySec = document.getElementById('sec-payment');
+            paySec.style.opacity = '1';
+            paySec.style.pointerEvents = '';
+            expandSection('payment');
+            paySec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        /* ══ ADDRESS CARD SELECT ══ */
+        let selAddrIdx = 0;
+        function selectAddr(el, idx) {
+            document.querySelectorAll('.addr-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            selAddrIdx = idx;
+        }
+        function toggleNewAddr() {
+            document.getElementById('newAddrForm').classList.toggle('show');
+        }
+        function saveNewAddr() {
+            showToast('New address saved!');
+            document.getElementById('newAddrForm').classList.remove('show');
+        }
+        function fetchPincode(val) {
+            if (val.length === 6) {
+                // Simulate pincode lookup
+                const cities = { '201301': 'Noida', '110001': 'New Delhi', '400001': 'Mumbai', '560001': 'Bangalore', '600001': 'Chennai' };
+                const states = { '201301': 'Uttar Pradesh', '110001': 'Delhi', '400001': 'Maharashtra', '560001': 'Karnataka', '600001': 'Tamil Nadu' };
+                if (cities[val]) {
+                    document.getElementById('a-city').value = cities[val];
+                    document.getElementById('a-state').value = states[val];
+                    showToast(`Pincode: ${cities[val]}, ${states[val]}`);
+                }
+            }
+        }
+
+        /* ══ DELIVERY OPTION ══ */
+        function selectDelivery(el, type) {
+            document.querySelectorAll('.del-opt').forEach(d => d.classList.remove('selected'));
+            el.classList.add('selected');
+            activeDelivery = type;
+            expressDelivery = type === 'express';
+            document.getElementById('osExpressRow').style.display = expressDelivery ? 'flex' : 'none';
+            renderOrderSummary();
+        }
+
+        /* ══ GIFT / INSTRUCTIONS TOGGLE ══ */
+        function toggleExtra(id) {
+            const tog = document.getElementById('tog-' + id);
+            const panel = document.getElementById('panel-' + id);
+            tog.classList.toggle('on');
+            panel.classList.toggle('show');
+            if (id === 'gift') {
+                giftWrapping = tog.classList.contains('on');
+                renderOrderSummary();
+            }
+        }
+        function updateChar() {
+            const len = document.getElementById('giftMsg').value.length;
+            document.getElementById('charLeft').textContent = 120 - len;
+        }
+
+        /* ══ PAYMENT METHODS ══ */
+        function selectPayment(method) {
+            if (activePayMethod === method) return;
+            const prev = document.getElementById('pm-' + activePayMethod);
+            if (prev) prev.classList.remove('selected');
+            const next = document.getElementById('pm-' + method);
+            if (next) next.classList.add('selected');
+            activePayMethod = method;
+            codSelected = method === 'cod';
+            renderOrderSummary();
+            // show COD charges
+            document.getElementById('osCodRow').style.display = codSelected ? 'flex' : 'none';
+        }
+
+        function selUpi(app, el) {
+            document.querySelectorAll('.upi-app').forEach(a => a.classList.remove('sel'));
+            el.classList.add('sel');
+        }
+        function verifyUpi() {
+            const val = document.getElementById('upiId').value.trim();
+            const msg = document.getElementById('upiVerifyMsg');
+            if (!val || !val.includes('@')) {
+                msg.style.display = 'flex'; msg.style.color = 'var(--red)';
+                msg.innerHTML = '<i class="fa-solid fa-circle-xmark" style="margin-right:.3rem"></i> Invalid UPI ID format';
+                return;
+            }
+            msg.style.display = 'flex'; msg.style.color = 'var(--green)';
+            msg.innerHTML = '<i class="fa-solid fa-circle-check" style="margin-right:.3rem"></i> UPI ID verified successfully';
+        }
+        function selBank(el) {
+            document.querySelectorAll('.bank-tile').forEach(b => b.classList.remove('sel'));
+            el.classList.add('sel');
+        }
+        function selWallet(el) {
+            document.querySelectorAll('.wallet-tile').forEach(w => w.classList.remove('sel'));
+            el.classList.add('sel');
+        }
+
+        /* ══ CARD FORMATTING ══ */
+        function formatCardNum(inp) {
+            let v = inp.value.replace(/\D/g, '').substring(0, 16);
+            inp.value = v.replace(/(.{4})/g, '$1 ').trim();
+            const icon = document.getElementById('cardTypeIcon');
+            if (v.startsWith('4')) { icon.className = 'fa-brands fa-cc-visa card-type-icon visa'; }
+            else if (v.startsWith('5')) { icon.className = 'fa-brands fa-cc-mastercard card-type-icon mc'; }
+            else { icon.className = 'fa-brands fa-cc-visa card-type-icon'; }
+        }
+        function formatExpiry(inp) {
+            let v = inp.value.replace(/\D/g, '').substring(0, 4);
+            if (v.length >= 2) v = v.substring(0, 2) + ' / ' + v.substring(2);
+            inp.value = v;
+        }
+
+        /* ══ EMI PLANS ══ */
+        function renderEmiPlans() {
+            const { total } = calcTotal();
+            const plans = [
+                { months: 3, rate: 0, label: '3 Months' },
+                { months: 6, rate: 0, label: '6 Months' },
+                { months: 12, rate: 1.5, label: '12 Months', note: '1.5% p.m.' },
+            ];
+            document.getElementById('emiPlans').innerHTML = plans.map((p, i) => {
+                const emi = Math.round(total / p.months);
+                return `<div class="addr-card${i === 0 ? ' selected' : ''}" onclick="selEmi(this)" style="padding:.72rem .9rem;cursor:pointer">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <div style="font-size:.8rem;font-weight:600;color:var(--tx)">${p.label}</div>
+          <div style="font-size:.68rem;color:var(--tx3);margin-top:.15rem">${p.note ? p.note + ' interest' : 'No-cost · 0% interest'}</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:.9rem;font-weight:700;color:var(--clay)">₹${emi.toLocaleString('en-IN')}/mo</div>
+          <div style="font-size:.65rem;color:var(--tx3)">Total ₹${(emi * p.months).toLocaleString('en-IN')}</div>
+        </div>
+      </div>
+    </div>`;
+            }).join('');
+        }
+        function selEmi(el) {
+            document.querySelectorAll('#emiPlans .addr-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+
+        /* ══ DELIVERY DATES ══ */
+        function setDeliveryDates() {
+            const now = new Date();
+            const days = (d) => { const dt = new Date(now); dt.setDate(dt.getDate() + d); return dt.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' }); };
+            document.getElementById('eta-std').textContent = days(5) + ' – ' + days(7);
+            document.getElementById('eta-exp').textContent = days(2) + ' – ' + days(3);
+        }
+
+        /* ══ FORM VALIDATION ══ */
+        function validPhone(v) { return /^(\+91)?[6-9]\d{9}$/.test(v.replace(/\s/g, '')); }
+        function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+        function validateField(inp, type) {
+            const id = inp.id;
+            let ok = false;
+            if (type === 'name') ok = inp.value.trim().length > 1;
+            if (type === 'phone') ok = validPhone(inp.value);
+            if (type === 'email') ok = validEmail(inp.value);
+            inp.classList.toggle('ok', ok);
+            inp.classList.toggle('error', !ok && inp.value.length > 0);
+            const icon = document.getElementById('fi-' + id);
+            if (icon) { icon.style.display = ok ? '' : 'none'; icon.className = ok ? 'fa-solid fa-circle-check fi-icon ok' : 'fa-solid fa-circle-xmark fi-icon err'; }
+            const err = document.getElementById('err-' + id);
+            if (err) err.classList.toggle('show', !ok && inp.value.length > 0);
+        }
+        function markFieldError(id) {
+            const inp = document.getElementById(id);
+            if (inp) { inp.classList.add('error'); inp.focus(); }
+            const err = document.getElementById('err-' + id);
+            if (err) err.classList.add('show');
+        }
+
+        /* ══ PAYMENT INITIATION ══ */
+        function initiatePayment() {
+            // In Phase 4 this calls Razorpay.open() with real order_id from Firebase Functions
+            const loading = document.getElementById('payLoading');
+            loading.classList.add('show');
+            setTimeout(() => {
+                loading.classList.remove('show');
+                showConfirmation();
+            }, 2400);
+        }
+
+        /* ══ ORDER CONFIRMATION ══ */
+        function showConfirmation() {
+            const orderId = 'MK-2026-' + String(Math.floor(10000 + Math.random() * 90000));
+            document.getElementById('confirmOrderId').textContent = 'ORDER #' + orderId;
+            document.getElementById('confirmOv').classList.add('show');
+            launchConfetti();
+        }
+        function closeConfirm() {
+            document.getElementById('confirmOv').classList.remove('show');
+        }
+        function launchConfetti() {
+            const modal = document.getElementById('confirmModal');
+            const colors = ['#B5622A', '#D07A40', '#C9A040', '#2D7A4A', '#3395FF', '#E53935', '#F57C00'];
+            for (let i = 0; i < 38; i++) {
+                const el = document.createElement('div');
+                el.className = 'confetti-item';
+                el.style.cssText = `
+      left:${Math.random() * 100}%;top:0;
+      width:${5 + Math.random() * 8}px;height:${8 + Math.random() * 10}px;
+      background:${colors[Math.floor(Math.random() * colors.length)]};
+      animation-duration:${1.2 + Math.random() * 1.5}s;
+      animation-delay:${Math.random() * .5}s
+    `;
+                modal.appendChild(el);
+                setTimeout(() => el.remove(), 3000);
+            }
+        }
+
+        /* ══ DRAWER ══ */
+        function openDr() { document.getElementById('mOv').classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function closeDr() { document.getElementById('mOv').classList.remove('open'); document.body.style.overflow = ''; }
+
+        /* ══ DROPDOWN ══ */
+        function toggleDrop(id) {
+            const m = document.getElementById(id);
+            const was = m.classList.contains('open');
+            document.querySelectorAll('.dp-menu.open').forEach(x => x.classList.remove('open'));
+            if (!was) m.classList.add('open');
+        }
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.dp') && !e.target.closest('#langDrop')) {
+                document.querySelectorAll('.dp-menu.open').forEach(m => m.classList.remove('open'));
+            }
+        });
+
+        /* ══ LANGUAGE ══ */
+        function setLang(code, el) {
+            document.getElementById('curLang').textContent = code;
+            document.querySelectorAll('.dp-li').forEach(i => i.classList.remove('on'));
+            if (el) el.classList.add('on');
+            document.querySelectorAll('.dp-menu.open').forEach(m => m.classList.remove('open'));
+        }
+
+        /* ══ THEME ══ */
+        function toggleTheme() {
+            const dark = document.documentElement.dataset.theme === 'dark';
+            document.documentElement.dataset.theme = dark ? 'light' : 'dark';
+            document.getElementById('themeIcon').className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            const togM = document.getElementById('togM');
+            if (togM) togM.classList.toggle('on', !dark);
+            localStorage.setItem('mk_theme', document.documentElement.dataset.theme);
+        }
+        (() => {
+            const t = localStorage.getItem('mk_theme');
+            if (t) {
+                document.documentElement.dataset.theme = t;
+                const ic = document.getElementById('themeIcon');
+                if (ic) ic.className = t === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+                if (t === 'dark') { const togM = document.getElementById('togM'); if (togM) togM.classList.add('on'); }
+            }
+        })();
+
+        /* ══ TOAST ══ */
+        let toastTimer;
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            t.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+        }
+
+        /* ══ BACK TO TOP ══ */
+        window.addEventListener('scroll', () => {
+            document.getElementById('bttBtn').classList.toggle('show', window.scrollY > 400);
+        });
+
+        /* ══ REVEAL ══ */
+        const ro = new IntersectionObserver(es => es.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('show'); ro.unobserve(e.target); }
+        }), { threshold: 0.04 });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+        /* ══ INIT ══ */
+        setDeliveryDates();
+        renderOrderSummary();
+        renderEmiPlans();
+    </script>
+</body>
+
+</html>

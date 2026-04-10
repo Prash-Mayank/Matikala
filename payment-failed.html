@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Payment Failed — MATIKALA · Handcrafted Clay</title>
+    <link rel="shortcut icon" href="./matikala.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* ══ DESIGN TOKENS ══ */
+        :root {
+            --clay: #B5622A;
+            --clay-l: #D07A40;
+            --clay-d: #8C4A1C;
+            --clay-bg: rgba(181, 98, 42, .08);
+            --clay-glow: rgba(181, 98, 42, .18);
+            --gold: #C9A040;
+            --bg: #F8F4EF;
+            --bg1: #FFFFFF;
+            --bg2: #F2EDE6;
+            --bg3: #E8E1D8;
+            --bg4: #DDD5C8;
+            --tx: #1A1510;
+            --tx2: #5A4E42;
+            --tx3: #9A8E82;
+            --tx4: #C4B9AE;
+            --border: #E2D9CE;
+            --border2: #CFC5B8;
+            --sh: 0 2px 8px rgba(0, 0, 0, .08);
+            --sh2: 0 8px 32px rgba(0, 0, 0, .12);
+            --sh3: 0 20px 60px rgba(0, 0, 0, .18);
+            --nav-h: 60px;
+            --r: 4px;
+            --r2: 8px;
+            --green: #2D7A4A;
+            --red: #C0392B;
+            --red-bg: rgba(192, 57, 43, .07);
+            --red-border: rgba(192, 57, 43, .18);
+        }
+
+        [data-theme="dark"] {
+            --bg: #0C0A08;
+            --bg1: #141210;
+            --bg2: #1C1916;
+            --bg3: #25221E;
+            --bg4: #302D27;
+            --tx: #F0E8DE;
+            --tx2: #B0A090;
+            --tx3: #706050;
+            --tx4: #504540;
+            --border: #302D27;
+            --border2: #403C35;
+            --sh: 0 2px 8px rgba(0, 0, 0, .3);
+            --sh2: 0 8px 32px rgba(0, 0, 0, .5);
+            --sh3: 0 20px 60px rgba(0, 0, 0, .7);
+            --red-bg: rgba(192, 57, 43, .12);
+            --red-border: rgba(192, 57, 43, .25);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 15px
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--tx);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+            transition: background .3s, color .3s;
+            line-height: 1.5
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+            background: none;
+            outline: none
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: cover
+        }
+
+        ul {
+            list-style: none
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg2)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--clay);
+            border-radius: 2px
+        }
+
+        /* ══ NAVBAR ══ */
+        #topnav {
+            background: var(--clay);
+            height: var(--nav-h);
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .2)
+        }
+
+        .tn-wrap {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            height: 100%;
+            padding: 0 1.2rem;
+            max-width: 1600px;
+            margin: 0 auto
+        }
+
+        .tn-logo {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            flex-shrink: 0
+        }
+
+        .tn-logo-img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain
+        }
+
+        .tn-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            color: #fff;
+            white-space: nowrap;
+            line-height: 1
+        }
+
+        .tn-brand small {
+            display: block;
+            font-size: .5rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 400;
+            opacity: .65;
+            margin-top: .1rem
+        }
+
+        .tn-secure-badge {
+            display: flex;
+            align-items: center;
+            gap: .42rem;
+            color: rgba(255, 255, 255, .85);
+            font-size: .72rem;
+            margin-left: auto
+        }
+
+        .tn-right-co {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            margin-left: 1rem
+        }
+
+        .dp {
+            position: relative
+        }
+
+        .tnb-sm {
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+            padding: .32rem .6rem;
+            border-radius: var(--r);
+            background: rgba(255, 255, 255, .12);
+            color: #fff;
+            font-size: .72rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background .15s
+        }
+
+        .tnb-sm:hover {
+            background: rgba(255, 255, 255, .22)
+        }
+
+        .dp-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: calc(100% + 6px);
+            background: var(--bg1);
+            border: 1px solid var(--border);
+            border-radius: var(--r2);
+            box-shadow: var(--sh2);
+            min-width: 160px;
+            z-index: 999;
+            overflow: hidden
+        }
+
+        .dp-menu.open {
+            display: block
+        }
+
+        .dp-hd {
+            padding: .5rem .8rem;
+            font-size: .6rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--tx3);
+            border-bottom: 1px solid var(--border)
+        }
+
+        .dp-li {
+            padding: .5rem .8rem;
+            font-size: .78rem;
+            color: var(--tx2);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background .12s
+        }
+
+        .dp-li:hover,
+        .dp-li.on {
+            background: var(--clay-bg);
+            color: var(--clay)
+        }
+
+        .dp-li .code {
+            font-size: .62rem;
+            font-weight: 700;
+            background: var(--bg3);
+            padding: .1rem .28rem;
+            border-radius: 2px
+        }
+
+        .tn-theme {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--r);
+            background: rgba(255, 255, 255, .12);
+            color: #fff;
+            font-size: .82rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .15s
+        }
+
+        .tn-theme:hover {
+            background: rgba(255, 255, 255, .22)
+        }
+
+        /* ══ STEPS ══ */
+        .cart-steps {
+            background: var(--bg1);
+            border-bottom: 1px solid var(--border);
+            padding: .75rem 0
+        }
+
+        .steps-inner {
+            max-width: 560px;
+            margin: 0 auto;
+            padding: 0 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .25rem
+        }
+
+        .step-num {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid var(--border2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .65rem;
+            font-weight: 700;
+            color: var(--tx3);
+            background: var(--bg)
+        }
+
+        .step span {
+            font-size: .62rem;
+            color: var(--tx3);
+            font-weight: 500;
+            white-space: nowrap
+        }
+
+        .step.done .step-num {
+            background: var(--green);
+            border-color: var(--green);
+            color: #fff
+        }
+
+        .step.done span {
+            color: var(--green)
+        }
+
+        .step.failed .step-num {
+            background: var(--red);
+            border-color: var(--red);
+            color: #fff
+        }
+
+        .step.failed span {
+            color: var(--red)
+        }
+
+        .step-line {
+            flex: 1;
+            height: 2px;
+            background: var(--border2);
+            margin: 0 .4rem;
+            margin-bottom: 1rem
+        }
+
+        .step-line.done {
+            background: var(--green)
+        }
+
+        .step-line.failed {
+            background: var(--red)
+        }
+
+        /* ══ MAIN ══ */
+        .main-wrap {
+            max-width: 680px;
+            margin: 2.5rem auto;
+            padding: 0 1.2rem
+        }
+
+        /* ══ FAILED CARD ══ */
+        .failed-card {
+            background: var(--bg1);
+            border: 1px solid var(--border);
+            border-radius: var(--r2);
+            box-shadow: var(--sh2);
+            overflow: hidden
+        }
+
+        .fc-header {
+            background: var(--red-bg);
+            border-bottom: 1px solid var(--red-border);
+            padding: 2rem 2rem 1.6rem;
+            text-align: center
+        }
+
+        .fc-icon-wrap {
+            width: 64px;
+            height: 64px;
+            background: var(--red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem
+        }
+
+        .fc-icon-wrap i {
+            color: #fff;
+            font-size: 1.6rem
+        }
+
+        .fc-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--red);
+            margin-bottom: .35rem
+        }
+
+        .fc-subtitle {
+            font-size: .85rem;
+            color: var(--tx2)
+        }
+
+        .fc-body {
+            padding: 1.6rem 2rem
+        }
+
+        /* ══ ERROR REASON BOX ══ */
+        .error-box {
+            display: flex;
+            align-items: flex-start;
+            gap: .75rem;
+            background: var(--red-bg);
+            border: 1px solid var(--red-border);
+            border-radius: var(--r);
+            padding: .9rem 1rem;
+            margin-bottom: 1.4rem
+        }
+
+        .error-box i {
+            color: var(--red);
+            font-size: .95rem;
+            flex-shrink: 0;
+            margin-top: .1rem
+        }
+
+        .error-box-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .error-box-title {
+            font-size: .82rem;
+            font-weight: 700;
+            color: var(--red);
+            margin-bottom: .2rem
+        }
+
+        .error-box-msg {
+            font-size: .78rem;
+            color: var(--tx2)
+        }
+
+        /* ══ ORDER ATTEMPT INFO ══ */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.4rem
+        }
+
+        .info-box {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: .85rem 1rem
+        }
+
+        .info-box-label {
+            font-size: .62rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: var(--tx3);
+            margin-bottom: .3rem;
+            display: flex;
+            align-items: center;
+            gap: .3rem
+        }
+
+        .info-box-label i {
+            font-size: .65rem;
+            color: var(--clay)
+        }
+
+        .info-box-val {
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--tx)
+        }
+
+        .info-box-sub {
+            font-size: .72rem;
+            color: var(--tx3);
+            margin-top: .1rem
+        }
+
+        /* ══ WHAT TO DO SECTION ══ */
+        .section-title {
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: var(--tx3);
+            margin-bottom: .85rem;
+            display: flex;
+            align-items: center;
+            gap: .4rem
+        }
+
+        .section-title i {
+            color: var(--clay);
+            font-size: .72rem
+        }
+
+        .reason-list {
+            margin-bottom: 1.4rem
+        }
+
+        .reason-item {
+            display: flex;
+            align-items: flex-start;
+            gap: .75rem;
+            padding: .6rem 0;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .reason-item:last-child {
+            border-bottom: none
+        }
+
+        .ri-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--clay-bg);
+            border: 1px solid var(--clay-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: .6rem;
+            font-weight: 700;
+            color: var(--clay)
+        }
+
+        .ri-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ri-title {
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--tx)
+        }
+
+        .ri-desc {
+            font-size: .72rem;
+            color: var(--tx3);
+            margin-top: .1rem
+        }
+
+        /* ══ ACTION BUTTONS ══ */
+        .action-row {
+            display: flex;
+            gap: .75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem
+        }
+
+        .btn-primary {
+            flex: 1;
+            min-width: 140px;
+            background: var(--clay);
+            color: #fff;
+            border-radius: var(--r);
+            padding: .75rem 1.2rem;
+            font-size: .85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .45rem;
+            transition: background .15s;
+            text-align: center
+        }
+
+        .btn-primary:hover {
+            background: var(--clay-d)
+        }
+
+        .btn-outline {
+            flex: 1;
+            min-width: 140px;
+            background: transparent;
+            color: var(--clay);
+            border: 1.5px solid var(--clay);
+            border-radius: var(--r);
+            padding: .75rem 1.2rem;
+            font-size: .85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .45rem;
+            transition: background .15s, color .15s;
+            text-align: center
+        }
+
+        .btn-outline:hover {
+            background: var(--clay-bg)
+        }
+
+        .btn-ghost {
+            flex: 1;
+            min-width: 140px;
+            background: var(--bg2);
+            color: var(--tx2);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: .75rem 1.2rem;
+            font-size: .85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .45rem;
+            transition: background .15s;
+            text-align: center
+        }
+
+        .btn-ghost:hover {
+            background: var(--bg3)
+        }
+
+        /* ══ SUPPORT NOTE ══ */
+        .support-note {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            background: var(--clay-bg);
+            border: 1px solid var(--clay-glow);
+            border-radius: var(--r);
+            padding: .75rem 1rem;
+            font-size: .78rem;
+            color: var(--tx2)
+        }
+
+        .support-note i {
+            color: var(--clay);
+            font-size: .85rem;
+            flex-shrink: 0
+        }
+
+        .support-note a {
+            color: var(--clay);
+            font-weight: 600
+        }
+
+        /* ══ SAFE NOTE ══ */
+        .safe-note {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: .75rem 1rem;
+            margin-top: .75rem;
+            font-size: .75rem;
+            color: var(--tx3)
+        }
+
+        .safe-note i {
+            color: var(--green);
+            font-size: .85rem;
+            flex-shrink: 0
+        }
+
+        /* ══ FOOTER ══ */
+        footer {
+            background: var(--bg1);
+            border-top: 1px solid var(--border);
+            margin-top: 2rem
+        }
+
+        .ft-bot-co {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: .75rem;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .ft-tbadges {
+            display: flex;
+            gap: .4rem;
+            flex-wrap: wrap
+        }
+
+        .ftb {
+            display: flex;
+            align-items: center;
+            gap: .32rem;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: .22rem .55rem;
+            font-size: .6rem;
+            color: var(--tx2)
+        }
+
+        .ftb i {
+            font-size: .65rem;
+            color: var(--clay)
+        }
+
+        .ft-pay-co {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            flex-wrap: wrap
+        }
+
+        .pchip {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: .18rem .52rem;
+            font-size: .58rem;
+            font-weight: 600;
+            color: var(--tx2);
+            display: inline-flex;
+            align-items: center;
+            gap: .22rem
+        }
+
+        .ft-copy-row {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: .7rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: .5rem
+        }
+
+        .ft-copy {
+            font-size: .68rem;
+            color: var(--tx3)
+        }
+
+        .ft-leg {
+            display: flex;
+            gap: 1rem
+        }
+
+        .ft-leg a {
+            font-size: .68rem;
+            color: var(--tx3);
+            transition: color .15s
+        }
+
+        .ft-leg a:hover {
+            color: var(--clay)
+        }
+
+        /* ══ RESPONSIVE ══ */
+        @media(max-width:600px) {
+            .info-grid {
+                grid-template-columns: 1fr
+            }
+
+            .fc-header {
+                padding: 1.5rem 1.2rem 1.2rem
+            }
+
+            .fc-body {
+                padding: 1.2rem
+            }
+
+            .action-row {
+                flex-direction: column
+            }
+
+            .btn-primary,
+            .btn-outline,
+            .btn-ghost {
+                min-width: unset
+            }
+
+            /* Footer center on mobile */
+            .ft-bot-co {
+                justify-content: center;
+                text-align: center
+            }
+
+            .ft-tbadges {
+                justify-content: center
+            }
+
+            .ft-pay-co {
+                justify-content: center
+            }
+
+            .ft-copy-row {
+                justify-content: center;
+                text-align: center;
+                flex-direction: column;
+                align-items: center;
+                gap: .4rem
+            }
+
+            .ft-leg {
+                justify-content: center
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══ NAVBAR ══ -->
+    <nav id="topnav">
+        <div class="tn-wrap">
+            <a href="index.html" class="tn-logo">
+                <img class="tn-logo-img" src="matikala.png" alt="Matikala" onerror="this.style.display='none'" />
+                <div class="tn-brand">MATIKALA<small>Payment Failed</small></div>
+            </a>
+            <div class="tn-secure-badge">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Payment Not Completed</span>
+            </div>
+            <div class="tn-right-co">
+                <div class="dp">
+                    <div class="tnb-sm" onclick="toggleDrop('langDrop')">
+                        <i class="fa-solid fa-globe" style="font-size:.8rem"></i>
+                        <span id="curLang">EN</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size:.5rem;opacity:.7"></i>
+                    </div>
+                    <div class="dp-menu" id="langDrop">
+                        <div class="dp-hd">Language</div>
+                        <div class="dp-li on" onclick="setLang('EN',this)">English <span class="code">EN</span></div>
+                        <div class="dp-li" onclick="setLang('HI',this)">हिन्दी <span class="code">HI</span></div>
+                        <div class="dp-li" onclick="setLang('TA',this)">தமிழ் <span class="code">TA</span></div>
+                        <div class="dp-li" onclick="setLang('TE',this)">తెలుగు <span class="code">TE</span></div>
+                        <div class="dp-li" onclick="setLang('KN',this)">ಕನ್ನಡ <span class="code">KN</span></div>
+                        <div class="dp-li" onclick="setLang('ML',this)">മലയാളം <span class="code">ML</span></div>
+                        <div class="dp-li" onclick="setLang('BN',this)">বাংলা <span class="code">BN</span></div>
+                        <div class="dp-li" onclick="setLang('MR',this)">मराठी <span class="code">MR</span></div>
+                    </div>
+                </div>
+                <button class="tn-theme" onclick="toggleTheme()"><i class="fa-solid fa-sun" id="themeIcon"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ══ STEPS ══ -->
+    <div class="cart-steps">
+        <div class="steps-inner">
+            <div class="step done">
+                <div class="step-num"><i class="fa-solid fa-check" style="font-size:.6rem"></i></div>
+                <span>Cart</span>
+            </div>
+            <div class="step-line done"></div>
+            <div class="step done">
+                <div class="step-num"><i class="fa-solid fa-check" style="font-size:.6rem"></i></div>
+                <span>Address</span>
+            </div>
+            <div class="step-line failed"></div>
+            <div class="step failed">
+                <div class="step-num"><i class="fa-solid fa-xmark" style="font-size:.7rem"></i></div>
+                <span>Payment</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <span>Confirmed</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ MAIN ══ -->
+    <div class="main-wrap">
+        <div class="failed-card">
+
+            <!-- Header -->
+            <div class="fc-header">
+                <div class="fc-icon-wrap">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </div>
+                <div class="fc-title">Payment Failed</div>
+                <div class="fc-subtitle">Your payment could not be processed. Your cart is saved — no amount was
+                    deducted.</div>
+            </div>
+
+            <!-- Body -->
+            <div class="fc-body">
+
+                <!-- Error Reason -->
+                <div class="error-box">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <div class="error-box-content">
+                        <div class="error-box-title" id="errorTitle">Payment Declined by Bank</div>
+                        <div class="error-box-msg" id="errorMsg">Your bank declined this transaction. This may be due to
+                            insufficient funds, card limits, or a temporary bank issue. Please try again or use a
+                            different payment method.</div>
+                    </div>
+                </div>
+
+                <!-- Attempt Info -->
+                <div class="info-grid">
+                    <div class="info-box">
+                        <div class="info-box-label"><i class="fa-solid fa-calendar-xmark"></i> Attempted On</div>
+                        <div class="info-box-val" id="attemptDate">—</div>
+                        <div class="info-box-sub" id="attemptTime">—</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-label"><i class="fa-solid fa-indian-rupee-sign"></i> Amount</div>
+                        <div class="info-box-val" id="attemptAmount">₹1,249</div>
+                        <div class="info-box-sub" style="color:var(--red)"><i class="fa-solid fa-circle-xmark"
+                                style="font-size:.6rem"></i> Not Charged</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-label"><i class="fa-solid fa-lock"></i> Method Tried</div>
+                        <div class="info-box-val" id="methodTried">UPI</div>
+                        <div class="info-box-sub">Try a different method</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-label"><i class="fa-solid fa-hashtag"></i> Reference</div>
+                        <div class="info-box-val" id="refId" style="font-family:monospace;font-size:.78rem">—</div>
+                        <div class="info-box-sub">Failed transaction ID</div>
+                    </div>
+                </div>
+
+                <!-- What to Do -->
+                <div class="section-title"><i class="fa-solid fa-lightbulb"></i> What you can do</div>
+                <div class="reason-list">
+                    <div class="reason-item">
+                        <div class="ri-num">1</div>
+                        <div class="ri-text">
+                            <div class="ri-title">Retry with the same method</div>
+                            <div class="ri-desc">Temporary issues often resolve in a few minutes. Try paying again.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reason-item">
+                        <div class="ri-num">2</div>
+                        <div class="ri-text">
+                            <div class="ri-title">Switch payment method</div>
+                            <div class="ri-desc">Use a different UPI app, credit/debit card, or net banking instead.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reason-item">
+                        <div class="ri-num">3</div>
+                        <div class="ri-text">
+                            <div class="ri-title">Check your bank limits</div>
+                            <div class="ri-desc">Daily UPI or card limits may have been reached. Check with your bank.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reason-item">
+                        <div class="ri-num">4</div>
+                        <div class="ri-text">
+                            <div class="ri-title">Contact us if amount was deducted</div>
+                            <div class="ri-desc">If money was deducted but order not placed, it will be refunded within
+                                5–7 business days.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-row">
+                    <a href="checkout.html" class="btn-primary">
+                        <i class="fa-solid fa-rotate-right"></i> Retry Payment
+                    </a>
+                    <a href="cart.html" class="btn-outline">
+                        <i class="fa-solid fa-cart-shopping"></i> Back to Cart
+                    </a>
+                </div>
+                <div class="action-row">
+                    <a href="shop.html" class="btn-ghost">
+                        <i class="fa-solid fa-bag-shopping"></i> Continue Shopping
+                    </a>
+                    <a href="contact.html" class="btn-ghost">
+                        <i class="fa-solid fa-headset"></i> Contact Support
+                    </a>
+                </div>
+
+                <!-- Support Note -->
+                <div class="support-note">
+                    <i class="fa-solid fa-headset"></i>
+                    <span>Need help? Reach us at <a
+                            href="/cdn-cgi/l/email-protection#20535550504f5254604d4154494b414c410e434f4d"><span
+                                class="__cf_email__"
+                                data-cfemail="98ebede8e8f7eaecd8f5f9ecf1f3f9f4f9b6fbf7f5">[email&#160;protected]</span></a>
+                        or call <a href="tel:+918000000000">+91 80000 00000</a> · Mon–Sat, 10am–6pm</span>
+                </div>
+
+                <!-- Safe Note -->
+                <div class="safe-note">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Your cart items are saved. No amount has been deducted. All transactions are SSL secured and
+                        PCI-DSS compliant via Razorpay.</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+        <div class="ft-bot-co" style="flex-direction:column;align-items:center;gap:.75rem">
+            <div class="ft-tbadges">
+                <div class="ftb"><i class="fa-solid fa-lock"></i> SSL Secured</div>
+                <div class="ftb"><i class="fa-solid fa-shield-halved"></i> PCI-DSS Compliant</div>
+                <div class="ftb"><i class="fa-solid fa-rotate-left"></i> Easy Returns</div>
+                <div class="ftb"><i class="fa-solid fa-award"></i> 100% Authentic</div>
+            </div>
+            <div class="ft-pay-co">
+                <span style="font-size:.62rem;font-weight:700;color:var(--tx3);">Secure Payments via</span>
+                <span class="pchip"><i class="fa-solid fa-lock" style="color:#3395FF"></i> Razorpay</span>
+                <span class="pchip">UPI</span>
+                <span class="pchip"><i class="fa-brands fa-cc-visa" style="color:#1A1F71"></i></span>
+                <span class="pchip"><i class="fa-brands fa-cc-mastercard"></i></span>
+                <span class="pchip">PhonePe</span>
+                <span class="pchip">GPay</span>
+            </div>
+        </div>
+        <div class="ft-copy-row">
+            <span class="ft-copy">© 2026 Matikala. All rights reserved. Handcrafted with love in India.</span>
+            <div class="ft-leg">
+                <a href="privacy-policy.html">Privacy</a>
+                <a href="terms-of-service.html">Terms</a>
+                <a href="return-refund.html">Returns</a>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
+        /* ── Theme ── */
+        function toggleTheme() {
+            const h = document.documentElement;
+            const dark = h.getAttribute('data-theme') === 'dark';
+            h.setAttribute('data-theme', dark ? 'light' : 'dark');
+            document.getElementById('themeIcon').className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            localStorage.setItem('mkTheme', dark ? 'light' : 'dark');
+        }
+        (function () {
+            const t = localStorage.getItem('mkTheme');
+            if (t === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.getElementById('themeIcon').className = 'fa-solid fa-moon';
+            }
+        })();
+
+        /* ── Dropdown ── */
+        function toggleDrop(id) {
+            document.querySelectorAll('.dp-menu').forEach(m => { if (m.id !== id) m.classList.remove('open') });
+            document.getElementById(id).classList.toggle('open');
+        }
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.dp')) document.querySelectorAll('.dp-menu').forEach(m => m.classList.remove('open'));
+        });
+        function setLang(code, el) {
+            document.getElementById('curLang').textContent = code;
+            document.querySelectorAll('.dp-li').forEach(l => l.classList.remove('on'));
+            el.classList.add('on');
+            toggleDrop('langDrop');
+        }
+
+        /* ── Dates ── */
+        (function () {
+            const now = new Date();
+            const opts = { day: 'numeric', month: 'short', year: 'numeric' };
+            document.getElementById('attemptDate').textContent = now.toLocaleDateString('en-IN', opts);
+            document.getElementById('attemptTime').textContent = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+        })();
+
+        /* ── Razorpay failure callback handler ── */
+        // payment-failed.html?reason=payment_failed&method=UPI&amount=1249&refId=pay_abc123
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+
+            const reasonMap = {
+                'payment_failed': { title: 'Payment Declined by Bank', msg: 'Your bank declined this transaction. This may be due to insufficient funds, card limits, or a temporary bank issue.' },
+                'cancelled': { title: 'Payment Cancelled', msg: 'You cancelled the payment. Your cart is saved and no amount was deducted.' },
+                'timeout': { title: 'Payment Timed Out', msg: 'The payment session expired. Please retry to complete your order.' },
+                'invalid_card': { title: 'Invalid Card Details', msg: 'The card details entered were invalid or the card is not supported. Please try a different card.' },
+                'insufficient_funds': { title: 'Insufficient Funds', msg: 'Your account does not have sufficient balance. Please use a different payment method.' }
+            };
+
+            const reason = params.get('reason') || 'payment_failed';
+            const info = reasonMap[reason] || reasonMap['payment_failed'];
+            document.getElementById('errorTitle').textContent = info.title;
+            document.getElementById('errorMsg').textContent = info.msg;
+
+            if (params.get('amount')) document.getElementById('attemptAmount').textContent = '₹' + Number(params.get('amount')).toLocaleString('en-IN');
+            if (params.get('method')) document.getElementById('methodTried').textContent = params.get('method');
+            if (params.get('refId')) document.getElementById('refId').textContent = params.get('refId');
+            else document.getElementById('refId').textContent = 'N/A';
+        })();
+    </script>
+</body>
+
+</html>

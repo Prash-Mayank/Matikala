@@ -1,0 +1,2426 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Returns &amp; Refunds — MATIKALA</title>
+  <link rel="shortcut icon" href="../matikala.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --clay: #B5622A;
+      --clay-l: #D07A40;
+      --clay-d: #8C4A1C;
+      --clay-bg: rgba(181, 98, 42, .08);
+      --clay-glow: rgba(181, 98, 42, .18);
+      --gold: #C9A040;
+      --bg: #F8F4EF;
+      --bg1: #FFFFFF;
+      --bg2: #F2EDE6;
+      --bg3: #E8E1D8;
+      --bg4: #DDD5C8;
+      --tx: #1A1510;
+      --tx2: #5A4E42;
+      --tx3: #9A8E82;
+      --tx4: #C4B9AE;
+      --border: #E2D9CE;
+      --border2: #CFC5B8;
+      --sh: 0 2px 8px rgba(0, 0, 0, .08);
+      --sh2: 0 8px 32px rgba(0, 0, 0, .12);
+      --sh3: 0 20px 60px rgba(0, 0, 0, .18);
+      --nav-h: 60px;
+      --r: 4px;
+      --r2: 8px;
+      --green: #2D7A4A;
+      --red: #C0392B
+    }
+
+    [data-theme="dark"] {
+      --bg: #0C0A08;
+      --bg1: #141210;
+      --bg2: #1C1916;
+      --bg3: #25221E;
+      --bg4: #302D27;
+      --tx: #F0E8DE;
+      --tx2: #B0A090;
+      --tx3: #706050;
+      --tx4: #504540;
+      --border: #302D27;
+      --border2: #403C35;
+      --sh: 0 2px 8px rgba(0, 0, 0, .3);
+      --sh2: 0 8px 32px rgba(0, 0, 0, .5);
+      --sh3: 0 20px 60px rgba(0, 0, 0, .7)
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 15px
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--tx);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+      transition: background .3s, color .3s;
+      line-height: 1.5
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    button {
+      cursor: pointer;
+      font-family: inherit;
+      border: none;
+      background: none;
+      outline: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    input,
+    textarea,
+    select {
+      font-family: inherit;
+      outline: none;
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg2);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--clay);
+      border-radius: 2px;
+    }
+
+    /* NAV */
+    #topnav {
+      background: var(--clay);
+      height: var(--nav-h);
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .2);
+    }
+
+    .tn-wrap {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      height: 100%;
+      padding: 0 1.2rem;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .tn-logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .tn-logo-img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .tn-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      color: #fff;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .tn-brand small {
+      display: block;
+      font-size: .5rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      opacity: .65;
+      margin-top: .1rem;
+    }
+
+    .tn-right {
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .tnb {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      padding: .25rem .6rem;
+      border-radius: var(--r);
+      cursor: pointer;
+      font-size: .68rem;
+      line-height: 1.3;
+      white-space: nowrap;
+      position: relative;
+      transition: background .15s;
+      border: 1px solid transparent;
+      min-width: 46px;
+    }
+
+    .tnb:hover {
+      background: rgba(255, 255, 255, .14);
+      border-color: rgba(255, 255, 255, .22);
+    }
+
+    .tnb strong {
+      font-size: .76rem;
+      font-weight: 600;
+    }
+
+    .tn-theme {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .18);
+      color: #fff;
+      font-size: .82rem;
+      transition: all .2s;
+      flex-shrink: 0;
+    }
+
+    .tn-theme:hover {
+      background: rgba(255, 255, 255, .22);
+    }
+
+    .tn-div {
+      width: 1px;
+      height: 30px;
+      background: rgba(255, 255, 255, .22);
+      flex-shrink: 0;
+      margin: 0 .15rem;
+    }
+
+    /* mobile ham */
+    .ham-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: .5rem;
+      border-radius: var(--r);
+      color: #fff;
+      align-items: center;
+      justify-content: center
+    }
+
+    .ham-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      border-radius: 1px;
+      transition: all .3s
+    }
+
+    @media(max-width:768px) {
+      .ham-btn {
+        display: flex;
+      }
+
+      .tn-desktop {
+        display: none;
+      }
+    }
+
+    /* PAGE HERO BANNER */
+    .pg-hero {
+      background: var(--clay);
+      padding: 2.5rem 1.2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pg-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .pg-hero-inner {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto
+    }
+
+    .pg-breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      font-size: .7rem;
+      color: rgba(255, 255, 255, .65);
+      margin-bottom: .85rem
+    }
+
+    .pg-breadcrumb a {
+      color: rgba(255, 255, 255, .75);
+      transition: color .15s
+    }
+
+    .pg-breadcrumb a:hover {
+      color: #fff
+    }
+
+    .pg-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: .5rem
+    }
+
+    .pg-hero p {
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .75);
+      max-width: 500px;
+      margin: 0 auto
+    }
+
+    .pg-hero-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .15);
+      border: 1.5px solid rgba(255, 255, 255, .3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #fff;
+      margin: 0 auto .9rem
+    }
+
+    /* CONTENT */
+    .pg-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.2rem 3rem
+    }
+
+    .pg-wrap.wide {
+      max-width: 1100px
+    }
+
+    .pg-section {
+      margin-bottom: 2rem
+    }
+
+    .pg-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--tx);
+      margin-bottom: .75rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: .5rem
+    }
+
+    .pg-section h2 i {
+      color: var(--clay);
+      font-size: 1rem
+    }
+
+    .pg-section h3 {
+      font-size: .92rem;
+      font-weight: 600;
+      color: var(--tx);
+      margin: .9rem 0 .4rem
+    }
+
+    .pg-section p {
+      font-size: .85rem;
+      color: var(--tx2);
+      line-height: 1.9;
+      margin-bottom: .65rem
+    }
+
+    .pg-section ul {
+      margin: .3rem 0 .65rem 0
+    }
+
+    .pg-section ul li {
+      font-size: .85rem;
+      color: var(--tx2);
+      line-height: 1.85;
+      padding: .2rem 0 .2rem 1.2rem;
+      position: relative
+    }
+
+    .pg-section ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: .65rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--clay)
+    }
+
+    .pg-section ol {
+      margin: .3rem 0 .65rem 1.2rem
+    }
+
+    .pg-section ol li {
+      font-size: .85rem;
+      color: var(--tx2);
+      line-height: 1.85;
+      padding: .2rem 0
+    }
+
+    /* INFO CARDS */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0
+    }
+
+    .info-card {
+      background: var(--bg1);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 1.2rem;
+      transition: box-shadow .2s
+    }
+
+    .info-card:hover {
+      box-shadow: var(--sh2)
+    }
+
+    .info-card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--r);
+      background: var(--clay-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--clay);
+      font-size: 1rem;
+      margin-bottom: .75rem
+    }
+
+    .info-card h4 {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--tx);
+      margin-bottom: .35rem
+    }
+
+    .info-card p {
+      font-size: .78rem;
+      color: var(--tx2);
+      line-height: 1.75
+    }
+
+    /* HIGHLIGHT BOX */
+    .pg-highlight {
+      background: var(--clay-bg);
+      border: 1px solid rgba(181, 98, 42, .2);
+      border-left: 3px solid var(--clay);
+      border-radius: var(--r2);
+      padding: 1rem 1.2rem;
+      margin: 1rem 0
+    }
+
+    .pg-highlight p {
+      margin: 0;
+      font-size: .83rem;
+      color: var(--tx2)
+    }
+
+    .pg-highlight strong {
+      color: var(--clay)
+    }
+
+    /* TABLE */
+    .pg-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .82rem;
+      margin: .75rem 0 1rem
+    }
+
+    .pg-table th {
+      background: var(--clay);
+      color: #fff;
+      padding: .65rem .9rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: .78rem;
+      letter-spacing: .04em
+    }
+
+    .pg-table td {
+      padding: .6rem .9rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--tx2)
+    }
+
+    .pg-table tr:nth-child(even) td {
+      background: var(--bg2)
+    }
+
+    .pg-table tr:hover td {
+      background: var(--bg3)
+    }
+
+    /* FAQ */
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      margin-bottom: .6rem;
+      overflow: hidden
+    }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .95rem 1.1rem;
+      cursor: pointer;
+      font-size: .87rem;
+      font-weight: 500;
+      color: var(--tx);
+      transition: background .15s;
+      gap: .5rem
+    }
+
+    .faq-q:hover {
+      background: var(--bg2)
+    }
+
+    .faq-q.open {
+      background: var(--clay-bg);
+      color: var(--clay)
+    }
+
+    .faq-q .faq-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .65rem;
+      color: var(--tx3);
+      transition: all .2s
+    }
+
+    .faq-q.open .faq-icon {
+      background: var(--clay);
+      color: #fff;
+      transform: rotate(45deg)
+    }
+
+    .faq-a {
+      display: none;
+      padding: .2rem 1.1rem 1rem;
+      font-size: .83rem;
+      color: var(--tx2);
+      line-height: 1.9;
+      border-top: 1px solid var(--border)
+    }
+
+    .faq-a.open {
+      display: block
+    }
+
+    /* CONTACT FORM */
+    .contact-form {
+      background: var(--bg1);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 1.75rem
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+      margin-bottom: 1rem
+    }
+
+    .form-group label {
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--tx);
+      letter-spacing: .04em;
+      text-transform: uppercase
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--bg);
+      border: 1px solid var(--border2);
+      border-radius: var(--r);
+      padding: .65rem .85rem;
+      font-size: .85rem;
+      color: var(--tx);
+      transition: border-color .2s
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--clay);
+      box-shadow: 0 0 0 3px var(--clay-bg)
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px
+    }
+
+    .btn-clay {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--clay);
+      color: #fff;
+      padding: .7rem 1.5rem;
+      border-radius: var(--r2);
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      cursor: pointer;
+      border: none;
+      transition: all .2s
+    }
+
+    .btn-clay:hover {
+      background: var(--clay-d);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(181, 98, 42, .3)
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: transparent;
+      color: var(--clay);
+      padding: .7rem 1.5rem;
+      border-radius: var(--r2);
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      cursor: pointer;
+      border: 1.5px solid var(--clay);
+      transition: all .2s
+    }
+
+    .btn-outline:hover {
+      background: var(--clay);
+      color: #fff
+    }
+
+    /* BADGE */
+    .pg-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      background: var(--clay-bg);
+      color: var(--clay);
+      border: 1px solid rgba(181, 98, 42, .2);
+      border-radius: 100px;
+      padding: .2rem .7rem;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .05em
+    }
+
+    /* STEP */
+    .step-list {
+      margin: 1rem 0
+    }
+
+    .step-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      align-items: flex-start
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--clay);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .78rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: .05rem
+    }
+
+    .step-body h4 {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--tx);
+      margin-bottom: .25rem
+    }
+
+    .step-body p {
+      font-size: .82rem;
+      color: var(--tx2);
+      line-height: 1.8;
+      margin: 0
+    }
+
+    /* CONTACT CARDS */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0
+    }
+
+    .contact-card {
+      background: var(--bg1);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 1.4rem;
+      text-align: center;
+      transition: all .2s
+    }
+
+    .contact-card:hover {
+      box-shadow: var(--sh2);
+      transform: translateY(-2px)
+    }
+
+    .contact-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--clay-bg);
+      border: 1.5px solid rgba(181, 98, 42, .2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--clay);
+      margin: 0 auto .85rem
+    }
+
+    .contact-card h4 {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--tx);
+      margin-bottom: .3rem
+    }
+
+    .contact-card p {
+      font-size: .78rem;
+      color: var(--tx2);
+      line-height: 1.7
+    }
+
+    .contact-card a {
+      color: var(--clay);
+      font-size: .82rem;
+      font-weight: 500
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline
+    }
+
+    /* ABOUT SECTIONS */
+    .about-hero-img {
+      border-radius: var(--r2);
+      overflow: hidden;
+      margin: 1.5rem 0;
+      height: 280px
+    }
+
+    .about-hero-img img {
+      height: 100%;
+      object-fit: cover
+    }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0
+    }
+
+    .about-val {
+      background: var(--bg1);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 1.2rem;
+      text-align: center
+    }
+
+    .about-val-icon {
+      font-size: 1.5rem;
+      margin-bottom: .6rem
+    }
+
+    .about-val h4 {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--tx);
+      margin-bottom: .3rem
+    }
+
+    .about-val p {
+      font-size: .76rem;
+      color: var(--tx2);
+      line-height: 1.7
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0
+    }
+
+    .team-card {
+      background: var(--bg1);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      overflow: hidden;
+      text-align: center;
+      transition: all .2s
+    }
+
+    .team-card:hover {
+      box-shadow: var(--sh2)
+    }
+
+    .team-card-img {
+      height: 130px;
+      overflow: hidden
+    }
+
+    .team-card-img img {
+      height: 100%;
+      object-fit: cover
+    }
+
+    .team-card-body {
+      padding: .8rem
+    }
+
+    .team-card-body h4 {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--tx);
+      margin-bottom: .15rem
+    }
+
+    .team-card-body p {
+      font-size: .72rem;
+      color: var(--tx3)
+    }
+
+    /* CARE TAGS */
+    .care-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: .25rem .65rem;
+      font-size: .72rem;
+      font-weight: 500;
+      color: var(--tx2);
+      margin: .2rem
+    }
+
+    .care-tag i {
+      color: var(--clay);
+      font-size: .75rem
+    }
+
+    /* STATUS CHIP */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      padding: .18rem .6rem;
+      border-radius: 100px;
+      font-size: .7rem;
+      font-weight: 600
+    }
+
+    .chip-green {
+      background: #e8f5ee;
+      color: #2D7A4A
+    }
+
+    .chip-clay {
+      background: var(--clay-bg);
+      color: var(--clay)
+    }
+
+    .chip-red {
+      background: #fdecea;
+      color: #C0392B
+    }
+
+    /* DIVIDER */
+    .pg-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 1.75rem 0
+    }
+
+    /* LAST UPDATED */
+    .pg-updated {
+      font-size: .72rem;
+      color: var(--tx4);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .35rem
+    }
+
+    /* MOBILE DRAWER */
+    .mob-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000
+    }
+
+    .mob-overlay.open {
+      display: block
+    }
+
+    .mob-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, .5);
+      backdrop-filter: blur(2px)
+    }
+
+    .mob-drawer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 280px;
+      height: 100%;
+      background: var(--bg1);
+      overflow-y: auto;
+      padding: 1.2rem
+    }
+
+    .mob-drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem
+    }
+
+    .mob-drawer-logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem
+    }
+
+    .mob-drawer-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      color: var(--tx2)
+    }
+
+    .mob-nav-link {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      padding: .7rem 0;
+      font-size: .88rem;
+      color: var(--tx2);
+      border-bottom: 1px solid var(--border);
+      transition: color .15s
+    }
+
+    .mob-nav-link:hover,
+    .mob-nav-link.active {
+      color: var(--clay)
+    }
+
+    .mob-nav-link i {
+      width: 20px;
+      text-align: center;
+      font-size: .85rem;
+      color: var(--tx3)
+    }
+
+    .mob-nav-link:hover i,
+    .mob-nav-link.active i {
+      color: var(--clay)
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg1);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem
+    }
+
+    .ft-main {
+      display: grid;
+      grid-template-columns: 1.55fr 1fr 1fr 1fr 1fr;
+      gap: 1.8rem;
+      padding: 2.25rem 1.2rem 1.75rem;
+      max-width: 1600px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .ft-bl {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      margin-bottom: .55rem
+    }
+
+    .ft-bl img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain
+    }
+
+    .ft-bn {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      color: var(--tx)
+    }
+
+    .ft-bn em {
+      color: var(--clay);
+      font-style: normal
+    }
+
+    .ft-tg {
+      font-size: .7rem;
+      font-style: italic;
+      color: var(--tx3);
+      margin-bottom: .8rem
+    }
+
+    .ft-desc {
+      font-size: .76rem;
+      color: var(--tx2);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+      max-width: 260px
+    }
+
+    .ft-socs {
+      display: flex;
+      gap: .42rem
+    }
+
+    .ft-soc {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--r);
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--tx2);
+      font-size: .85rem;
+      transition: all .2s
+    }
+
+    .ft-ig:hover {
+      background: #E1306C;
+      border-color: #E1306C;
+      color: #fff;
+      transform: translateY(-2px)
+    }
+
+    .ft-fb:hover {
+      background: #1877F2;
+      border-color: #1877F2;
+      color: #fff;
+      transform: translateY(-2px)
+    }
+
+    .ft-yt:hover {
+      background: #FF0000;
+      border-color: #FF0000;
+      color: #fff;
+      transform: translateY(-2px)
+    }
+
+    .ft-wa:hover {
+      background: #25D366;
+      border-color: #25D366;
+      color: #fff;
+      transform: translateY(-2px)
+    }
+
+    .ft-xx:hover {
+      background: #000;
+      border-color: #000;
+      color: #fff;
+      transform: translateY(-2px)
+    }
+
+    .ft-ch {
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: .8rem
+    }
+
+    .ft-links li {
+      margin-bottom: .47rem
+    }
+
+    .ft-links a {
+      font-size: .78rem;
+      color: var(--tx2);
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      transition: color .15s
+    }
+
+    .ft-links a:hover {
+      color: var(--clay)
+    }
+
+    .ft-links a i {
+      font-size: .62rem;
+      color: var(--tx4)
+    }
+
+    .ft-links a:hover i {
+      color: var(--clay)
+    }
+
+    .ft-bot {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: .95rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .75rem;
+      border-top: 1px solid var(--border)
+    }
+
+    .ft-badges-row {
+      justify-content: center
+    }
+
+    .ft-pay-row {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: .7rem;
+      flex-wrap: wrap
+    }
+
+    .ft-pay {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      flex-wrap: wrap;
+      justify-content: center
+    }
+
+    .ft-pay-lbl {
+      font-size: .62rem;
+      font-weight: 700;
+      color: var(--tx3);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      white-space: nowrap
+    }
+
+    .pchip {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: .2rem .58rem;
+      font-size: .6rem;
+      font-weight: 600;
+      color: var(--tx2);
+      display: inline-flex;
+      align-items: center;
+      gap: .28rem
+    }
+
+    .ft-copy-row {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: .75rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .5rem;
+      border-top: 1px solid var(--border)
+    }
+
+    .ft-copy {
+      font-size: .68rem;
+      color: var(--tx3)
+    }
+
+    .ft-leg {
+      display: flex;
+      gap: 1.2rem
+    }
+
+    .ft-leg a {
+      font-size: .68rem;
+      color: var(--tx3);
+      transition: color .15s
+    }
+
+    .ft-leg a:hover {
+      color: var(--clay)
+    }
+
+    .ft-tbadges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      justify-content: center
+    }
+
+    .ftb {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      font-size: .68rem;
+      font-weight: 600;
+      color: var(--tx3);
+      padding: .3rem .7rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 100px
+    }
+
+    .ftb i {
+      color: var(--clay);
+      font-size: .72rem
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .55s, transform .55s
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: none
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px) {
+      .ft-main {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.4rem
+      }
+
+      .form-row {
+        grid-template-columns: 1fr
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    @media(max-width:768px) {
+      :root {
+        --nav-h: 52px
+      }
+
+      body {
+        padding-bottom: 0
+      }
+
+      .pg-wrap {
+        padding: 1.5rem .9rem 2.5rem
+      }
+
+      /* footer mobile — matches shop/index */
+      .ft-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+        padding: 1.5rem .85rem 1rem
+      }
+
+      .ft-brand-col {
+        grid-column: 1/-1;
+        text-align: center
+      }
+
+      .ft-brand-col .ft-bl {
+        justify-content: center
+      }
+
+      .ft-brand-col .ft-desc {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto
+      }
+
+      .ft-brand-col .ft-socs {
+        justify-content: center
+      }
+
+      .ft-badges-row {
+        flex-direction: column;
+        align-items: center;
+        padding: .85rem .75rem
+      }
+
+      .ft-tbadges {
+        gap: .35rem;
+        justify-content: center
+      }
+
+      .ft-pay-row {
+        flex-direction: column;
+        align-items: center;
+        gap: .5rem;
+        padding: .75rem .75rem
+      }
+
+      .ft-pay {
+        gap: .3rem;
+        justify-content: center
+      }
+
+      .ft-copy-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: .65rem;
+        padding: .75rem .75rem
+      }
+
+      .ft-leg {
+        gap: 1.4rem;
+        justify-content: center
+      }
+
+      /* content */
+      .info-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .info-card {
+        text-align: center
+      }
+
+      .info-card-icon {
+        margin: 0 auto .75rem
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .about-hero-img {
+        height: 200px
+      }
+
+      .about-values {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .pg-hero {
+        padding: 1.8rem .9rem
+      }
+
+      /* cookie/steps centering */
+      .step-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center
+      }
+
+      .step-num {
+        margin-bottom: .4rem;
+        margin-top: 0
+      }
+    }
+
+    @media(max-width:480px) {
+      :root {
+        --nav-h: 48px
+      }
+
+      .tn-brand small {
+        display: none
+      }
+
+      .tn-logo-img {
+        width: 30px;
+        height: 30px
+      }
+
+      .ft-main {
+        grid-template-columns: 1fr 1fr;
+        padding: 1.1rem .55rem .9rem
+      }
+
+      .ft-copy-row,
+      .ft-badges-row,
+      .ft-pay-row {
+        padding: .65rem .55rem
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr
+      }
+
+      .info-card {
+        text-align: center
+      }
+
+      .info-card-icon {
+        margin: 0 auto .75rem
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr
+      }
+
+      .about-values {
+        grid-template-columns: 1fr
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .pg-table {
+        font-size: .76rem
+      }
+
+      .pg-table th,
+      .pg-table td {
+        padding: .45rem .65rem
+      }
+
+      .care-tag {
+        font-size: .68rem
+      }
+
+      .form-row {
+        grid-template-columns: 1fr
+      }
+
+      #contact-grid-2 {
+        grid-template-columns: 1fr !important
+      }
+    }
+
+    @media(max-width:360px) {
+      .tn-brand {
+        font-size: 1rem;
+        letter-spacing: .04em
+      }
+
+      .ft-main {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* Centered cards globally */
+    .info-card {
+      text-align: center
+    }
+
+    .info-card-icon {
+      margin: 0 auto .75rem
+    }
+
+    .contact-card {
+      text-align: center
+    }
+
+    .about-val {
+      text-align: center
+    }
+
+    /* Cookie table mobile scroll */
+    .pg-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch
+    }
+
+    /* ══ PATCH: gradient hero, mobile nav, dark mode, responsive ══ */
+    :root {
+      --cat-h: 0px;
+    }
+
+    .pg-hero {
+      background: linear-gradient(135deg, #1A1510 0%, var(--clay-d) 38%, var(--clay) 72%, #D07A40 100%) !important;
+      padding: 2.8rem 1.2rem 2.4rem !important;
+    }
+
+    .pg-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .pg-hero h1 {
+      text-shadow: 0 2px 12px rgba(0, 0, 0, .25);
+    }
+
+    .pg-hero-icon {
+      background: rgba(255, 255, 255, .18) !important;
+      border: 2px solid rgba(255, 255, 255, .35) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .2);
+      width: 60px !important;
+      height: 60px !important;
+      font-size: 1.4rem !important;
+      margin: 0 auto 1rem !important;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0C0A08;
+      --bg1: #141210;
+      --bg2: #1C1916;
+      --bg3: #25221E;
+      --bg4: #302D27;
+      --tx: #F0E8DE;
+      --tx2: #B0A090;
+      --tx3: #706050;
+      --tx4: #504540;
+      --border: #302D27;
+      --border2: #403C35;
+      --sh: 0 2px 8px rgba(0, 0, 0, .3);
+      --sh2: 0 8px 32px rgba(0, 0, 0, .5);
+      --sh3: 0 20px 60px rgba(0, 0, 0, .7);
+    }
+
+    [data-theme="dark"] .pg-hero::after {
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
+
+    .mob-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      background: var(--bg1);
+      border-top: 1px solid var(--border);
+      padding: .5rem 0 calc(.5rem + env(safe-area-inset-bottom));
+    }
+
+    .mob-row {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .mb-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .14rem;
+      color: var(--tx3);
+      font-size: .54rem;
+      font-weight: 500;
+      padding: .22rem .65rem;
+      border-radius: 4px;
+      transition: color .15s;
+      position: relative;
+      text-decoration: none;
+    }
+
+    .mb-btn i {
+      font-size: 1.1rem;
+    }
+
+    .mb-btn.on,
+    .mb-btn:hover {
+      color: var(--clay);
+    }
+
+    .mb-badge {
+      position: absolute;
+      top: 0;
+      right: 4px;
+      background: var(--clay);
+      color: #fff;
+      border-radius: 50%;
+      width: 14px;
+      height: 14px;
+      font-size: .46rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .m-ov {
+      position: fixed;
+      inset: 0;
+      z-index: 960;
+      background: rgba(0, 0, 0, .52);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+    }
+
+    .m-ov.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .m-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: min(88vw, 310px);
+      background: var(--bg1);
+      z-index: 970;
+      transform: translateX(-100%);
+      transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      border-right: 1px solid var(--border);
+    }
+
+    .m-ov.open .m-drawer {
+      transform: none;
+    }
+
+    .mdr-hd {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .9rem 1.1rem;
+      background: linear-gradient(135deg, var(--clay-d) 0%, var(--clay) 55%, var(--clay-l) 100%);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    .mdr-brand {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      color: #fff;
+    }
+
+    .mdr-brand img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .2);
+      padding: 3px;
+    }
+
+    .mdr-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+    }
+
+    .mdr-brand-tag {
+      display: block;
+      font-size: .48rem;
+      opacity: .75;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+      margin-top: .05rem;
+    }
+
+    .mdr-close {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .18);
+      border: 1px solid rgba(255, 255, 255, .3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: .88rem;
+      cursor: pointer;
+    }
+
+    .mdr-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .68rem 1.05rem;
+      font-size: .84rem;
+      color: var(--tx2);
+      border-bottom: 1px solid var(--border);
+      transition: all .15s;
+      text-decoration: none;
+    }
+
+    .mdr-link-l {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+    }
+
+    .mdr-link .arr {
+      font-size: .6rem;
+      color: var(--tx4);
+    }
+
+    .mdr-link:hover {
+      background: var(--bg2);
+      color: var(--clay);
+    }
+
+    .mdr-ico {
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      flex-shrink: 0;
+    }
+
+    .mdr-ic1 {
+      background: #FFF0E6;
+      color: #B5622A
+    }
+
+    .mdr-ic2 {
+      background: #E8F4FB;
+      color: #2980B9
+    }
+
+    .mdr-ic3 {
+      background: #EAF7ED;
+      color: #27AE60
+    }
+
+    .mdr-tog {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .9rem 1.05rem;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+
+    .mdr-tog-lbl {
+      font-size: .8rem;
+      color: var(--tx2);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .mdr-tog-lbl i {
+      color: var(--clay);
+    }
+
+    .tog {
+      width: 42px;
+      height: 22px;
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: 11px;
+      position: relative;
+      cursor: pointer;
+      transition: all .3s;
+    }
+
+    .tog.on {
+      background: var(--clay);
+      border-color: var(--clay);
+    }
+
+    .tog-knob {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 14px;
+      height: 14px;
+      background: var(--bg1);
+      border-radius: 50%;
+      transition: all .3s;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+    }
+
+    .tog.on .tog-knob {
+      left: 23px;
+    }
+
+    @media(max-width:768px) {
+      body {
+        padding-bottom: 68px !important
+      }
+
+      .mob-bar {
+        display: block !important
+      }
+
+      .tn-deliver,
+      .tn-div,
+      .tn-lang,
+      .tn-theme {
+        display: none !important
+      }
+
+      .tn-desktop {
+        display: none !important
+      }
+
+      .ham-btn {
+        display: flex !important
+      }
+
+      .pg-hero {
+        padding: 1.8rem .85rem 1.6rem !important
+      }
+
+      .pg-wrap {
+        padding: 1.25rem .85rem 2rem !important
+      }
+    }
+
+    @media(max-width:480px) {
+      .pg-hero h1 {
+        font-size: 1.55rem !important
+      }
+
+      .pg-hero p {
+        font-size: .78rem !important
+      }
+    }
+
+
+    /* ══ NAVBAR LAYOUT FIX ══ */
+    .tn-right-mob {
+      display: none;
+      align-items: center;
+      gap: .35rem;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .ham-btn {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: .5rem;
+      border-radius: var(--r);
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .2);
+      cursor: pointer;
+    }
+
+    .ham-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      border-radius: 1px;
+      transition: all .3s;
+    }
+
+    .tn-theme {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .18);
+      color: #fff;
+      font-size: .82rem;
+      transition: all .2s;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .tn-theme:hover {
+      background: rgba(255, 255, 255, .22);
+    }
+
+    @media (max-width: 768px) {
+      .tn-desktop {
+        display: none !important;
+      }
+
+      .tn-right-mob {
+        display: flex !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav id="topnav">
+    <div class="tn-wrap">
+      <!-- Logo — always left -->
+      <a class="tn-logo" href="../index.html">
+        <img class="tn-logo-img" src="../matikala.png" alt="Matikala" onerror="this.style.display='none'" />
+        <div class="tn-brand">MATIKALA<small>Quiet Sculpture for Modern Spaces</small></div>
+      </a>
+
+      <!-- Desktop nav links — hidden on mobile -->
+      <div class="tn-right tn-desktop">
+        <a class="tnb" href="../index.html"><i class="fa-solid fa-house"
+            style="font-size:.9rem"></i><strong>Home</strong></a>
+        <a class="tnb" href="../shop.html"><i class="fa-solid fa-store"
+            style="font-size:.9rem"></i><strong>Shop</strong></a>
+        <a class="tnb" href="about.html"><i class="fa-solid fa-info-circle"
+            style="font-size:.9rem"></i><strong>About</strong></a>
+        <a class="tnb" href="contact.html"><i class="fa-solid fa-envelope"
+            style="font-size:.9rem"></i><strong>Contact</strong></a>
+        <div class="tn-div"></div>
+        <button class="tn-theme" onclick="toggleTheme()" title="Toggle Theme"><i class="fa-solid fa-sun"
+            id="themeIcon"></i></button>
+      </div>
+
+      <!-- Mobile right — theme + hamburger, always on RIGHT -->
+      <div class="tn-right-mob">
+        <button class="tn-theme" onclick="toggleTheme()" title="Toggle Theme"><i class="fa-solid fa-sun"
+            id="themeIconMob"></i></button>
+        <button class="ham-btn" onclick="openDr()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- Mobile Drawer -->
+  <div class="mob-overlay" id="mOv">
+    <div class="mob-backdrop" onclick="closeDr()"></div>
+    <div class="mob-drawer">
+      <div class="mob-drawer-head">
+        <div class="mob-drawer-logo">
+          <img src="../matikala.png" style="width:28px;height:28px;object-fit:contain" alt=""
+            onerror="this.style.display='none'" />
+          <span
+            style="font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;color:var(--tx)">MATIKALA</span>
+        </div>
+        <button class="mob-drawer-close" onclick="closeDr()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <a class="mob-nav-link" href="../index.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a class="mob-nav-link" href="../shop.html"><i class="fa-solid fa-store"></i> Shop</a>
+      <a class="mob-nav-link" href="about.html"><i class="fa-solid fa-info-circle"></i> About Us</a>
+      <a class="mob-nav-link" href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+      <a class="mob-nav-link" href="faq.html"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+      <div style="margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--border)">
+        <div
+          style="font-size:.65rem;font-weight:700;letter-spacing:.15em;color:var(--tx4);text-transform:uppercase;margin-bottom:.8rem">
+          Policies</div>
+        <a class="mob-nav-link" href="shipping.html"><i class="fa-solid fa-truck"></i> Shipping</a>
+        <a class="mob-nav-link active" href="return-refund.html"><i class="fa-solid fa-rotate-left"></i> Returns &
+          Refunds</a>
+        <a class="mob-nav-link" href="cancellation.html"><i class="fa-solid fa-ban"></i> Cancellation</a>
+        <a class="mob-nav-link" href="privacy-policy.html"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+        <a class="mob-nav-link" href="terms-of-service.html"><i class="fa-solid fa-file-contract"></i> Terms of
+          Service</a>
+        <a class="mob-nav-link" href="cookies.html"><i class="fa-solid fa-cookie-bite"></i> Cookie Policy</a>
+        <a class="mob-nav-link" href="care-instructions.html"><i class="fa-solid fa-hand-sparkles"></i> Care
+          Instructions</a>
+      </div>
+      <div
+        style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+        <span style="font-size:.82rem;color:var(--tx2)">Dark Mode</span>
+        <button onclick="toggleTheme()" class="tn-theme"
+          style="background:var(--bg3);border-color:var(--border2);color:var(--tx2)"><i class="fa-solid fa-moon"
+            id="themeIconDr"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="pg-hero">
+    <div class="pg-hero-inner">
+      <div class="pg-breadcrumb"><a href="../index.html">Home</a><i class="fa-solid fa-chevron-right"
+          style="font-size:.55rem"></i><span>Returns &amp; Refunds</span></div>
+      <div class="pg-hero-icon"><i class="fa-solid fa-rotate-left"></i></div>
+      <h1>Returns &amp; Refunds</h1>
+      <p>We want you to love your sculpture. If something isn't right, we'll make it right.</p>
+    </div>
+  </div>
+
+  <div class="pg-wrap">
+
+    <div class="pg-updated reveal"><i class="fa-solid fa-clock"></i> Last updated: January 2026</div>
+
+    <div class="pg-highlight reveal">
+      <p><strong>Our promise:</strong> Every Matikala sculpture is inspected before dispatch. If your piece arrives
+        damaged, defective, or significantly different from its description, we will replace it or issue a full refund —
+        no questions asked.</p>
+    </div>
+
+    <!-- Quick summary cards -->
+    <div class="pg-section reveal">
+      <h2><i class="fa-solid fa-list-check"></i> Policy at a Glance</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fa-solid fa-calendar-check"></i></div>
+          <h4>Return Window</h4>
+          <p><strong>7 days</strong> from the date of delivery to raise a return request for eligible items.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+          <h4>Refund Timeline</h4>
+          <p>Refunds processed within <strong>3–5 business days</strong> of return approval to original payment method.
+          </p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fa-solid fa-truck"></i></div>
+          <h4>Return Shipping</h4>
+          <p><strong>Free</strong> for damaged or defective items. Customer-paid for other eligible returns.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+          <h4>Replacement</h4>
+          <p>We offer a <strong>free replacement</strong> for damaged or defective items, subject to stock availability.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Eligible returns -->
+    <div class="pg-section reveal">
+      <h2><i class="fa-solid fa-circle-check"></i> What Can Be Returned</h2>
+      <p>We accept return requests only in the following cases:</p>
+      <ul>
+        <li><strong>Damaged in transit</strong> — sculpture or packaging is visibly broken or cracked upon delivery.
+        </li>
+        <li><strong>Manufacturing defect</strong> — structural flaw that was present before shipping (not caused by use
+          or handling after delivery).</li>
+        <li><strong>Wrong item sent</strong> — you received a different product than what you ordered.</li>
+        <li><strong>Significantly misrepresented</strong> — the item is materially different from its description or
+          photos in a way that goes beyond natural handmade variation.</li>
+      </ul>
+      <div class="pg-highlight" style="margin-top:1rem">
+        <p><strong>Please note:</strong> Because every Matikala sculpture is unique and handmade, natural variations in
+          colour, texture, and surface detail are expected and are <strong>not grounds for return</strong>. Minor
+          differences from product photos due to screen calibration are also not eligible.</p>
+      </div>
+    </div>
+
+    <!-- Non-returnable -->
+    <div class="pg-section reveal">
+      <h2><i class="fa-solid fa-circle-xmark"></i> What Cannot Be Returned</h2>
+      <ul>
+        <li>Items returned after the 7-day window has passed</li>
+        <li>Items damaged due to mishandling, improper care, or accidents after delivery</li>
+        <li>Returns based on personal preference or change of mind</li>
+        <li>Custom or commissioned pieces (unless defective or damaged in transit)</li>
+        <li>Items without original packaging or that show signs of use</li>
+        <li>Items purchased during clearance or final-sale events (marked as non-returnable at checkout)</li>
+      </ul>
+    </div>
+
+    <!-- How to return -->
+    <div class="pg-section reveal">
+      <h2><i class="fa-solid fa-arrow-rotate-left"></i> How to Initiate a Return</h2>
+      <div class="step-list" style="margin-top:1rem">
+        <div class="step-item">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h4>Document the Issue</h4>
+            <p>Take clear photographs of the damage or defect, including the packaging, the sculpture, and the shipping
+              label. Do this immediately on delivery.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h4>Contact Us Within 7 Days</h4>
+            <p>Email <a href="/cdn-cgi/l/email-protection#0d606c7964666c616c4d6a606c6461236e6260" style="color:var(--clay)"><span class="__cf_email__" data-cfemail="422f23362b29232e2302252f232b2e6c212d2f">[email&#160;protected]</span></a> or call +91
+              94585 09527 with your <strong>Order ID</strong>, a brief description of the issue, and the photographs.
+            </p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h4>Approval & Return Label</h4>
+            <p>Our team reviews your request within <strong>2 business days</strong>. If approved, we'll email you a
+              prepaid return shipping label (for eligible cases).</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h4>Pack &amp; Ship</h4>
+            <p>Repack the sculpture securely in its original packaging. Drop it off at the nearest courier pickup point
+              within 3 days of receiving the label.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">05</div>
+          <div class="step-body">
+            <h4>Refund or Replacement</h4>
+            <p>Once we receive and inspect the return, your refund is processed within <strong>3–5 business
+                days</strong>, or a replacement is dispatched.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Refunds -->
+    <div class="pg-section reveal">
+      <h2><i class="fa-solid fa-indian-rupee-sign"></i> Refunds</h2>
+      <div class="pg-table-wrap">
+        <table class="pg-table">
+          <thead>
+            <tr>
+              <th>Refund Method</th>
+              <th>Processing Time</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Original Payment Method (UPI / Card / Net Banking)</td>
+              <td>3–5 business days</td>
+              <td>Bank may take 2–3 additional days to reflect</td>
+            </tr>
+            <tr>
+              <td>Wallet (PhonePe / Paytm / GPay)</td>
+              <td>1–3 business days</td>
+              <td>Credited to the wallet used at checkout</td>
+            </tr>
+            <tr>
+              <td>Matikala Store Credit</td>
+              <td>Within 24 hours</td>
+              <td>Optional — can be used on any future order</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:.78rem;color:var(--tx3);margin-top:.5rem"><i class="fa-solid fa-circle-info"></i> Original
+        shipping fees are non-refundable unless the return is due to our error (wrong item, damaged in transit).</p>
+    </div>
+
+    <!-- Exchanges -->
+    <div class="pg-section reveal">
+      <h2><i class="fa-solid fa-arrow-right-arrow-left"></i> Exchanges</h2>
+      <p>We do not offer direct exchanges at this time. If you'd like a different sculpture, please initiate a return
+        (if eligible) and place a new order. Store credit is available to make this easier.</p>
+      <p>For <strong>custom or commissioned pieces</strong>, please contact us before placing your order if you have
+        specific requirements — we'll do our best to get it right the first time.</p>
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="pg-section reveal"
+      style="text-align:center;background:var(--bg1);border:1px solid var(--border);border-radius:var(--r2);padding:2rem">
+      <div style="font-size:1.5rem;margin-bottom:.6rem">🤝</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:.4rem">Need Help With a Return?
+      </h3>
+      <p
+        style="font-size:.83rem;color:var(--tx2);margin-bottom:1.2rem;max-width:420px;margin-left:auto;margin-right:auto">
+        Our team responds within 4–6 hours on business days. We'll guide you through every step.</p>
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center">
+        <a href="contact.html" class="btn-clay"><i class="fa-solid fa-paper-plane"></i> Contact Us</a>
+        <a href="shipping.html" class="btn-outline"><i class="fa-solid fa-truck"></i> Shipping Policy</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="ft-main">
+      <div class="ft-brand-col">
+        <div class="ft-bl">
+          <img src="../matikala.png" alt="Matikala" onerror="this.style.display='none'" />
+          <div class="ft-bn">MATIKALA</div>
+        </div>
+        <div class="ft-tg">"Quiet Sculpture for Modern Spaces"</div>
+        <p class="ft-desc">Handcrafted clay sculptures founded in 2026 in India. Artisanal craftsmanship, thoughtful
+          design, lasting beauty.</p>
+        <div class="ft-socs">
+          <a href="https://instagram.com/matikala.sculpture" class="ft-soc ft-ig" target="_blank"><i
+              class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="ft-soc ft-fb"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="ft-soc ft-yt"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="ft-soc ft-wa"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" class="ft-soc ft-xx"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-ch">Quick Links</div>
+        <ul class="ft-links">
+          <li><a href="../index.html"><i class="fa-solid fa-chevron-right"></i>Home</a></li>
+          <li><a href="../shop.html"><i class="fa-solid fa-chevron-right"></i>Shop</a></li>
+          <li><a href="about.html"><i class="fa-solid fa-chevron-right"></i>About Us</a></li>
+          <li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i>Contact</a></li>
+          <li><a href="faq.html"><i class="fa-solid fa-chevron-right"></i>FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ch">Customer Service</div>
+        <ul class="ft-links">
+          <li><a href="shipping.html"><i class="fa-solid fa-chevron-right"></i>Shipping Policy</a></li>
+          <li><a href="return-refund.html"><i class="fa-solid fa-chevron-right"></i>Returns &amp; Refunds</a></li>
+          <li><a href="cancellation.html"><i class="fa-solid fa-chevron-right"></i>Cancellation</a></li>
+          <li><a href="care-instructions.html"><i class="fa-solid fa-chevron-right"></i>Care Instructions</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ch">Policies</div>
+        <ul class="ft-links">
+          <li><a href="privacy-policy.html"><i class="fa-solid fa-chevron-right"></i>Privacy Policy</a></li>
+          <li><a href="terms-of-service.html"><i class="fa-solid fa-chevron-right"></i>Terms of Service</a></li>
+          <li><a href="cookies.html"><i class="fa-solid fa-chevron-right"></i>Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ch">Contact</div>
+        <ul class="ft-links">
+          <li><a href="/cdn-cgi/l/email-protection#c6aea3aaaaa986aba7b2afada7aaa7e8a5a9ab"><i
+                class="fa-solid fa-chevron-right"></i><span class="__cf_email__"
+                data-cfemail="056d6069696a456864716c6e6469642b666a68">[email&#160;protected]</span></a></li>
+          <li><a href="tel:+919458509527"><i class="fa-solid fa-chevron-right"></i>+91 94585 09527</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Pan-India Delivery</a></li>
+          <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Mon–Sat · 10am–6pm IST</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot ft-badges-row">
+      <div class="ft-tbadges">
+        <div class="ftb"><i class="fa-solid fa-lock"></i> SSL Secured</div>
+        <div class="ftb"><i class="fa-solid fa-shield-halved"></i> Secure Checkout</div>
+        <div class="ftb"><i class="fa-solid fa-rotate-left"></i> Easy Returns</div>
+        <div class="ftb"><i class="fa-solid fa-award"></i> 100% Handmade</div>
+        <div class="ftb"><i class="fa-solid fa-box"></i> Safe Packaging</div>
+      </div>
+    </div>
+    <div class="ft-bot ft-pay-row">
+      <span class="ft-pay-lbl">We Accept</span>
+      <div class="ft-pay">
+        <span class="pchip">UPI</span>
+        <span class="pchip"><i class="fa-brands fa-cc-visa" style="color:#1A1F71;font-size:.85rem"></i> Visa</span>
+        <span class="pchip"><i class="fa-brands fa-cc-mastercard" style="font-size:.85rem"></i> MC</span>
+        <span class="pchip">PhonePe</span><span class="pchip">GPay</span><span class="pchip">Paytm</span><span
+          class="pchip">Net Banking</span>
+      </div>
+    </div>
+    <div class="ft-copy-row">
+      <span class="ft-copy">© 2026 Matikala. All rights reserved. Handcrafted with love in India.</span>
+      <div class="ft-leg">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </footer><button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    style="position:fixed;bottom:1.5rem;right:1.5rem;width:42px;height:42px;border-radius:50%;background:var(--clay);color:#fff;border:none;cursor:pointer;font-size:.9rem;box-shadow:0 4px 16px rgba(181,98,42,.4);opacity:0;transition:opacity .3s;z-index:800;display:flex;align-items:center;justify-content:center;"><i
+      class="fa-solid fa-arrow-up"></i></button>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
+    const html = document.documentElement;
+    function toggleTheme() {
+      const dark = html.dataset.theme === 'dark';
+      html.dataset.theme = dark ? 'light' : 'dark';
+      ['themeIcon', 'themeIconMob', 'themeIconDr'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+      });
+      localStorage.setItem('mk_theme', html.dataset.theme);
+    }
+    (() => {
+      const t = localStorage.getItem('mk_theme');
+      if (t) { html.dataset.theme = t;['themeIcon', 'themeIconMob', 'themeIconDr'].forEach(id => { const el = document.getElementById(id); if (el) el.className = t === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun' }); }
+    })();
+    function openDr() { document.getElementById('mOv').classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeDr() { document.getElementById('mOv').classList.remove('open'); document.body.style.overflow = ''; }
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const a = q.nextElementSibling;
+        const wasOpen = q.classList.contains('open');
+        document.querySelectorAll('.faq-q.open').forEach(oq => { oq.classList.remove('open'); oq.nextElementSibling.classList.remove('open'); });
+        if (!wasOpen) {
+          q.classList.add('open');
+          a.classList.add('open');
+        }
+      });
+    });
+    // Reveal on scroll
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealElements.forEach(el => observer.observe(el));
+    // Back to top button
+    const btt = document.getElementById('btt');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        btt.style.opacity = '1';
+      } else {
+        btt.style.opacity = '0';
+      }
+    }
+    );
+  </script>
+
+  <nav class="mob-bar">
+    <div class="mob-row">
+      <a href="../index.html" class="mb-btn"><i class="fa-solid fa-house"></i>Home</a>
+      <a href="../shop.html" class="mb-btn"><i class="fa-solid fa-shop"></i>Shop</a>
+      <a href="../account.html" class="mb-btn"><i class="fa-solid fa-user"></i>Account</a>
+      <a href="../wishlist.html" class="mb-btn"><i class="fa-regular fa-heart"></i>Wishlist</a>
+      <a href="../cart.html" class="mb-btn"><span style="position:relative"><i
+            class="fa-solid fa-shopping-bag"></i><span class="mb-badge">3</span></span>Cart</a>
+    </div>
+  </nav>
+  <div class="m-ov" id="mOv" onclick="closeDr()">
+    <div class="m-drawer" onclick="event.stopPropagation()">
+      <div class="mdr-hd">
+        <div class="mdr-brand"><img src="../matikala.png" alt="" onerror="this.style.display='none'" />
+          <div>
+            <div class="mdr-brand-name">MATIKALA</div><span class="mdr-brand-tag">Handcrafted Clay</span>
+          </div>
+        </div>
+        <button class="mdr-close" onclick="closeDr()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <a href="../index.html" class="mdr-link">
+        <div class="mdr-link-l"><span class="mdr-ico mdr-ic1"><i class="fa-solid fa-house"></i></span>Home</div><i
+          class="fa-solid fa-chevron-right arr"></i>
+      </a>
+      <a href="../shop.html" class="mdr-link">
+        <div class="mdr-link-l"><span class="mdr-ico mdr-ic2"><i class="fa-solid fa-shop"></i></span>Shop</div><i
+          class="fa-solid fa-chevron-right arr"></i>
+      </a>
+      <a href="../account.html" class="mdr-link">
+        <div class="mdr-link-l"><span class="mdr-ico mdr-ic3"><i class="fa-solid fa-user"></i></span>My Account</div><i
+          class="fa-solid fa-chevron-right arr"></i>
+      </a>
+      <a href="../order-tracking.html" class="mdr-link">
+        <div class="mdr-link-l"><span class="mdr-ico mdr-ic1"><i class="fa-solid fa-truck"></i></span>Track Order</div>
+        <i class="fa-solid fa-chevron-right arr"></i>
+      </a>
+      <a href="../cart.html" class="mdr-link">
+        <div class="mdr-link-l"><span class="mdr-ico mdr-ic2"><i class="fa-solid fa-shopping-bag"></i></span>Cart</div>
+        <i class="fa-solid fa-chevron-right arr"></i>
+      </a>
+      <div class="mdr-tog">
+        <span class="mdr-tog-lbl"><i class="fa-solid fa-moon"></i> Dark / Light Mode</span>
+        <div class="tog" id="togM" onclick="toggleTheme()">
+          <div class="tog-knob"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

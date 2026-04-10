@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>404 — Page Not Found · MATIKALA</title>
+    <link rel="shortcut icon" href="./matikala.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        :root {
+            --clay: #B5622A;
+            --clay-l: #D07A40;
+            --clay-d: #8C4A1C;
+            --clay-bg: rgba(181, 98, 42, .08);
+            --clay-glow: rgba(181, 98, 42, .22);
+            --gold: #C9A040;
+            --green: #2D7A4A;
+            --red: #C0392B;
+            --bg: #F8F4EF;
+            --bg1: #FFFFFF;
+            --bg2: #F2EDE6;
+            --bg3: #E8E1D8;
+            --tx: #1A1510;
+            --tx2: #5A4E42;
+            --tx3: #9A8E82;
+            --tx4: #C4B9AE;
+            --border: #E2D9CE;
+            --border2: #CFC5B8;
+            --sh: 0 2px 8px rgba(0, 0, 0, .08);
+            --sh2: 0 8px 32px rgba(0, 0, 0, .12);
+            --sh3: 0 20px 60px rgba(0, 0, 0, .18);
+            --nav-h: 60px;
+            --cat-h: 42px;
+            --r: 4px;
+            --r2: 8px;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0C0A08;
+            --bg1: #141210;
+            --bg2: #1C1916;
+            --bg3: #25221E;
+            --tx: #F0E8DE;
+            --tx2: #B0A090;
+            --tx3: #706050;
+            --tx4: #504540;
+            --border: #302D27;
+            --border2: #403C35;
+            --sh: 0 2px 8px rgba(0, 0, 0, .3);
+            --sh2: 0 8px 32px rgba(0, 0, 0, .5);
+            --sh3: 0 20px 60px rgba(0, 0, 0, .7);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 15px
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--tx);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+            transition: background .3s, color .3s;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+            background: none;
+            outline: none
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: cover
+        }
+
+        ul {
+            list-style: none
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg2)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--clay);
+            border-radius: 2px
+        }
+
+        /* ══ NAVBAR ══ */
+        .ham-btn {
+            display: none !important
+        }
+
+        .mob-glob-btn {
+            display: none !important
+        }
+
+        #topnav {
+            background: var(--clay);
+            height: var(--nav-h);
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .2)
+        }
+
+        .tn-wrap {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            height: 100%;
+            padding: 0 1.2rem;
+            max-width: 1600px;
+            margin: 0 auto
+        }
+
+        .tn-logo {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            flex-shrink: 0
+        }
+
+        .tn-logo-img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain
+        }
+
+        .tn-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            color: #fff;
+            white-space: nowrap;
+            line-height: 1
+        }
+
+        .tn-brand small {
+            display: block;
+            font-size: .5rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 400;
+            opacity: .65;
+            margin-top: .1rem
+        }
+
+        .tn-search {
+            flex: 1;
+            max-width: 740px;
+            display: flex;
+            border-radius: var(--r2);
+            overflow: hidden;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, .25);
+            transition: box-shadow .2s
+        }
+
+        .tn-search:focus-within {
+            box-shadow: 0 0 0 3px #fff
+        }
+
+        .tn-sc {
+            background: #E8E1D8;
+            border: none;
+            padding: 0 .75rem;
+            font-size: .7rem;
+            font-weight: 500;
+            color: var(--tx2);
+            border-right: 1px solid var(--border2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+            flex-shrink: 0;
+            white-space: nowrap
+        }
+
+        .tn-si {
+            flex: 1;
+            background: #fff;
+            border: none;
+            padding: .6rem .95rem;
+            font-size: .88rem;
+            color: #1A1510;
+            min-width: 0
+        }
+
+        .tn-si::placeholder {
+            color: #9A8E82
+        }
+
+        .tn-sb {
+            background: var(--clay-l);
+            border: none;
+            padding: 0 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background .15s
+        }
+
+        .tn-sb:hover {
+            background: var(--clay-d)
+        }
+
+        .tn-sb i {
+            color: #fff;
+            font-size: .95rem
+        }
+
+        .tn-right {
+            display: flex;
+            align-items: center;
+            gap: .15rem;
+            margin-left: auto;
+            flex-shrink: 0
+        }
+
+        .tnb {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            padding: .25rem .6rem;
+            border-radius: var(--r);
+            cursor: pointer;
+            font-size: .68rem;
+            line-height: 1.3;
+            white-space: nowrap;
+            position: relative;
+            transition: background .15s;
+            border: 1px solid transparent;
+            min-width: 46px
+        }
+
+        .tnb:hover {
+            background: rgba(255, 255, 255, .14);
+            border-color: rgba(255, 255, 255, .22)
+        }
+
+        .tnb strong {
+            font-size: .76rem;
+            font-weight: 600
+        }
+
+        .tnb .tbg {
+            position: absolute;
+            top: 2px;
+            right: 5px;
+            background: #FFA41C;
+            color: #111;
+            border-radius: 50%;
+            width: 17px;
+            height: 17px;
+            font-size: .58rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .tn-div {
+            width: 1px;
+            height: 30px;
+            background: rgba(255, 255, 255, .22);
+            flex-shrink: 0;
+            margin: 0 .15rem
+        }
+
+        .tn-lang {
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+            color: #fff;
+            padding: .28rem .6rem;
+            border-radius: var(--r);
+            cursor: pointer;
+            font-size: .76rem;
+            font-weight: 500;
+            border: 1px solid transparent;
+            transition: background .15s
+        }
+
+        .tn-lang:hover {
+            background: rgba(255, 255, 255, .14)
+        }
+
+        .tn-theme {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .18);
+            color: #fff;
+            font-size: .82rem;
+            transition: all .2s;
+            flex-shrink: 0
+        }
+
+        .tn-theme:hover {
+            background: rgba(255, 255, 255, .22)
+        }
+
+        .dp {
+            position: relative
+        }
+
+        .dp-menu {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            background: var(--bg1);
+            border: 1px solid var(--border);
+            border-radius: var(--r2);
+            min-width: 200px;
+            box-shadow: var(--sh3);
+            z-index: 999;
+            overflow: hidden;
+            display: none
+        }
+
+        .dp-menu.open {
+            display: block
+        }
+
+        .dp-hd {
+            font-size: .58rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--clay);
+            padding: .7rem 1rem;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .dpi {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            padding: .68rem 1rem;
+            font-size: .83rem;
+            color: var(--tx2);
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: all .15s
+        }
+
+        .dpi:last-child {
+            border-bottom: none
+        }
+
+        .dpi:hover {
+            background: var(--clay-bg);
+            color: var(--clay);
+            padding-left: 1.3rem
+        }
+
+        .dpi i {
+            font-size: .82rem;
+            color: var(--clay);
+            opacity: .55;
+            width: 15px;
+            text-align: center
+        }
+
+        .dpi.cta {
+            background: var(--clay);
+            color: #fff;
+            font-weight: 600
+        }
+
+        .dpi.cta:hover {
+            background: var(--clay-d);
+            color: #fff;
+            padding-left: 1rem
+        }
+
+        .dpi.cta i {
+            color: #fff;
+            opacity: 1
+        }
+
+        /* ══ 404 HERO ══ */
+        .nf-hero {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated background blobs */
+        .nf-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            animation: blobFloat 8s ease-in-out infinite;
+        }
+
+        .nf-blob-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(181, 98, 42, .18) 0%, transparent 70%);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .nf-blob-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(140, 74, 28, .12) 0%, transparent 70%);
+            bottom: -80px;
+            right: -80px;
+            animation-delay: -3s;
+        }
+
+        .nf-blob-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(201, 160, 64, .1) 0%, transparent 70%);
+            top: 40%;
+            left: 40%;
+            animation-delay: -5s;
+        }
+
+        @keyframes blobFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1)
+            }
+
+            33% {
+                transform: translate(20px, -20px) scale(1.05)
+            }
+
+            66% {
+                transform: translate(-15px, 15px) scale(.96)
+            }
+        }
+
+        .nf-inner {
+            max-width: 760px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* The big 404 */
+        .nf-number {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .nf-404 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(7rem, 20vw, 14rem);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -.02em;
+            background: linear-gradient(135deg, var(--clay-d) 0%, var(--clay) 40%, var(--clay-l) 70%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 4px 24px rgba(181, 98, 42, .25));
+            animation: fadeDown .8s ease both;
+            user-select: none;
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .nf-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .45rem;
+            background: var(--clay-bg);
+            border: 1.5px solid rgba(181, 98, 42, .3);
+            color: var(--clay);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: .32rem .9rem;
+            border-radius: 20px;
+            margin-bottom: 1.1rem;
+            animation: fadeUp .7s .2s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .nf-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-weight: 700;
+            color: var(--tx);
+            margin-bottom: .65rem;
+            line-height: 1.2;
+            animation: fadeUp .7s .35s ease both;
+        }
+
+        .nf-title em {
+            color: var(--clay);
+            font-style: normal;
+        }
+
+        .nf-sub {
+            font-size: .9rem;
+            color: var(--tx3);
+            max-width: 460px;
+            margin: 0 auto 2rem;
+            line-height: 1.75;
+            animation: fadeUp .7s .45s ease both;
+        }
+
+        /* CTA buttons */
+        .nf-btns {
+            display: flex;
+            gap: .85rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            animation: fadeUp .7s .55s ease both;
+        }
+
+        .nf-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            background: linear-gradient(135deg, var(--clay-d), var(--clay-l));
+            color: #fff;
+            padding: .85rem 2rem;
+            border-radius: 12px;
+            font-size: .88rem;
+            font-weight: 700;
+            letter-spacing: .03em;
+            cursor: pointer;
+            border: none;
+            transition: all .25s;
+            box-shadow: 0 4px 20px rgba(181, 98, 42, .35);
+        }
+
+        .nf-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(181, 98, 42, .45);
+        }
+
+        .nf-btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            background: transparent;
+            border: 2px solid var(--clay);
+            color: var(--clay);
+            padding: .82rem 2rem;
+            border-radius: 12px;
+            font-size: .88rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all .25s;
+        }
+
+        .nf-btn-outline:hover {
+            background: var(--clay-bg);
+            transform: translateY(-3px);
+        }
+
+        .nf-btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: var(--bg1);
+            border: 1.5px solid var(--border2);
+            color: var(--tx2);
+            padding: .82rem 1.5rem;
+            border-radius: 12px;
+            font-size: .85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .22s;
+        }
+
+        .nf-btn-ghost:hover {
+            border-color: var(--clay);
+            color: var(--clay);
+            background: var(--clay-bg);
+        }
+
+        /* Quick links */
+        .nf-links {
+            display: flex;
+            gap: .55rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            animation: fadeUp .7s .65s ease both;
+        }
+
+        .nf-link-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .4rem 1rem;
+            border-radius: 20px;
+            border: 1.5px solid var(--border2);
+            font-size: .75rem;
+            font-weight: 600;
+            color: var(--tx2);
+            cursor: pointer;
+            transition: all .18s;
+            background: var(--bg1);
+        }
+
+        .nf-link-pill:hover {
+            border-color: var(--clay);
+            color: var(--clay);
+            background: var(--clay-bg);
+            transform: translateY(-2px);
+        }
+
+        .nf-link-pill i {
+            font-size: .72rem;
+        }
+
+        /* Search bar on 404 */
+        .nf-search {
+            display: flex;
+            max-width: 420px;
+            margin: 0 auto 2.5rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--sh2);
+            border: 1.5px solid var(--border2);
+            transition: border-color .2s, box-shadow .2s;
+            animation: fadeUp .7s .75s ease both;
+        }
+
+        .nf-search:focus-within {
+            border-color: var(--clay);
+            box-shadow: 0 0 0 3px var(--clay-bg);
+        }
+
+        .nf-search input {
+            flex: 1;
+            background: var(--bg1);
+            border: none;
+            padding: .75rem 1rem;
+            font-size: .88rem;
+            color: var(--tx);
+            font-family: inherit;
+        }
+
+        .nf-search input::placeholder {
+            color: var(--tx3);
+        }
+
+        .nf-search button {
+            background: var(--clay);
+            color: #fff;
+            border: none;
+            padding: 0 1.1rem;
+            font-size: .9rem;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .nf-search button:hover {
+            background: var(--clay-d);
+        }
+
+        /* Suggested products */
+        .nf-products {
+            animation: fadeUp .7s .85s ease both;
+        }
+
+        .nf-products-title {
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--tx3);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+        }
+
+        .nf-products-title::before,
+        .nf-products-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .nf-prod-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: .75rem;
+        }
+
+        .nf-prod-card {
+            background: var(--bg1);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all .22s;
+            text-align: left;
+        }
+
+        .nf-prod-card:hover {
+            box-shadow: var(--sh2);
+            transform: translateY(-3px);
+        }
+
+        .nf-prod-img {
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background: var(--bg2);
+        }
+
+        .nf-prod-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .4s;
+        }
+
+        .nf-prod-card:hover .nf-prod-img img {
+            transform: scale(1.07);
+        }
+
+        .nf-prod-body {
+            padding: .65rem .75rem;
+        }
+
+        .nf-prod-cat {
+            font-size: .56rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--clay);
+            margin-bottom: .15rem;
+        }
+
+        .nf-prod-name {
+            font-family: 'Playfair Display', serif;
+            font-size: .82rem;
+            color: var(--tx);
+            line-height: 1.25;
+            margin-bottom: .22rem;
+        }
+
+        .nf-prod-price {
+            font-size: .82rem;
+            font-weight: 700;
+            color: var(--tx);
+        }
+
+        /* ══ FOOTER ══ */
+        footer {
+            background: var(--bg1);
+            border-top: 1px solid var(--border);
+            margin-top: auto
+        }
+
+        .ft-main {
+            display: grid;
+            grid-template-columns: 1.55fr 1fr 1fr 1fr 1fr;
+            gap: 1.8rem;
+            padding: 2.25rem 1.2rem 1.75rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .ft-bl {
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+            margin-bottom: .55rem
+        }
+
+        .ft-bl img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain
+        }
+
+        .ft-bn {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: .07em;
+            color: var(--tx)
+        }
+
+        .ft-bn em {
+            color: var(--clay);
+            font-style: normal
+        }
+
+        .ft-tg {
+            font-size: .7rem;
+            font-style: italic;
+            color: var(--tx3);
+            margin-bottom: .8rem
+        }
+
+        .ft-desc {
+            font-size: .76rem;
+            color: var(--tx2);
+            line-height: 1.85;
+            margin-bottom: 1rem;
+            max-width: 260px
+        }
+
+        .ft-socs {
+            display: flex;
+            gap: .42rem
+        }
+
+        .ft-soc {
+            width: 34px;
+            height: 34px;
+            border-radius: var(--r);
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--tx2);
+            font-size: .85rem;
+            transition: all .2s
+        }
+
+        .ft-ig:hover {
+            background: #E1306C;
+            border-color: #E1306C;
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .ft-fb:hover {
+            background: #1877F2;
+            border-color: #1877F2;
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .ft-yt:hover {
+            background: #FF0000;
+            border-color: #FF0000;
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .ft-wa:hover {
+            background: #25D366;
+            border-color: #25D366;
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .ft-xx:hover {
+            background: #000;
+            border-color: #000;
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .ft-ch {
+            font-size: .6rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--clay);
+            margin-bottom: .8rem
+        }
+
+        .ft-links li {
+            margin-bottom: .47rem
+        }
+
+        .ft-links a {
+            font-size: .78rem;
+            color: var(--tx2);
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            transition: color .15s
+        }
+
+        .ft-links a:hover {
+            color: var(--clay)
+        }
+
+        .ft-links a i {
+            font-size: .62rem;
+            color: var(--tx4)
+        }
+
+        .ft-links a:hover i {
+            color: var(--clay)
+        }
+
+        .ft-copy-row {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: .75rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: .5rem;
+            border-top: 1px solid var(--border)
+        }
+
+        .ft-copy {
+            font-size: .68rem;
+            color: var(--tx3)
+        }
+
+        .ft-leg {
+            display: flex;
+            gap: 1.2rem
+        }
+
+        .ft-leg a {
+            font-size: .68rem;
+            color: var(--tx3);
+            transition: color .15s
+        }
+
+        .ft-leg a:hover {
+            color: var(--clay)
+        }
+
+        /* ══ MOBILE BOTTOM NAV ══ */
+        .mob-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 900;
+            background: var(--bg1);
+            border-top: 1px solid var(--border);
+            padding: .5rem 0 calc(.5rem + env(safe-area-inset-bottom))
+        }
+
+        .mob-row {
+            display: flex;
+            justify-content: space-around
+        }
+
+        .mb-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .14rem;
+            color: var(--tx3);
+            font-size: .54rem;
+            font-weight: 500;
+            padding: .22rem .65rem;
+            border-radius: var(--r);
+            transition: color .15s;
+            position: relative
+        }
+
+        .mb-btn i {
+            font-size: 1.1rem
+        }
+
+        .mb-btn.on,
+        .mb-btn:hover {
+            color: var(--clay)
+        }
+
+        .mb-badge {
+            position: absolute;
+            top: 0;
+            right: 4px;
+            background: var(--clay);
+            color: #fff;
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+            font-size: .46rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        /* ══ MOBILE DRAWER ══ */
+        .m-ov {
+            position: fixed;
+            inset: 0;
+            z-index: 960;
+            background: rgba(0, 0, 0, .52);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s
+        }
+
+        .m-ov.open {
+            opacity: 1;
+            pointer-events: all
+        }
+
+        .m-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: min(88vw, 310px);
+            background: var(--bg1);
+            z-index: 970;
+            transform: translateX(-100%);
+            transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            border-right: 1px solid var(--border)
+        }
+
+        .m-ov.open .m-drawer {
+            transform: none
+        }
+
+        .mdr-hd {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .9rem 1.1rem;
+            background: linear-gradient(135deg, var(--clay-d) 0%, var(--clay) 55%, var(--clay-l) 100%);
+            position: sticky;
+            top: 0;
+            z-index: 2
+        }
+
+        .mdr-brand {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            color: #fff
+        }
+
+        .mdr-brand img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .2);
+            padding: 3px
+        }
+
+        .mdr-brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: .07em
+        }
+
+        .mdr-brand-tag {
+            display: block;
+            font-size: .48rem;
+            opacity: .75;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            font-family: 'DM Sans', sans-serif;
+            margin-top: .05rem
+        }
+
+        .mdr-close {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .18);
+            border: 1px solid rgba(255, 255, 255, .3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: .88rem
+        }
+
+        .mdr-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .68rem 1.05rem;
+            font-size: .84rem;
+            color: var(--tx2);
+            border-bottom: 1px solid var(--border);
+            transition: all .15s
+        }
+
+        .mdr-link-l {
+            display: flex;
+            align-items: center;
+            gap: .65rem
+        }
+
+        .mdr-link .arr {
+            font-size: .6rem;
+            color: var(--tx4)
+        }
+
+        .mdr-link:hover {
+            background: var(--bg2);
+            color: var(--clay)
+        }
+
+        .mdr-ico {
+            width: 28px;
+            height: 28px;
+            border-radius: var(--r);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            flex-shrink: 0
+        }
+
+        .mdr-ic1 {
+            background: #FFF0E6;
+            color: #B5622A
+        }
+
+        .mdr-ic2 {
+            background: #E8F4FB;
+            color: #2980B9
+        }
+
+        .mdr-ic3 {
+            background: #EAF7ED;
+            color: #27AE60
+        }
+
+        .mdr-tog {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .9rem 1.05rem;
+            border-top: 1px solid var(--border);
+            margin-top: auto
+        }
+
+        .mdr-tog-lbl {
+            font-size: .8rem;
+            color: var(--tx2);
+            display: flex;
+            align-items: center;
+            gap: .5rem
+        }
+
+        .mdr-tog-lbl i {
+            color: var(--clay)
+        }
+
+        .tog {
+            width: 42px;
+            height: 22px;
+            background: var(--bg3);
+            border: 1px solid var(--border2);
+            border-radius: 11px;
+            position: relative;
+            cursor: pointer;
+            transition: all .3s
+        }
+
+        .tog.on {
+            background: var(--clay);
+            border-color: var(--clay)
+        }
+
+        .tog-knob {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 14px;
+            height: 14px;
+            background: var(--bg1);
+            border-radius: 50%;
+            transition: all .3s;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .2)
+        }
+
+        .tog.on .tog-knob {
+            left: 23px
+        }
+
+        /* ══ TOAST ══ */
+        .toast {
+            position: fixed;
+            bottom: 5.5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(16px);
+            z-index: 1100;
+            background: var(--tx);
+            color: var(--bg);
+            border-radius: var(--r2);
+            padding: .65rem 1.2rem;
+            font-size: .78rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            opacity: 0;
+            transition: all .3s;
+            pointer-events: none;
+            white-space: nowrap;
+            box-shadow: var(--sh2)
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0)
+        }
+
+        .toast i {
+            color: var(--clay-l)
+        }
+
+        /* ══ RESPONSIVE ══ */
+        @media(max-width:768px) {
+            :root {
+                --nav-h: 52px
+            }
+
+            body {
+                padding-bottom: 68px
+            }
+
+            .mob-bar {
+                display: block
+            }
+
+            .tn-div,
+            .tn-lang,
+            .tn-theme {
+                display: none !important
+            }
+
+            .tn-right .tnb:not(#hamBtn):not(.mob-glob-btn) {
+                display: none !important
+            }
+
+            .tn-right .dp:not(#mobGlobDp) {
+                display: none !important
+            }
+
+            .tn-sc {
+                display: none
+            }
+
+            .tn-wrap {
+                padding: 0 .75rem;
+                gap: .5rem
+            }
+
+            .ham-btn {
+                display: flex !important
+            }
+
+            .mob-glob-btn {
+                display: flex !important;
+                position: relative
+            }
+
+            #navCart {
+                display: none !important
+            }
+
+            .nf-prod-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .nf-btns {
+                gap: .6rem
+            }
+
+            .nf-btn-primary,
+            .nf-btn-outline,
+            .nf-btn-ghost {
+                padding: .75rem 1.4rem;
+                font-size: .82rem
+            }
+
+            .ft-main {
+                grid-template-columns: 1fr 1fr;
+                padding: 1.5rem .85rem 1rem
+            }
+
+            .ft-brand-col {
+                grid-column: 1/-1;
+                text-align: center
+            }
+
+            .ft-brand-col .ft-bl {
+                justify-content: center
+            }
+
+            .ft-brand-col .ft-socs {
+                justify-content: center
+            }
+
+            .ft-copy-row {
+                flex-direction: column;
+                align-items: center;
+                text-align: center
+            }
+        }
+
+        @media(max-width:480px) {
+            :root {
+                --nav-h: 48px
+            }
+
+            .tn-brand small {
+                display: none
+            }
+
+            .nf-prod-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: .55rem
+            }
+
+            .nf-links {
+                gap: .4rem
+            }
+
+            .nf-link-pill {
+                font-size: .68rem;
+                padding: .35rem .8rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══ NAVBAR ══ -->
+    <nav id="topnav">
+        <div class="tn-wrap">
+            <a href="index.html" class="tn-logo">
+                <img class="tn-logo-img" src="matikala.png" alt="Matikala" onerror="this.style.display='none'" />
+                <div class="tn-brand">MATIKALA<small>Quiet Sculpture for Modern Spaces</small></div>
+            </a>
+            <div class="tn-div"></div>
+            <div class="tn-search">
+                <button class="tn-sc" onclick="window.location='shop.html'">All <i class="fa-solid fa-chevron-down"
+                        style="font-size:.55rem"></i></button>
+                <input class="tn-si" type="text" id="si" placeholder="Search for sculptures, clay art, home décor…"
+                    onkeydown="if(event.key==='Enter')window.location='shop.html?q='+encodeURIComponent(this.value)" />
+                <button class="tn-sb"
+                    onclick="window.location='shop.html?q='+encodeURIComponent(document.getElementById('si').value)"><i
+                        class="fa-solid fa-search"></i></button>
+            </div>
+            <div class="tn-div"></div>
+            <div class="tn-right">
+                <div class="dp">
+                    <div class="tn-lang" onclick="toggleDrop('langDrop')">
+                        <i class="fa-solid fa-globe" style="font-size:.82rem"></i>
+                        <span id="curLang">EN</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size:.52rem;opacity:.7"></i>
+                    </div>
+                    <div class="dp-menu" id="langDrop">
+                        <div class="dp-hd">Select Language</div>
+                        <div class="dp-li on" onclick="setLang('EN',this)">English <span class="code">EN</span></div>
+                        <div class="dp-li" onclick="setLang('HI',this)">हिन्दी <span class="code">HI</span></div>
+                        <div class="dp-li" onclick="setLang('TA',this)">தமிழ் <span class="code">TA</span></div>
+                        <div class="dp-li" onclick="setLang('TE',this)">తెలుగు <span class="code">TE</span></div>
+                    </div>
+                </div>
+                <div class="dp">
+                    <div class="tnb" onclick="toggleDrop('acctDrop')">
+                        <i class="fa-solid fa-user" style="font-size:.95rem"></i><strong>Account</strong>
+                    </div>
+                    <div class="dp-menu" id="acctDrop">
+                        <div class="dp-hd">My Account</div>
+                        <div class="dpi cta" onclick="window.location='account.html'"><i
+                                class="fa-solid fa-user-plus"></i>Sign Up</div>
+                        <div class="dpi" onclick="window.location='account.html'"><i
+                                class="fa-solid fa-sign-in-alt"></i>Login</div>
+                    </div>
+                </div>
+                <div class="tnb" onclick="window.location='wishlist.html'">
+                    <span style="position:relative"><i class="fa-regular fa-heart" style="font-size:.95rem"></i><span
+                            class="tbg">4</span></span><strong>Wishlist</strong>
+                </div>
+                <div class="tnb" id="navCart" onclick="window.location='cart.html'">
+                    <span style="position:relative"><i class="fa-solid fa-shopping-bag"
+                            style="font-size:.95rem"></i><span class="tbg">3</span></span><strong>Cart</strong>
+                </div>
+                <div class="tnb mob-glob-btn dp" id="mobGlobDp" onclick="toggleDrop('mobLangDrop')">
+                    <i class="fa-solid fa-globe" style="font-size:1rem"></i><strong id="mobLangLbl">EN</strong>
+                    <div class="dp-menu" id="mobLangDrop" style="right:0;min-width:168px;top:calc(100% + 6px)">
+                        <div class="dp-hd">Language</div>
+                        <div class="dp-li on"
+                            onclick="setLang('EN',this);document.getElementById('mobLangLbl').textContent='EN';event.stopPropagation()">
+                            English <span class="code">EN</span></div>
+                        <div class="dp-li"
+                            onclick="setLang('HI',this);document.getElementById('mobLangLbl').textContent='HI';event.stopPropagation()">
+                            हिन्दी <span class="code">HI</span></div>
+                    </div>
+                </div>
+                <button class="tn-theme" onclick="toggleTheme()"><i class="fa-solid fa-sun" id="themeIcon"></i></button>
+                <button class="tnb ham-btn" id="hamBtn" onclick="openDr()"><i class="fa-solid fa-bars"
+                        style="font-size:1.05rem"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ══ 404 CONTENT ══ -->
+    <div class="nf-hero">
+        <div class="nf-blob nf-blob-1"></div>
+        <div class="nf-blob nf-blob-2"></div>
+        <div class="nf-blob nf-blob-3"></div>
+
+        <div class="nf-inner">
+            <!-- Big 404 with sculpture icon floating in the middle -->
+            <div class="nf-number">
+                <div class="nf-404">404</div>
+            </div>
+
+            <div class="nf-badge"><i class="fa-solid fa-triangle-exclamation"></i> Page Not Found</div>
+
+            <h1 class="nf-title">This sculpture has <em>wandered off</em></h1>
+            <p class="nf-sub">The page you're looking for has been moved, removed, or never existed. But our collection
+                of handcrafted clay art is just a click away.</p>
+
+            <!-- Search -->
+            <div class="nf-search">
+                <input type="text" id="nfSearch" placeholder="Search our collection…"
+                    onkeydown="if(event.key==='Enter')doNfSearch()" />
+                <button onclick="doNfSearch()"><i class="fa-solid fa-search"></i></button>
+            </div>
+
+            <!-- CTA buttons -->
+            <div class="nf-btns">
+                <button class="nf-btn-primary" onclick="window.location='index.html'">
+                    <i class="fa-solid fa-house"></i> Back to Home
+                </button>
+                <button class="nf-btn-outline" onclick="window.location='shop.html'">
+                    <i class="fa-solid fa-shop"></i> Browse Collection
+                </button>
+                <button class="nf-btn-ghost" onclick="history.back()">
+                    <i class="fa-solid fa-arrow-left"></i> Go Back
+                </button>
+            </div>
+
+            <!-- Quick nav pills -->
+            <div class="nf-links">
+                <a href="shop.html?cat=Figurative+Totems" class="nf-link-pill"><i class="fa-solid fa-chess-rook"></i>
+                    Clay Sculptures</a>
+                <a href="shop.html?cat=Textured+Vessels" class="nf-link-pill"><i class="fa-solid fa-wine-bottle"></i>
+                    Vessels</a>
+                <a href="shop.html?cat=Home+Décor" class="nf-link-pill"><i class="fa-solid fa-home"></i> Home Décor</a>
+                <a href="shop.html?cat=Gift+Sets" class="nf-link-pill"><i class="fa-solid fa-gift"></i> Gift Sets</a>
+                <a href="shop.html?badge=sale" class="nf-link-pill"
+                    style="color:var(--red);border-color:rgba(192,57,43,.3)"><i class="fa-solid fa-fire"></i> Today's
+                    Deals</a>
+                <a href="order-tracking.html" class="nf-link-pill"><i class="fa-solid fa-truck"></i> Track Order</a>
+                <a href="account.html" class="nf-link-pill"><i class="fa-solid fa-user"></i> My Account</a>
+                <a href="cart.html" class="nf-link-pill"><i class="fa-solid fa-shopping-bag"></i> Cart</a>
+            </div>
+
+            <!-- Suggested products -->
+            <div class="nf-products">
+                <div class="nf-products-title">You might love these</div>
+                <div class="nf-prod-grid" id="suggestedGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+        <div class="ft-main">
+            <div class="ft-brand-col">
+                <div class="ft-bl"><img src="matikala.png" alt="Matikala" onerror="this.style.display='none'" />
+                    <div class="ft-bn">MATI<em>K</em>ALA</div>
+                </div>
+                <div class="ft-tg">"Quiet Sculpture for Modern Spaces"</div>
+                <p class="ft-desc">Handcrafted clay sculptures founded in 2026 in India. Artisanal craftsmanship,
+                    thoughtful design, lasting beauty.</p>
+                <div class="ft-socs">
+                    <a href="https://instagram.com/matikala.sculpture" class="ft-soc ft-ig" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="ft-soc ft-fb"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="ft-soc ft-yt"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="ft-soc ft-wa"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="ft-soc ft-xx"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div>
+                <div class="ft-ch">Quick Links</div>
+                <ul class="ft-links">
+                    <li><a href="index.html"><i class="fa-solid fa-chevron-right"></i>Home</a></li>
+                    <li><a href="shop.html"><i class="fa-solid fa-chevron-right"></i>All Collections</a></li>
+                    <li><a href="shop.html?sort=newest"><i class="fa-solid fa-chevron-right"></i>New Arrivals</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="ft-ch">Customer Service</div>
+                <ul class="ft-links">
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Shipping Policy</a></li>
+                    <li><a href="order-tracking.html"><i class="fa-solid fa-chevron-right"></i>Track Order</a></li>
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i>FAQ</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="ft-ch">Policies</div>
+                <ul class="ft-links">
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Privacy Policy</a></li>
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Terms of Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="ft-ch">Contact</div>
+                <ul class="ft-links">
+                    <li><a href="mailto:hello@matikala.in"><i
+                                class="fa-solid fa-chevron-right"></i>hello@matikala.in</a></li>
+                    <li><a href="tel:+919458509527"><i class="fa-solid fa-chevron-right"></i>+91 94585 09527</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="ft-copy-row"><span class="ft-copy">© 2026 Matikala. All rights reserved. Handcrafted with love in
+                India.</span>
+            <div class="ft-leg"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+        </div>
+    </footer>
+
+    <!-- ══ MOBILE BOTTOM NAV ══ -->
+    <nav class="mob-bar">
+        <div class="mob-row">
+            <a href="index.html" class="mb-btn on"><i class="fa-solid fa-house"></i>Home</a>
+            <a href="shop.html" class="mb-btn"><i class="fa-solid fa-shop"></i>Shop</a>
+            <a href="account.html" class="mb-btn"><i class="fa-solid fa-user"></i>Account</a>
+            <a href="wishlist.html" class="mb-btn"><i class="fa-regular fa-heart"></i>Wishlist</a>
+            <a href="cart.html" class="mb-btn"><span style="position:relative"><i
+                        class="fa-solid fa-shopping-bag"></i><span class="mb-badge">3</span></span>Cart</a>
+        </div>
+    </nav>
+
+    <!-- ══ MOBILE DRAWER ══ -->
+    <div class="m-ov" id="mOv" onclick="closeDr()">
+        <div class="m-drawer" onclick="event.stopPropagation()">
+            <div class="mdr-hd">
+                <div class="mdr-brand"><img src="matikala.png" alt="" onerror="this.style.display='none'" />
+                    <div>
+                        <div class="mdr-brand-name">MATIKALA</div><span class="mdr-brand-tag">Handcrafted Clay</span>
+                    </div>
+                </div>
+                <button class="mdr-close" onclick="closeDr()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <a href="index.html" class="mdr-link">
+                <div class="mdr-link-l"><span class="mdr-ico mdr-ic1"><i class="fa-solid fa-house"></i></span>Home</div>
+                <i class="fa-solid fa-chevron-right arr"></i>
+            </a>
+            <a href="shop.html" class="mdr-link">
+                <div class="mdr-link-l"><span class="mdr-ico mdr-ic2"><i class="fa-solid fa-shop"></i></span>Shop</div>
+                <i class="fa-solid fa-chevron-right arr"></i>
+            </a>
+            <a href="account.html" class="mdr-link">
+                <div class="mdr-link-l"><span class="mdr-ico mdr-ic3"><i class="fa-solid fa-user"></i></span>My Account
+                </div><i class="fa-solid fa-chevron-right arr"></i>
+            </a>
+            <a href="cart.html" class="mdr-link">
+                <div class="mdr-link-l"><span class="mdr-ico mdr-ic2"><i
+                            class="fa-solid fa-shopping-bag"></i></span>Cart</div><i
+                    class="fa-solid fa-chevron-right arr"></i>
+            </a>
+            <div class="mdr-tog">
+                <span class="mdr-tog-lbl"><i class="fa-solid fa-moon"></i> Dark / Light Mode</span>
+                <div class="tog" id="togM" onclick="toggleTheme()">
+                    <div class="tog-knob"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMsg">Done!</span></div>
+
+    <script>
+        /* ══ SUGGESTED PRODUCTS ══ */
+        const SUGGESTED = [
+            { name: 'Twin Spirit Vessel', cat: 'Figurative Totems', price: '₹4,800', img: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&q=80' },
+            { name: 'Orbit Sculpture Series', cat: 'Abstract Forms', price: '₹8,400', img: 'https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?w=400&q=80' },
+            { name: 'Dragon Spirit Trio', cat: 'Figurative Totems', price: '₹11,500', img: 'https://images.unsplash.com/photo-1608501078713-8e445a709b39?w=400&q=80' },
+            { name: 'Cracked Vessel Duo', cat: 'Textured Vessels', price: '₹5,200', img: 'https://images.unsplash.com/photo-1577083552431-6e5fd01988ec?w=400&q=80' },
+        ];
+        document.getElementById('suggestedGrid').innerHTML = SUGGESTED.map(p => `
+        <div class="nf-prod-card" onclick="window.location='product.html'">
+            <div class="nf-prod-img"><img src="${p.img}" alt="${p.name}" loading="lazy" /></div>
+            <div class="nf-prod-body">
+                <div class="nf-prod-cat">${p.cat}</div>
+                <div class="nf-prod-name">${p.name}</div>
+                <div class="nf-prod-price">${p.price}</div>
+            </div>
+        </div>`).join('');
+
+        function doNfSearch() {
+            const q = document.getElementById('nfSearch').value.trim();
+            if (q) window.location = 'shop.html?q=' + encodeURIComponent(q);
+            else window.location = 'shop.html';
+        }
+
+        /* ══ NAV UTILS ══ */
+        function toggleDrop(id) {
+            const m = document.getElementById(id);
+            const was = m.classList.contains('open');
+            document.querySelectorAll('.dp-menu.open').forEach(x => x.classList.remove('open'));
+            if (!was) m.classList.add('open');
+        }
+        document.addEventListener('click', e => { if (!e.target.closest('.dp')) document.querySelectorAll('.dp-menu.open').forEach(m => m.classList.remove('open')); });
+        function openDr() { document.getElementById('mOv').classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function closeDr() { document.getElementById('mOv').classList.remove('open'); document.body.style.overflow = ''; }
+        function setLang(code, el) { document.getElementById('curLang').textContent = code; document.querySelectorAll('.dp-li').forEach(i => i.classList.remove('on')); if (el) el.classList.add('on'); document.querySelectorAll('.dp-menu.open').forEach(m => m.classList.remove('open')); }
+        function toggleTheme() {
+            const dark = document.documentElement.dataset.theme === 'dark';
+            document.documentElement.dataset.theme = dark ? 'light' : 'dark';
+            document.getElementById('themeIcon').className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            const t = document.getElementById('togM'); if (t) t.classList.toggle('on', !dark);
+            localStorage.setItem('mk_theme', document.documentElement.dataset.theme);
+        }
+        (() => { const t = localStorage.getItem('mk_theme'); if (t) { document.documentElement.dataset.theme = t; const ic = document.getElementById('themeIcon'); if (ic) ic.className = t === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun'; const tm = document.getElementById('togM'); if (tm && t === 'dark') tm.classList.add('on'); } })();
+
+        let toastTimer;
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            t.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+        }
+    </script>
+</body>
+
+</html>

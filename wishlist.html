@@ -1,0 +1,3531 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>My Wishlist — MATIKALA · Handcrafted Clay</title>
+    <link rel="shortcut icon" href="./matikala.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* ══ DESIGN TOKENS ══ */
+        :root {
+            --clay: #B5622A;
+            --clay-l: #D07A40;
+            --clay-d: #8C4A1C;
+            --clay-bg: rgba(181, 98, 42, .08);
+            --clay-glow: rgba(181, 98, 42, .18);
+            --gold: #C9A040;
+            --bg: #F8F4EF;
+            --bg1: #FFFFFF;
+            --bg2: #F2EDE6;
+            --bg3: #E8E1D8;
+            --bg4: #DDD5C8;
+            --tx: #1A1510;
+            --tx2: #5A4E42;
+            --tx3: #9A8E82;
+            --tx4: #C4B9AE;
+            --border: #E2D9CE;
+            --border2: #CFC5B8;
+            --sh: 0 2px 8px rgba(0, 0, 0, .08);
+            --sh2: 0 8px 32px rgba(0, 0, 0, .12);
+            --sh3: 0 20px 60px rgba(0, 0, 0, .18);
+            --nav-h: 60px;
+            --cat-h: 42px;
+            --r: 4px;
+            --r2: 8px;
+            --green: #2D7A4A;
+            --red: #C0392B;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0C0A08;
+            --bg1: #141210;
+            --bg2: #1C1916;
+            --bg3: #25221E;
+            --bg4: #302D27;
+            --tx: #F0E8DE;
+            --tx2: #B0A090;
+            --tx3: #706050;
+            --tx4: #504540;
+            --border: #302D27;
+            --border2: #403C35;
+            --sh: 0 2px 8px rgba(0, 0, 0, .3);
+            --sh2: 0 8px 32px rgba(0, 0, 0, .5);
+            --sh3: 0 20px 60px rgba(0, 0, 0, .7);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 15px
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--tx);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+            transition: background .3s, color .3s;
+            line-height: 1.5
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+            background: none;
+            outline: none
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: cover
+        }
+
+        ul {
+            list-style: none
+        }
+
+        input,
+        select {
+            font-family: inherit;
+            outline: none
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg2)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--clay);
+            border-radius: 2px
+        }
+
+        /* ══ NAVBAR ══ */
+        .ham-btn {
+            display: none !important
+        }
+
+        .mob-glob {
+            display: none !important
+        }
+
+        #topnav {
+            background: var(--clay);
+            height: var(--nav-h);
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .2)
+        }
+
+        .tn-wrap {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            height: 100%;
+            padding: 0 1.2rem;
+            max-width: 1600px;
+            margin: 0 auto
+        }
+
+        .tn-logo {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            flex-shrink: 0
+        }
+
+        .tn-logo-img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain
+        }
+
+        .tn-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            color: #fff;
+            white-space: nowrap;
+            line-height: 1
+        }
+
+        .tn-brand small {
+            display: block;
+            font-size: .5rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 400;
+            opacity: .65;
+            margin-top: .1rem
+        }
+
+        .tn-deliver {
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            color: rgba(255, 255, 255, .85);
+            font-size: .68rem;
+            line-height: 1.4;
+            cursor: pointer;
+            padding: .28rem .5rem;
+            border-radius: var(--r);
+            transition: background .15s
+        }
+
+        .tn-deliver:hover {
+            background: rgba(255, 255, 255, .12)
+        }
+
+        .tn-deliver strong {
+            color: #fff;
+            font-size: .76rem;
+            font-weight: 600
+        }
+
+        .tn-search {
+            flex: 1;
+            max-width: 740px;
+            display: flex;
+            border-radius: var(--r2);
+            overflow: hidden;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, .25);
+            transition: box-shadow .2s
+        }
+
+        .tn-search:focus-within {
+            box-shadow: 0 0 0 3px #fff
+        }
+
+        .tn-sc {
+            background: #E8E1D8;
+            border: none;
+            padding: 0 .75rem;
+            font-size: .7rem;
+            font-weight: 500;
+            color: var(--tx2);
+            border-right: 1px solid var(--border2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+            flex-shrink: 0;
+            white-space: nowrap;
+            transition: background .15s
+        }
+
+        .tn-sc:hover {
+            background: var(--bg3)
+        }
+
+        .tn-si {
+            flex: 1;
+            background: #fff;
+            border: none;
+            padding: .6rem .95rem;
+            font-size: .88rem;
+            color: #1A1510;
+            min-width: 0
+        }
+
+        .tn-si::placeholder {
+            color: #9A8E82
+        }
+
+        .tn-sb {
+            background: var(--clay-l);
+            border: none;
+            padding: 0 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background .15s
+        }
+
+        .tn-sb:hover {
+            background: var(--clay-d)
+        }
+
+        .tn-sb i {
+            color: #fff;
+            font-size: .95rem
+        }
+
+        .tn-right {
+            display: flex;
+            align-items: center;
+            gap: .15rem;
+            margin-left: auto;
+            flex-shrink: 0
+        }
+
+        .tnb {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            padding: .25rem .6rem;
+            border-radius: var(--r);
+            cursor: pointer;
+            font-size: .68rem;
+            line-height: 1.3;
+            white-space: nowrap;
+            position: relative;
+            transition: background .15s;
+            border: 1px solid transparent;
+            min-width: 46px
+        }
+
+        .tnb:hover {
+            background: rgba(255, 255, 255, .14);
+            border-color: rgba(255, 255, 255, .22)
+        }
+
+        .tnb.active-page {
+            background: rgba(255, 255, 255, .2);
+            border-color: rgba(255, 255, 255, .35)
+        }
+
+        .tnb strong {
+            font-size: .76rem;
+            font-weight: 600
+        }
+
+        .tnb .tbg {
+            position: absolute;
+            top: 2px;
+            right: 5px;
+            background: #FFA41C;
+            color: #111;
+            border-radius: 50%;
+            width: 17px;
+            height: 17px;
+            font-size: .58rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .tn-div {
+            width: 1px;
+            height: 30px;
+            background: rgba(255, 255, 255, .22);
+            flex-shrink: 0;
+            margin: 0 .15rem
+        }
+
+        .tn-lang {
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+            color: #fff;
+            padding: .28rem .6rem;
+            border-radius: var(--r);
+            cursor: pointer;
+            font-size: .76rem;
+            font-weight: 500;
+            border: 1px solid transparent;
+            transition: background .15s
+        }
+
+        .tn-lang:hover {
+            background: rgba(255, 255, 255, .14);
+            border-color: rgba(255, 255, 255, .22)
+        }
+
+        .tn-theme {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .18);
+            color: #fff;
+            font-size: .82rem;
+            transition: all .2s;
+            flex-shrink: 0
+        }
+
+        .tn-theme:hover {
+            background: rgba(255, 255, 255, .22)
+        }
+
+        .dp {
+            position: relative
+        }
+
+        .dp-menu {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            background: var(--bg1);
+            border: 1px solid var(--border);
+            border-radius: var(--r2);
+            min-width: 200px;
+            box-shadow: var(--sh3);
+            z-index: 999;
+            overflow: hidden;
+            display: none
+        }
+
+        .dp-menu.open {
+            display: block
+        }
+
+        .dp-hd {
+            font-size: .58rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--clay);
+            padding: .7rem 1rem;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .dpi {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            padding: .68rem 1rem;
+            font-size: .83rem;
+            color: var(--tx2);
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: all .15s
+        }
+
+        .dpi:last-child {
+            border-bottom: none
+        }
+
+        .dpi:hover {
+            background: var(--clay-bg);
+            color: var(--clay);
+            padding-left: 1.3rem
+        }
+
+        .dpi i {
+            font-size: .82rem;
+            color: var(--clay);
+            opacity: .55;
+            width: 15px;
+            text-align: center
+        }
+
+        .dpi:hover i {
+            opacity: 1
+        }
+
+        .dpi.cta {
+            background: var(--clay);
+            color: #fff;
+            font-weight: 600
+        }
+
+        .dpi.cta:hover {
+            background: var(--clay-d);
+            color: #fff;
+            padding-left: 1rem
+        }
+
+        .dpi.cta i {
+            color: #fff;
+            opacity: 1
+        }
+
+        .dp-li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .58rem 1rem;
+            font-size: .8rem;
+            color: var(--tx2);
+            cursor: pointer;
+            transition: all .15s;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .dp-li:last-child {
+            border-bottom: none
+        }
+
+        .dp-li:hover,
+        .dp-li.on {
+            background: var(--clay-bg);
+            color: var(--clay)
+        }
+
+        .dp-li .code {
+            font-size: .62rem;
+            font-weight: 700;
+            color: var(--tx3)
+        }
+
+        .dp-li.on .code {
+            color: var(--clay)
+        }
+
+        /* ══ CATEGORY NAV ══ */
+        #catnav {
+            background: var(--clay-d);
+            height: var(--cat-h);
+            border-bottom: 1px solid rgba(0, 0, 0, .15)
+        }
+
+        .cn-wrap {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 1.2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            overflow-x: auto;
+            scrollbar-width: none;
+            gap: .1rem
+        }
+
+        .cn-wrap::-webkit-scrollbar {
+            display: none
+        }
+
+        .cn-btn {
+            display: flex;
+            align-items: center;
+            gap: .38rem;
+            padding: .48rem .82rem;
+            color: rgba(255, 255, 255, .88);
+            font-size: .78rem;
+            font-weight: 500;
+            white-space: nowrap;
+            border-radius: var(--r);
+            border: 1px solid transparent;
+            transition: all .15s;
+            cursor: pointer
+        }
+
+        .cn-btn:hover {
+            background: rgba(255, 255, 255, .16);
+            border-color: rgba(255, 255, 255, .28);
+            color: #fff
+        }
+
+        .cn-sep {
+            width: 1px;
+            height: 18px;
+            background: rgba(255, 255, 255, .18);
+            margin: 0 .28rem;
+            flex-shrink: 0
+        }
+
+        .cn-hot {
+            color: #FFD166 !important
+        }
+
+        /* ══ BREADCRUMB ══ */
+        .breadcrumb {
+            background: var(--bg1);
+            border-bottom: 1px solid var(--border);
+            padding: .65rem 1.2rem
+        }
+
+        .bc-inner {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: .45rem;
+            flex-wrap: wrap
+        }
+
+        .bc-item {
+            font-size: .72rem;
+            color: var(--tx3);
+            display: flex;
+            align-items: center;
+            gap: .45rem
+        }
+
+        .bc-item a {
+            color: var(--tx3);
+            transition: color .15s
+        }
+
+        .bc-item a:hover {
+            color: var(--clay)
+        }
+
+        .bc-item.cur {
+            color: var(--clay);
+            font-weight: 500
+        }
+
+        .bc-sep {
+            font-size: .6rem;
+            color: var(--tx4)
+        }
+
+        /* ══ PAGE HEADER ══ */
+        .wl-hero {
+            background: linear-gradient(135deg, var(--clay-d) 0%, var(--clay) 60%, var(--clay-l) 100%);
+            padding: 1.8rem 1.2rem 1.6rem;
+            position: relative;
+            overflow: hidden
+        }
+
+        .wl-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+        }
+
+        .wl-hero-inner {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            position: relative
+        }
+
+        .wl-hero-left h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            line-height: 1.2
+        }
+
+        .wl-hero-left h1 i {
+            font-size: 1.3rem;
+            opacity: .9
+        }
+
+        .wl-hero-left p {
+            font-size: .8rem;
+            color: rgba(255, 255, 255, .75);
+            margin-top: .35rem
+        }
+
+        .wl-hero-stats {
+            display: flex;
+            gap: 1.2rem
+        }
+
+        .wl-stat {
+            text-align: center;
+            color: #fff
+        }
+
+        .wl-stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1
+        }
+
+        .wl-stat-lbl {
+            font-size: .62rem;
+            opacity: .7;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            margin-top: .18rem
+        }
+
+        /* ══ TOOLBAR ══ */
+        .wl-toolbar {
+            background: var(--bg1);
+            border-bottom: 1px solid var(--border);
+            padding: .75rem 1.2rem;
+            position: sticky;
+            top: var(--nav-h);
+            z-index: 80
+        }
+
+        .wl-toolbar-inner {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: .85rem;
+            flex-wrap: wrap
+        }
+
+        .wl-tb-left {
+            display: flex;
+            align-items: center;
+            gap: .65rem;
+            flex: 1;
+            min-width: 0
+        }
+
+        .wl-tb-right {
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+            flex-shrink: 0
+        }
+
+        .wl-search {
+            display: flex;
+            align-items: center;
+            gap: .45rem;
+            background: var(--bg2);
+            border: 1.5px solid var(--border2);
+            border-radius: var(--r2);
+            padding: .45rem .85rem;
+            flex: 1;
+            max-width: 360px;
+            transition: border-color .2s
+        }
+
+        .wl-search:focus-within {
+            border-color: var(--clay)
+        }
+
+        .wl-search i {
+            color: var(--tx3);
+            font-size: .78rem;
+            flex-shrink: 0
+        }
+
+        .wl-search input {
+            flex: 1;
+            background: none;
+            border: none;
+            font-size: .82rem;
+            color: var(--tx);
+            min-width: 0
+        }
+
+        .wl-search input::placeholder {
+            color: var(--tx4)
+        }
+
+        .wl-filter-btn {
+            display: flex;
+            align-items: center;
+            gap: .38rem;
+            padding: .42rem .85rem;
+            border-radius: var(--r);
+            border: 1.5px solid var(--border2);
+            font-size: .76rem;
+            color: var(--tx2);
+            background: var(--bg1);
+            transition: all .18s;
+            white-space: nowrap
+        }
+
+        .wl-filter-btn:hover,
+        .wl-filter-btn.on {
+            border-color: var(--clay);
+            color: var(--clay);
+            background: var(--clay-bg)
+        }
+
+        .wl-filter-btn i {
+            font-size: .72rem
+        }
+
+        .wl-sort {
+            background: var(--bg2);
+            border: 1.5px solid var(--border2);
+            border-radius: var(--r);
+            padding: .42rem .75rem;
+            font-size: .76rem;
+            color: var(--tx2);
+            cursor: pointer;
+            transition: border-color .2s
+        }
+
+        .wl-sort:focus {
+            border-color: var(--clay)
+        }
+
+        .wl-view-btns {
+            display: flex;
+            gap: .28rem
+        }
+
+        .wl-vbtn {
+            width: 30px;
+            height: 30px;
+            border-radius: var(--r);
+            border: 1.5px solid var(--border2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            color: var(--tx3);
+            transition: all .18s
+        }
+
+        .wl-vbtn:hover,
+        .wl-vbtn.on {
+            border-color: var(--clay);
+            color: var(--clay);
+            background: var(--clay-bg)
+        }
+
+        .wl-clear-all {
+            font-size: .72rem;
+            font-weight: 600;
+            color: var(--red);
+            padding: .38rem .75rem;
+            border-radius: var(--r);
+            border: 1.5px solid rgba(192, 57, 43, .28);
+            transition: all .18s
+        }
+
+        .wl-clear-all:hover {
+            background: rgba(192, 57, 43, .08)
+        }
+
+        /* ══ MAIN LAYOUT ══ */
+        .wl-outer {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 1.5rem 1.2rem 3rem
+        }
+
+        /* ══ CATEGORIES FILTER CHIPS ══ */
+        .wl-cats {
+            display: flex;
+            gap: .45rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.4rem
+        }
+
+        .wl-chip {
+            display: flex;
+            align-items: center;
+            gap: .35rem;
+            padding: .32rem .82rem;
+            border-radius: 20px;
+            border: 1.5px solid var(--border2);
+            font-size: .74rem;
+            font-weight: 500;
+            color: var(--tx2);
+            cursor: pointer;
+            transition: all .18s;
+            background: var(--bg1)
+        }
+
+        .wl-chip:hover,
+        .wl-chip.on {
+            border-color: var(--clay);
+            color: var(--clay);
+            background: var(--clay-bg)
+        }
+
+        .wl-chip i {
+            font-size: .68rem
+        }
+
+        .wl-chip .cnt {
+            font-size: .62rem;
+            background: var(--bg3);
+            padding: .08rem .32rem;
+            border-radius: 10px;
+            font-weight: 700
+        }
+
+        .wl-chip.on .cnt {
+            background: var(--clay);
+            color: #fff
+        }
+
+        /* ══ WISHLIST GRID ══ */
+        .wl-grid {
+            display: grid;
+            gap: 1rem
+        }
+
+        .wl-grid.grid-4 {
+            grid-template-columns: repeat(4, 1fr)
+        }
+
+        .wl-grid.grid-3 {
+            grid-template-columns: repeat(3, 1fr)
+        }
+
+        .wl-grid.grid-list {
+            grid-template-columns: 1fr
+        }
+
+        /* ══ WISHLIST CARD (GRID MODE) ══ */
+        .wl-card {
+            background: var(--bg1);
+            border: 1px solid var(--border);
+            border-radius: var(--r2);
+            overflow: hidden;
+            position: relative;
+            transition: all .25s;
+            display: flex;
+            flex-direction: column
+        }
+
+        .wl-card:hover {
+            box-shadow: var(--sh2);
+            border-color: var(--border2);
+            transform: translateY(-3px)
+        }
+
+        .wl-card-img {
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background: var(--bg2);
+            position: relative;
+            cursor: pointer
+        }
+
+        .wl-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s
+        }
+
+        .wl-card:hover .wl-card-img img {
+            transform: scale(1.07)
+        }
+
+        .wl-card-badges {
+            position: absolute;
+            top: .55rem;
+            left: .55rem;
+            display: flex;
+            flex-direction: column;
+            gap: .3rem
+        }
+
+        .wl-badge {
+            font-size: .56rem;
+            font-weight: 700;
+            padding: .15rem .44rem;
+            border-radius: 3px;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            display: inline-block
+        }
+
+        .wl-badge.new {
+            background: var(--clay);
+            color: #fff
+        }
+
+        .wl-badge.sale {
+            background: #E53935;
+            color: #fff
+        }
+
+        .wl-badge.hot {
+            background: #F57C00;
+            color: #fff
+        }
+
+        .wl-badge.eco {
+            background: #2E7D32;
+            color: #fff
+        }
+
+        .wl-badge.out {
+            background: #666;
+            color: #fff
+        }
+
+        .wl-card-actions {
+            position: absolute;
+            top: .55rem;
+            right: .55rem;
+            display: flex;
+            flex-direction: column;
+            gap: .35rem;
+            opacity: 0;
+            transform: translateX(8px);
+            transition: all .25s
+        }
+
+        .wl-card:hover .wl-card-actions {
+            opacity: 1;
+            transform: none
+        }
+
+        .wl-card-act-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg1);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .82rem;
+            color: var(--tx2);
+            transition: all .18s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .1)
+        }
+
+        .wl-card-act-btn:hover {
+            background: var(--clay);
+            border-color: var(--clay);
+            color: #fff;
+            transform: scale(1.1)
+        }
+
+        .wl-card-act-btn.remove:hover {
+            background: var(--red);
+            border-color: var(--red)
+        }
+
+        .wl-card-body {
+            padding: .85rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column
+        }
+
+        .wl-card-cat {
+            font-size: .6rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--clay);
+            margin-bottom: .2rem
+        }
+
+        .wl-card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: .95rem;
+            font-weight: 400;
+            color: var(--tx);
+            line-height: 1.3;
+            margin-bottom: .4rem;
+            cursor: pointer;
+            transition: color .15s
+        }
+
+        .wl-card-name:hover {
+            color: var(--clay)
+        }
+
+        .wl-card-stars {
+            display: flex;
+            align-items: center;
+            gap: .28rem;
+            margin-bottom: .45rem
+        }
+
+        .wl-card-stars i {
+            font-size: .62rem;
+            color: #FFA41C
+        }
+
+        .wl-card-stars span {
+            font-size: .68rem;
+            color: var(--tx3)
+        }
+
+        .wl-card-price-row {
+            display: flex;
+            align-items: baseline;
+            gap: .5rem;
+            margin-bottom: .65rem
+        }
+
+        .wl-card-price {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--tx)
+        }
+
+        .wl-card-mrp {
+            font-size: .76rem;
+            color: var(--tx3);
+            text-decoration: line-through
+        }
+
+        .wl-card-disc {
+            font-size: .7rem;
+            font-weight: 700;
+            color: var(--green)
+        }
+
+        .wl-card-meta {
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap;
+            margin-bottom: .75rem
+        }
+
+        .wl-meta-tag {
+            font-size: .65rem;
+            color: var(--tx3);
+            display: flex;
+            align-items: center;
+            gap: .22rem
+        }
+
+        .wl-meta-tag i {
+            font-size: .6rem;
+            color: var(--clay);
+            opacity: .6
+        }
+
+        .wl-card-footer {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: .42rem
+        }
+
+        .wl-atc-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--clay-d), var(--clay-l));
+            color: #fff;
+            padding: .65rem;
+            border-radius: var(--r);
+            font-size: .78rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .4rem;
+            transition: all .2s;
+            box-shadow: 0 2px 10px rgba(181, 98, 42, .28)
+        }
+
+        .wl-atc-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(181, 98, 42, .38)
+        }
+
+        .wl-atc-btn:active {
+            transform: none
+        }
+
+        .wl-atc-btn.out-of-stock {
+            background: var(--bg3);
+            color: var(--tx3);
+            box-shadow: none;
+            cursor: not-allowed
+        }
+
+        .wl-atc-btn.out-of-stock:hover {
+            transform: none;
+            box-shadow: none
+        }
+
+        .wl-remove-link {
+            font-size: .7rem;
+            color: var(--tx3);
+            text-align: center;
+            transition: color .15s;
+            padding: .2rem
+        }
+
+        .wl-remove-link:hover {
+            color: var(--red)
+        }
+
+        /* ══ LIST MODE CARD ══ */
+        .wl-grid.grid-list .wl-card {
+            flex-direction: row;
+            gap: 0
+        }
+
+        .wl-grid.grid-list .wl-card-img {
+            aspect-ratio: unset;
+            width: 140px;
+            flex-shrink: 0;
+            min-height: 170px
+        }
+
+        .wl-grid.grid-list .wl-card-img img {
+            height: 100%
+        }
+
+        .wl-grid.grid-list .wl-card-body {
+            padding: 1rem 1.15rem;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 1rem
+        }
+
+        .wl-grid.grid-list .wl-card-info {
+            flex: 1;
+            min-width: 0
+        }
+
+        .wl-grid.grid-list .wl-card-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: .55rem;
+            flex-shrink: 0;
+            min-width: 160px
+        }
+
+        .wl-grid.grid-list .wl-card-footer {
+            width: 100%
+        }
+
+        .wl-grid.grid-list .wl-card-actions {
+            position: static;
+            opacity: 1;
+            transform: none;
+            flex-direction: row
+        }
+
+        /* ══ STOCK WARNING ══ */
+        .wl-stock-warn {
+            font-size: .64rem;
+            color: #E65100;
+            background: rgba(230, 81, 0, .08);
+            border-radius: 3px;
+            padding: .2rem .52rem;
+            display: inline-flex;
+            align-items: center;
+            gap: .28rem;
+            margin-bottom: .45rem
+        }
+
+        .wl-stock-ok {
+            font-size: .64rem;
+            color: var(--green);
+            background: rgba(45, 122, 74, .08);
+            border-radius: 3px;
+            padding: .2rem .52rem;
+            display: inline-flex;
+            align-items: center;
+            gap: .28rem;
+            margin-bottom: .45rem
+        }
+
+        /* ══ ADDED DATE ══ */
+        .wl-added {
+            font-size: .62rem;
+            color: var(--tx4);
+            display: flex;
+            align-items: center;
+            gap: .25rem
+        }
+
+        /* ══ SHARE BUTTON ══ */
+        .wl-share-row {
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap
+        }
+
+        .wl-share-row span {
+            font-size: .76rem;
+            color: var(--tx3)
+        }
+
+        .wl-share-btn {
+            display: flex;
+            align-items: center;
+            gap: .35rem;
+            padding: .38rem .82rem;
+            border-radius: 20px;
+            border: 1.5px solid var(--border2);
+            font-size: .72rem;
+            color: var(--tx2);
+            transition: all .18s;
+            background: var(--bg1)
+        }
+
+        .wl-share-btn:hover {
+            border-color: var(--clay);
+            color: var(--clay);
+            background: var(--clay-bg)
+        }
+
+        .wl-share-btn i {
+            font-size: .7rem
+        }
+
+        /* ══ EMPTY STATE ══ */
+        .wl-empty {
+            text-align: center;
+            padding: 5rem 1rem;
+            display: none
+        }
+
+        .wl-empty.show {
+            display: block
+        }
+
+        .wl-empty-icon {
+            font-size: 4.5rem;
+            color: var(--border2);
+            margin-bottom: 1.4rem;
+            animation: pulse-heart 2s ease-in-out infinite
+        }
+
+        @keyframes pulse-heart {
+
+            0%,
+            100% {
+                transform: scale(1)
+            }
+
+            50% {
+                transform: scale(1.08)
+            }
+        }
+
+        .wl-empty h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--tx);
+            margin-bottom: .6rem
+        }
+
+        .wl-empty p {
+            font-size: .85rem;
+            color: var(--tx3);
+            max-width: 380px;
+            margin: 0 auto 1.8rem;
+            line-height: 1.65
+        }
+
+        .empty-btns {
+            display: flex;
+            gap: .75rem;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        /* ══ SUMMARY PANEL ══ */
+        .wl-summary {
+            background: var(--bg1);
+            border: 1px solid var(--border);
+            border-radius: var(--r2);
+            overflow: hidden;
+            margin-bottom: 1.5rem
+        }
+
+        .wl-sum-hd {
+            padding: .9rem 1.1rem;
+            background: linear-gradient(135deg, var(--clay-d), var(--clay));
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .wl-sum-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: .5rem
+        }
+
+        .wl-sum-body {
+            padding: 1.1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .75rem
+        }
+
+        .wl-sum-stat {
+            text-align: center;
+            padding: .75rem;
+            background: var(--bg2);
+            border-radius: var(--r);
+            border: 1px solid var(--border)
+        }
+
+        .wl-sum-stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--clay)
+        }
+
+        .wl-sum-stat-lbl {
+            font-size: .65rem;
+            color: var(--tx3);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            margin-top: .15rem
+        }
+
+        .wl-sum-atc-all {
+            width: 100%;
+            background: linear-gradient(135deg, var(--clay-d), var(--clay-l));
+            color: #fff;
+            padding: .78rem;
+            border-radius: var(--r2);
+            font-size: .85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            margin-top: 1rem;
+            transition: all .22s;
+            box-shadow: 0 4px 18px rgba(181, 98, 42, .32)
+        }
+
+        .wl-sum-atc-all:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(181, 98, 42, .42)
+        }
+
+        /* ══ RECENTLY VIEWED ══ */
+        .wl-rec-section {
+            margin-top: 2.5rem
+        }
+
+        .wl-sec-hd {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem
+        }
+
+        .wl-sec-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--tx);
+            display: flex;
+            align-items: center;
+            gap: .55rem
+        }
+
+        .wl-sec-title i {
+            color: var(--clay);
+            font-size: .9rem
+        }
+
+        .wl-sec-link {
+            font-size: .72rem;
+            font-weight: 600;
+            color: var(--clay);
+            transition: color .15s
+        }
+
+        .wl-sec-link:hover {
+            color: var(--clay-d)
+        }
+
+        .wl-rec-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: .75rem
+        }
+
+        .wl-rec-card {
+            background: var(--bg1);
+            border: 1px solid var(--border);
+            border-radius: var(--r2);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all .2s
+        }
+
+        .wl-rec-card:hover {
+            box-shadow: var(--sh);
+            border-color: var(--border2);
+            transform: translateY(-2px)
+        }
+
+        .wl-rec-img {
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background: var(--bg2);
+            position: relative
+        }
+
+        .wl-rec-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .4s
+        }
+
+        .wl-rec-card:hover .wl-rec-img img {
+            transform: scale(1.06)
+        }
+
+        .wl-rec-body {
+            padding: .65rem .75rem
+        }
+
+        .wl-rec-cat {
+            font-size: .58rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--clay);
+            margin-bottom: .15rem
+        }
+
+        .wl-rec-name {
+            font-size: .8rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--tx);
+            line-height: 1.3;
+            margin-bottom: .3rem
+        }
+
+        .wl-rec-price {
+            font-size: .88rem;
+            font-weight: 600;
+            color: var(--tx)
+        }
+
+        .wl-rec-wl {
+            width: 100%;
+            background: var(--clay-bg);
+            border: 1.5px solid var(--clay);
+            color: var(--clay);
+            padding: .35rem;
+            border-radius: var(--r);
+            font-size: .66rem;
+            font-weight: 600;
+            margin-top: .42rem;
+            transition: all .2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .3rem
+        }
+
+        .wl-rec-wl:hover {
+            background: var(--clay);
+            color: #fff
+        }
+
+        /* ══ BUTTONS ══ */
+        .btn-clay {
+            background: var(--clay);
+            color: #fff;
+            padding: .78rem 1.8rem;
+            border-radius: var(--r2);
+            font-size: .85rem;
+            font-weight: 600;
+            transition: background .2s;
+            display: inline-flex;
+            align-items: center;
+            gap: .45rem
+        }
+
+        .btn-clay:hover {
+            background: var(--clay-d)
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--clay);
+            color: var(--clay);
+            padding: .75rem 1.8rem;
+            border-radius: var(--r2);
+            font-size: .85rem;
+            font-weight: 600;
+            transition: all .2s;
+            display: inline-flex;
+            align-items: center;
+            gap: .45rem
+        }
+
+        .btn-outline:hover {
+            background: var(--clay-bg)
+        }
+
+        /* ══ MOBILE BOTTOM NAV ══ */
+        .mob-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 900;
+            background: var(--bg1);
+            border-top: 1px solid var(--border);
+            padding: .5rem 0 calc(.5rem + env(safe-area-inset-bottom))
+        }
+
+        .mob-row {
+            display: flex;
+            justify-content: space-around
+        }
+
+        .mb-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .14rem;
+            color: var(--tx3);
+            font-size: .54rem;
+            font-weight: 500;
+            padding: .22rem .65rem;
+            border-radius: var(--r);
+            transition: color .15s;
+            position: relative
+        }
+
+        .mb-btn i {
+            font-size: 1.1rem
+        }
+
+        .mb-btn.on,
+        .mb-btn:hover {
+            color: var(--clay)
+        }
+
+        .mb-badge {
+            position: absolute;
+            top: 0;
+            right: 4px;
+            background: var(--clay);
+            color: #fff;
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+            font-size: .46rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        /* ══ MOBILE DRAWER ══ */
+        .m-ov {
+            position: fixed;
+            inset: 0;
+            z-index: 960;
+            background: rgba(0, 0, 0, .52);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s
+        }
+
+        .m-ov.open {
+            opacity: 1;
+            pointer-events: all
+        }
+
+        .m-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: min(88vw, 310px);
+            background: var(--bg1);
+            z-index: 970;
+            transform: translateX(-100%);
+            transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+            border-right: 1px solid var(--border);
+            -webkit-overflow-scrolling: touch
+        }
+
+        .m-ov.open .m-drawer {
+            transform: none
+        }
+
+        .mdr-hd {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .9rem 1.1rem;
+            background: linear-gradient(135deg, var(--clay-d) 0%, var(--clay) 55%, var(--clay-l) 100%);
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            flex-shrink: 0
+        }
+
+        .mdr-brand {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            color: #fff
+        }
+
+        .mdr-brand img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .2);
+            padding: 3px
+        }
+
+        .mdr-brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: .07em
+        }
+
+        .mdr-brand-tag {
+            display: block;
+            font-size: .48rem;
+            opacity: .75;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            font-family: 'DM Sans', sans-serif;
+            margin-top: .05rem
+        }
+
+        .mdr-close {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .18);
+            border: 1px solid rgba(255, 255, 255, .3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: .88rem;
+            flex-shrink: 0
+        }
+
+        .mdr-srch {
+            display: flex;
+            align-items: center;
+            gap: .48rem;
+            margin: .8rem 1.05rem .55rem;
+            background: var(--bg2);
+            border: 1.5px solid var(--border2);
+            border-radius: var(--r2);
+            padding: .5rem .82rem;
+            transition: border-color .2s
+        }
+
+        .mdr-srch:focus-within {
+            border-color: var(--clay)
+        }
+
+        .mdr-srch i {
+            color: var(--tx3);
+            font-size: .78rem;
+            flex-shrink: 0
+        }
+
+        .mdr-srch input {
+            flex: 1;
+            background: none;
+            border: none;
+            font-size: .82rem;
+            color: var(--tx);
+            font-family: inherit;
+            outline: none;
+            min-width: 0
+        }
+
+        .mdr-srch input::placeholder {
+            color: var(--tx4)
+        }
+
+        .mdr-user {
+            padding: .82rem 1.05rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--clay-bg);
+            flex-shrink: 0
+        }
+
+        .mdr-user-info {
+            font-size: .7rem;
+            color: var(--tx3);
+            margin-bottom: .5rem;
+            display: flex;
+            align-items: center;
+            gap: .35rem
+        }
+
+        .mdr-user-info i {
+            color: var(--clay);
+            font-size: .75rem
+        }
+
+        .mdr-ucta {
+            display: flex;
+            gap: .5rem
+        }
+
+        .mdr-ubtn {
+            flex: 1;
+            background: var(--clay);
+            color: #fff;
+            padding: .52rem;
+            border-radius: var(--r);
+            font-size: .76rem;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: background .2s
+        }
+
+        .mdr-ubtn:hover {
+            background: var(--clay-d)
+        }
+
+        .mdr-ubtn.ol {
+            background: transparent;
+            border: 1.5px solid var(--clay);
+            color: var(--clay)
+        }
+
+        .mdr-ubtn.ol:hover {
+            background: var(--clay-bg)
+        }
+
+        .mdr-sh {
+            font-size: .52rem;
+            font-weight: 700;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--clay);
+            padding: .72rem 1.05rem .28rem;
+            flex-shrink: 0
+        }
+
+        .mdr-cat {
+            border-bottom: 1px solid var(--border);
+            flex-shrink: 0
+        }
+
+        .mdr-cat-hd {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .68rem 1.05rem;
+            font-size: .84rem;
+            font-weight: 500;
+            color: var(--tx2);
+            cursor: pointer;
+            transition: background .15s;
+            user-select: none
+        }
+
+        .mdr-cat-hd:hover {
+            background: var(--bg2)
+        }
+
+        .mdr-cat-hd-l {
+            display: flex;
+            align-items: center;
+            gap: .65rem
+        }
+
+        .mdr-ico {
+            width: 28px;
+            height: 28px;
+            border-radius: var(--r);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            flex-shrink: 0
+        }
+
+        .mdr-ico.ic1 {
+            background: #FFF0E6;
+            color: #B5622A
+        }
+
+        .mdr-ico.ic2 {
+            background: #E8F4FB;
+            color: #2980B9
+        }
+
+        .mdr-ico.ic3 {
+            background: #EAF7ED;
+            color: #27AE60
+        }
+
+        .mdr-ico.ic4 {
+            background: #FDF0F6;
+            color: #C0392B
+        }
+
+        .mdr-ico.ic6 {
+            background: #E8F8F0;
+            color: #16A085
+        }
+
+        .mdr-ico.ic7 {
+            background: #FFF0E0;
+            color: #E65100
+        }
+
+        .mdr-ico.ic8 {
+            background: #FEF9E7;
+            color: #B7950B
+        }
+
+        .mdr-cat-arr {
+            font-size: .58rem;
+            color: var(--tx4);
+            transition: transform .25s;
+            flex-shrink: 0
+        }
+
+        .mdr-cat.open>.mdr-cat-hd {
+            background: var(--clay-bg);
+            color: var(--clay)
+        }
+
+        .mdr-cat.open>.mdr-cat-hd .mdr-cat-arr {
+            transform: rotate(180deg)
+        }
+
+        .mdr-cat-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .28s ease
+        }
+
+        .mdr-cat.open .mdr-cat-body {
+            max-height: 220px
+        }
+
+        .mdr-sub {
+            display: flex;
+            align-items: center;
+            padding: .52rem 1.05rem .52rem 2.75rem;
+            font-size: .8rem;
+            color: var(--tx3);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg2);
+            transition: color .15s, padding-left .15s
+        }
+
+        .mdr-sub:last-child {
+            border-bottom: none
+        }
+
+        .mdr-sub:hover {
+            color: var(--clay);
+            padding-left: 3rem
+        }
+
+        .mdr-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .68rem 1.05rem;
+            font-size: .84rem;
+            color: var(--tx2);
+            border-bottom: 1px solid var(--border);
+            transition: all .15s;
+            flex-shrink: 0
+        }
+
+        .mdr-link-l {
+            display: flex;
+            align-items: center;
+            gap: .65rem
+        }
+
+        .mdr-link .arr {
+            font-size: .6rem;
+            color: var(--tx4)
+        }
+
+        .mdr-link:hover {
+            background: var(--bg2);
+            color: var(--clay)
+        }
+
+        .mdr-link-hot {
+            color: var(--clay) !important;
+            font-weight: 600
+        }
+
+        .mdr-lang {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            margin: .4rem 1.05rem .7rem;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            overflow: hidden;
+            flex-shrink: 0
+        }
+
+        .mdr-lo {
+            background: var(--bg1);
+            padding: .5rem .65rem;
+            font-size: .74rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all .15s
+        }
+
+        .mdr-lo:hover,
+        .mdr-lo.on {
+            background: var(--clay-bg);
+            color: var(--clay)
+        }
+
+        .mdr-lo .code {
+            font-size: .56rem;
+            opacity: .55
+        }
+
+        .mdr-tog {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .9rem 1.05rem;
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+            flex-shrink: 0
+        }
+
+        .mdr-tog-lbl {
+            font-size: .8rem;
+            color: var(--tx2);
+            display: flex;
+            align-items: center;
+            gap: .5rem
+        }
+
+        .mdr-tog-lbl i {
+            color: var(--clay)
+        }
+
+        .tog {
+            width: 42px;
+            height: 22px;
+            background: var(--bg3);
+            border: 1px solid var(--border2);
+            border-radius: 11px;
+            position: relative;
+            cursor: pointer;
+            transition: all .3s
+        }
+
+        .tog.on {
+            background: var(--clay);
+            border-color: var(--clay)
+        }
+
+        .tog-knob {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 14px;
+            height: 14px;
+            background: var(--bg1);
+            border-radius: 50%;
+            transition: all .3s;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .2)
+        }
+
+        .tog.on .tog-knob {
+            left: 23px
+        }
+
+        /* ══ FOOTER ══ */
+        footer {
+            background: var(--bg1);
+            border-top: 1px solid var(--border);
+            margin-top: 2rem
+        }
+
+        .ft-main {
+            display: grid;
+            grid-template-columns: 1.55fr 1fr 1fr 1fr 1fr;
+            gap: 1.8rem;
+            padding: 2.25rem 1.2rem 1.75rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .ft-bl {
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+            margin-bottom: .55rem
+        }
+
+        .ft-bl img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain
+        }
+
+        .ft-bn {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: .07em;
+            color: var(--tx)
+        }
+
+        .ft-bn em {
+            color: var(--clay);
+            font-style: normal
+        }
+
+        .ft-tg {
+            font-size: .7rem;
+            font-style: italic;
+            color: var(--tx3);
+            margin-bottom: .8rem
+        }
+
+        .ft-desc {
+            font-size: .76rem;
+            color: var(--tx2);
+            line-height: 1.85;
+            margin-bottom: 1rem;
+            max-width: 260px
+        }
+
+        .ft-socs {
+            display: flex;
+            gap: .42rem
+        }
+
+        .ft-soc {
+            width: 34px;
+            height: 34px;
+            border-radius: var(--r);
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--tx2);
+            font-size: .85rem;
+            transition: all .2s
+        }
+
+        .ft-ig:hover {
+            background: #E1306C;
+            border-color: #E1306C;
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .ft-fb:hover {
+            background: #1877F2;
+            border-color: #1877F2;
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .ft-yt:hover {
+            background: #FF0000;
+            border-color: #FF0000;
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .ft-wa:hover {
+            background: #25D366;
+            border-color: #25D366;
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .ft-xx:hover {
+            background: #000;
+            border-color: #000;
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .ft-ch {
+            font-size: .6rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--clay);
+            margin-bottom: .8rem
+        }
+
+        .ft-links li {
+            margin-bottom: .47rem
+        }
+
+        .ft-links a {
+            font-size: .78rem;
+            color: var(--tx2);
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            transition: color .15s
+        }
+
+        .ft-links a:hover {
+            color: var(--clay)
+        }
+
+        .ft-links a i {
+            font-size: .62rem;
+            color: var(--tx4)
+        }
+
+        .ft-links a:hover i {
+            color: var(--clay)
+        }
+
+        .ft-bot {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: .95rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: .75rem
+        }
+
+        .ft-tbadges {
+            display: flex;
+            gap: .45rem;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+
+        .ftb {
+            display: flex;
+            align-items: center;
+            gap: .38rem;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: .25rem .62rem;
+            font-size: .62rem;
+            color: var(--tx2)
+        }
+
+        .ftb i {
+            font-size: .68rem;
+            color: var(--clay)
+        }
+
+        .ft-pay {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+
+        .ft-pay-lbl {
+            font-size: .62rem;
+            font-weight: 700;
+            color: var(--tx3);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            white-space: nowrap
+        }
+
+        .pchip {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: .2rem .58rem;
+            font-size: .6rem;
+            font-weight: 600;
+            color: var(--tx2);
+            display: inline-flex;
+            align-items: center;
+            gap: .28rem
+        }
+
+        .ft-copy-row {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: .75rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: .5rem;
+            border-top: 1px solid var(--border)
+        }
+
+        .ft-copy {
+            font-size: .68rem;
+            color: var(--tx3)
+        }
+
+        .ft-leg {
+            display: flex;
+            gap: 1.2rem
+        }
+
+        .ft-leg a {
+            font-size: .68rem;
+            color: var(--tx3);
+            transition: color .15s
+        }
+
+        .ft-leg a:hover {
+            color: var(--clay)
+        }
+
+        /* ══ UTILS ══ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity .5s ease, transform .5s ease
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: none
+        }
+
+        #bttBtn {
+            position: fixed;
+            bottom: 4.5rem;
+            right: 1.15rem;
+            z-index: 850;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--clay);
+            color: #fff;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .9rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity .3s, transform .3s;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(181, 98, 42, .38)
+        }
+
+        #bttBtn.show {
+            opacity: 1;
+            transform: none
+        }
+
+        #bttBtn:hover {
+            background: var(--clay-d)
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 5.5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            z-index: 1100;
+            background: var(--tx);
+            color: var(--bg);
+            border-radius: var(--r2);
+            padding: .65rem 1.2rem;
+            font-size: .78rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            opacity: 0;
+            transition: all .3s;
+            pointer-events: none;
+            white-space: nowrap;
+            box-shadow: var(--sh2)
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0)
+        }
+
+        .toast i {
+            color: var(--clay-l)
+        }
+
+        /* ══ RESPONSIVE ══ */
+        @media(max-width:1400px) {
+            .wl-grid.grid-4 {
+                grid-template-columns: repeat(4, 1fr)
+            }
+
+            .wl-rec-grid {
+                grid-template-columns: repeat(4, 1fr)
+            }
+        }
+
+        @media(max-width:1100px) {
+            .wl-grid.grid-4 {
+                grid-template-columns: repeat(3, 1fr)
+            }
+
+            .wl-rec-grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
+
+            .ft-main {
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 1.3rem
+            }
+        }
+
+        @media(max-width:900px) {
+
+            .wl-grid.grid-4,
+            .wl-grid.grid-3 {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .wl-rec-grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
+
+            .ft-main {
+                grid-template-columns: 1fr 1fr 1fr
+            }
+
+            .wl-sum-body {
+                grid-template-columns: repeat(4, 1fr)
+            }
+        }
+
+        @media(max-width:768px) {
+            :root {
+                --nav-h: 52px;
+                --cat-h: 0px
+            }
+
+            body {
+                padding-bottom: 68px
+            }
+
+            #catnav {
+                display: none
+            }
+
+            .tn-deliver,
+            .tn-div,
+            .tn-lang,
+            .tn-theme {
+                display: none !important
+            }
+
+            .tn-right .tnb:not(#hamBtn):not(#mobGlob) {
+                display: none !important
+            }
+
+            .tn-right .dp:not(#mobGlob) {
+                display: none !important
+            }
+
+            .tn-sc {
+                display: none
+            }
+
+            .tn-wrap {
+                padding: 0 .75rem;
+                gap: .5rem
+            }
+
+            .ham-btn {
+                display: flex !important
+            }
+
+            #mobGlob {
+                display: flex !important;
+                position: relative
+            }
+
+            #navCart {
+                display: none !important
+            }
+
+            .mob-bar {
+                display: block
+            }
+
+            .wl-hero {
+                padding: 1.2rem .85rem 1.1rem
+            }
+
+            .wl-hero-left h1 {
+                font-size: 1.3rem
+            }
+
+            .wl-hero-stats {
+                gap: .75rem
+            }
+
+            .wl-stat-num {
+                font-size: 1.2rem
+            }
+
+            .wl-toolbar {
+                top: var(--nav-h)
+            }
+
+            .wl-toolbar-inner {
+                gap: .55rem
+            }
+
+            .wl-tb-left {
+                flex-wrap: wrap
+            }
+
+            .wl-search {
+                max-width: 100%;
+                flex: 1 1 100%
+            }
+
+            .wl-outer {
+                padding: 1rem .85rem 2.5rem
+            }
+
+            .wl-grid.grid-4,
+            .wl-grid.grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: .75rem
+            }
+
+            .wl-rec-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .wl-sum-body {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .ft-main {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.2rem;
+                padding: 1.5rem .85rem 1rem
+            }
+
+            .ft-brand-col {
+                grid-column: 1/-1;
+                text-align: center
+            }
+
+            .ft-brand-col .ft-bl {
+                justify-content: center
+            }
+
+            .ft-brand-col .ft-socs {
+                justify-content: center
+            }
+
+            .ft-bot {
+                justify-content: center
+            }
+
+            .ft-copy-row {
+                flex-direction: column;
+                align-items: center;
+                text-align: center
+            }
+
+            .wl-grid.grid-list .wl-card {
+                flex-direction: column
+            }
+
+            .wl-grid.grid-list .wl-card-img {
+                width: 100%;
+                min-height: 220px;
+                aspect-ratio: 16/9
+            }
+
+            .wl-grid.grid-list .wl-card-body {
+                flex-direction: column
+            }
+
+            .wl-grid.grid-list .wl-card-right {
+                min-width: 0;
+                width: 100%;
+                align-items: stretch
+            }
+        }
+
+        @media(max-width:480px) {
+            :root {
+                --nav-h: 48px
+            }
+
+            .tn-brand small {
+                display: none
+            }
+
+            .wl-grid.grid-4,
+            .wl-grid.grid-3 {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .wl-rec-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .wl-card-actions {
+                opacity: 1;
+                transform: none
+            }
+
+            .wl-hero-stats {
+                display: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══════════════ NAVBAR ══════════════ -->
+    <nav id="topnav">
+        <div class="tn-wrap">
+            <a href="index.html" class="tn-logo">
+                <img class="tn-logo-img" src="matikala.png" alt="Matikala" onerror="this.style.display='none'" />
+                <div class="tn-brand">MATIKALA<small>Quiet Sculpture for Modern Spaces</small></div>
+            </a>
+            <div class="tn-deliver" onclick="openDr()">
+                <span><i class="fa-solid fa-location-dot" style="font-size:.65rem"></i> Deliver to</span>
+                <strong>Pan-India</strong>
+            </div>
+            <div class="tn-div"></div>
+            <div class="tn-search">
+                <div class="dp" style="position:static">
+                    <button class="tn-sc" id="scBtn" onclick="toggleDrop('scDrop');event.stopPropagation()">All <i
+                            class="fa-solid fa-chevron-down" style="font-size:.55rem"></i></button>
+                    <div class="dp-menu" id="scDrop" style="left:0;right:auto;min-width:175px;top:calc(100% + 2px)">
+                        <div class="dp-hd">Categories</div>
+                        <div class="dpi" onclick="window.location='shop.html'"><i class="fa-solid fa-th-large"></i>All
+                            Categories</div>
+                        <div class="dpi" onclick="window.location='shop.html?cat=Figurative+Totems'"><i
+                                class="fa-solid fa-chess-rook"></i>Figurative Totems</div>
+                        <div class="dpi" onclick="window.location='shop.html?cat=Textured+Vessels'"><i
+                                class="fa-solid fa-wine-bottle"></i>Textured Vessels</div>
+                        <div class="dpi" onclick="window.location='shop.html?cat=Abstract+Forms'"><i
+                                class="fa-solid fa-shapes"></i>Abstract Forms</div>
+                        <div class="dpi" onclick="window.location='shop.html?cat=Home+D%C3%A9cor'"><i
+                                class="fa-solid fa-home"></i>Home Décor</div>
+                        <div class="dpi" onclick="window.location='shop.html?cat=Gift+Sets'"><i
+                                class="fa-solid fa-gift"></i>Gift Sets</div>
+                    </div>
+                </div>
+                <input class="tn-si" type="text" id="si" placeholder="Search for sculptures, clay art, home décor…"
+                    onkeydown="if(event.key==='Enter')window.location='shop.html?q='+encodeURIComponent(this.value)" />
+                <button class="tn-sb"
+                    onclick="window.location='shop.html?q='+encodeURIComponent(document.getElementById('si').value)"><i
+                        class="fa-solid fa-search"></i></button>
+            </div>
+            <div class="tn-div"></div>
+            <div class="tn-right">
+                <div class="dp">
+                    <div class="tn-lang" onclick="toggleDrop('langDrop')">
+                        <i class="fa-solid fa-globe" style="font-size:.82rem"></i>
+                        <span id="curLang">EN</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size:.52rem;opacity:.7"></i>
+                    </div>
+                    <div class="dp-menu" id="langDrop">
+                        <div class="dp-hd">Select Language</div>
+                        <div class="dp-li on" onclick="setLang('EN',this)">English <span class="code">EN</span></div>
+                        <div class="dp-li" onclick="setLang('HI',this)">हिन्दी <span class="code">HI</span></div>
+                        <div class="dp-li" onclick="setLang('TA',this)">தமிழ் <span class="code">TA</span></div>
+                        <div class="dp-li" onclick="setLang('TE',this)">తెలుగు <span class="code">TE</span></div>
+                        <div class="dp-li" onclick="setLang('KN',this)">ಕನ್ನಡ <span class="code">KN</span></div>
+                        <div class="dp-li" onclick="setLang('ML',this)">മലയാളം <span class="code">ML</span></div>
+                        <div class="dp-li" onclick="setLang('BN',this)">বাংলা <span class="code">BN</span></div>
+                        <div class="dp-li" onclick="setLang('MR',this)">मराठी <span class="code">MR</span></div>
+                    </div>
+                </div>
+                <div class="dp">
+                    <div class="tnb" onclick="toggleDrop('acctDrop')">
+                        <i class="fa-solid fa-user" style="font-size:.95rem"></i><strong>Account</strong>
+                    </div>
+                    <div class="dp-menu" id="acctDrop">
+                        <div class="dp-hd">My Account</div>
+                        <div class="dpi cta" onclick="window.location='account.html'"><i
+                                class="fa-solid fa-user-plus"></i>Sign Up</div>
+                        <div class="dpi" onclick="window.location='account.html'"><i
+                                class="fa-solid fa-sign-in-alt"></i>Login</div>
+                        <div class="dpi"><i class="fa-solid fa-box"></i>My Orders</div>
+                        <div class="dpi" onclick="window.location='wishlist.html'"><i
+                                class="fa-regular fa-heart"></i>Wishlist</div>
+                        <div class="dpi" onclick="window.location='account.html'"><i
+                                class="fa-solid fa-user-circle"></i>Profile</div>
+                        <div class="dpi"><i class="fa-solid fa-map-marker-alt"></i>Saved Addresses</div>
+                    </div>
+                </div>
+                <div class="tnb" onclick="alert('Notifications — Phase 3!')">
+                    <span style="position:relative"><i class="fa-solid fa-bell" style="font-size:.95rem"></i><span
+                            class="tbg">3</span></span>
+                    <strong>Alerts</strong>
+                </div>
+                <a href="wishlist.html" class="tnb active-page">
+                    <span style="position:relative"><i class="fa-solid fa-heart" style="font-size:.95rem"></i><span
+                            class="tbg" id="wlBadge">5</span></span>
+                    <strong>Wishlist</strong>
+                </a>
+                <div class="tnb" id="navCart" onclick="window.location='cart.html'">
+                    <span style="position:relative"><i class="fa-solid fa-shopping-bag"
+                            style="font-size:.95rem"></i><span class="tbg" id="cartBadge">3</span></span>
+                    <strong>Cart</strong>
+                </div>
+                <div class="tnb mob-glob dp" id="mobGlob" onclick="toggleDrop('mobLangDrop')">
+                    <i class="fa-solid fa-globe" style="font-size:1rem"></i>
+                    <strong id="mobLangLbl">EN</strong>
+                    <div class="dp-menu" id="mobLangDrop" style="right:0;min-width:168px;top:calc(100% + 6px)">
+                        <div class="dp-hd">Language</div>
+                        <div class="dp-li on"
+                            onclick="setLang('EN',this);document.getElementById('mobLangLbl').textContent='EN';event.stopPropagation()">
+                            English <span class="code">EN</span></div>
+                        <div class="dp-li"
+                            onclick="setLang('HI',this);document.getElementById('mobLangLbl').textContent='HI';event.stopPropagation()">
+                            हिन्दी <span class="code">HI</span></div>
+                        <div class="dp-li"
+                            onclick="setLang('TA',this);document.getElementById('mobLangLbl').textContent='TA';event.stopPropagation()">
+                            தமிழ் <span class="code">TA</span></div>
+                        <div class="dp-li"
+                            onclick="setLang('TE',this);document.getElementById('mobLangLbl').textContent='TE';event.stopPropagation()">
+                            తెలుగు <span class="code">TE</span></div>
+                        <div class="dp-li"
+                            onclick="setLang('KN',this);document.getElementById('mobLangLbl').textContent='KN';event.stopPropagation()">
+                            ಕನ್ನಡ <span class="code">KN</span></div>
+                        <div class="dp-li"
+                            onclick="setLang('ML',this);document.getElementById('mobLangLbl').textContent='ML';event.stopPropagation()">
+                            മലയാളം <span class="code">ML</span></div>
+                        <div class="dp-li"
+                            onclick="setLang('BN',this);document.getElementById('mobLangLbl').textContent='BN';event.stopPropagation()">
+                            বাংলা <span class="code">BN</span></div>
+                        <div class="dp-li"
+                            onclick="setLang('MR',this);document.getElementById('mobLangLbl').textContent='MR';event.stopPropagation()">
+                            मराठी <span class="code">MR</span></div>
+                    </div>
+                </div>
+                <button class="tn-theme" onclick="toggleTheme()"><i class="fa-solid fa-sun" id="themeIcon"></i></button>
+                <button class="tnb ham-btn" id="hamBtn" onclick="openDr()">
+                    <i class="fa-solid fa-bars" style="font-size:1.05rem"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ══════════════ CATEGORY NAV ══════════════ -->
+    <div id="catnav">
+        <div class="cn-wrap">
+            <button class="cn-btn" onclick="window.location='shop.html?cat=Figurative+Totems'"><i
+                    class="fa-solid fa-chess-rook" style="font-size:.72rem;opacity:.8"></i> Clay Sculptures</button>
+            <button class="cn-btn" onclick="window.location='shop.html?cat=Textured+Vessels'"><i
+                    class="fa-solid fa-wine-bottle" style="font-size:.72rem;opacity:.8"></i> Textured Vessels</button>
+            <button class="cn-btn" onclick="window.location='shop.html?cat=Home+D%C3%A9cor'"><i class="fa-solid fa-home"
+                    style="font-size:.72rem;opacity:.8"></i> Home Décor</button>
+            <button class="cn-btn" onclick="window.location='shop.html?cat=Gift+Sets'"><i class="fa-solid fa-gift"
+                    style="font-size:.72rem;opacity:.8"></i> Gift Sets</button>
+            <button class="cn-btn" onclick="window.location='shop.html?cat=Sustainable+D%C3%A9cor'"><i
+                    class="fa-solid fa-leaf" style="font-size:.72rem;opacity:.8"></i> Sustainable</button>
+            <div class="cn-sep"></div>
+            <button class="cn-btn cn-hot" onclick="window.location='shop.html?badge=sale'"><i class="fa-solid fa-fire"
+                    style="font-size:.72rem"></i> Today's Deals</button>
+            <button class="cn-btn" onclick="window.location='shop.html?sort=newest'">New Arrivals</button>
+            <button class="cn-btn" onclick="window.location='shop.html?sort=popular'">Trending</button>
+        </div>
+    </div>
+
+    <!-- ══════════════ BREADCRUMB ══════════════ -->
+    <div class="breadcrumb">
+        <div class="bc-inner">
+            <div class="bc-item"><a href="index.html"><i class="fa-solid fa-house" style="font-size:.65rem"></i>
+                    Home</a></div>
+            <span class="bc-sep"><i class="fa-solid fa-chevron-right"></i></span>
+            <div class="bc-item"><a href="account.html">My Account</a></div>
+            <span class="bc-sep"><i class="fa-solid fa-chevron-right"></i></span>
+            <div class="bc-item cur">Wishlist</div>
+        </div>
+    </div>
+
+    <!-- ══════════════ PAGE HERO ══════════════ -->
+    <div class="wl-hero">
+        <div class="wl-hero-inner">
+            <div class="wl-hero-left">
+                <h1><i class="fa-solid fa-heart"></i> My Wishlist</h1>
+                <p>Pieces you love, saved for whenever you're ready</p>
+            </div>
+            <div class="wl-hero-stats">
+                <div class="wl-stat">
+                    <div class="wl-stat-num" id="heroCount">5</div>
+                    <div class="wl-stat-lbl">Items Saved</div>
+                </div>
+                <div class="wl-stat">
+                    <div class="wl-stat-num" id="heroValue">₹38K</div>
+                    <div class="wl-stat-lbl">Total Value</div>
+                </div>
+                <div class="wl-stat">
+                    <div class="wl-stat-num" id="heroSaving">₹9K</div>
+                    <div class="wl-stat-lbl">You Save</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════ TOOLBAR ══════════════ -->
+    <div class="wl-toolbar">
+        <div class="wl-toolbar-inner">
+            <div class="wl-tb-left">
+                <div class="wl-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="wlSearchInput" placeholder="Search your wishlist…"
+                        oninput="filterWishlist()" />
+                </div>
+                <button class="wl-filter-btn" id="inStockBtn" onclick="toggleFilter('inStock')"><i
+                        class="fa-solid fa-circle-check"></i> In Stock</button>
+                <button class="wl-filter-btn" id="onSaleBtn" onclick="toggleFilter('onSale')"><i
+                        class="fa-solid fa-tag"></i> On Sale</button>
+            </div>
+            <div class="wl-tb-right">
+                <select class="wl-sort" id="wlSort" onchange="renderWishlist()">
+                    <option value="newest">Newest First</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="discount">Biggest Discount</option>
+                    <option value="name">Name A–Z</option>
+                </select>
+                <div class="wl-view-btns">
+                    <button class="wl-vbtn on" id="vGrid4" onclick="setView('grid-4')" title="4-column grid"><i
+                            class="fa-solid fa-grip"></i></button>
+                    <button class="wl-vbtn" id="vGrid2" onclick="setView('grid-3')" title="3-column grid"><i
+                            class="fa-solid fa-table-cells-large"></i></button>
+                    <button class="wl-vbtn" id="vList" onclick="setView('grid-list')" title="List view"><i
+                            class="fa-solid fa-list"></i></button>
+                </div>
+                <button class="wl-clear-all" onclick="clearAllWishlist()"><i class="fa-solid fa-trash-can"
+                        style="font-size:.68rem"></i> Clear All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════ MAIN ══════════════ -->
+    <div class="wl-outer">
+
+        <!-- CATEGORY CHIPS -->
+        <div class="wl-cats" id="wlCats"></div>
+
+        <!-- SHARE ROW -->
+        <div class="wl-share-row">
+            <span>Share your wishlist:</span>
+            <button class="wl-share-btn" onclick="copyWishlistLink()"><i class="fa-solid fa-link"></i> Copy
+                Link</button>
+            <button class="wl-share-btn" onclick="showToast('Shared to WhatsApp!')"><i class="fa-brands fa-whatsapp"
+                    style="color:#25D366"></i> WhatsApp</button>
+            <button class="wl-share-btn" onclick="showToast('Shared to Instagram!')"><i class="fa-brands fa-instagram"
+                    style="color:#E1306C"></i> Instagram</button>
+        </div>
+
+        <!-- SUMMARY PANEL -->
+        <div class="wl-summary reveal" id="wlSummary">
+            <div class="wl-sum-hd">
+                <div class="wl-sum-title"><i class="fa-solid fa-chart-pie"></i> Wishlist Summary</div>
+            </div>
+            <div class="wl-sum-body">
+                <div class="wl-sum-stat">
+                    <div class="wl-sum-stat-num" id="sumItems">5</div>
+                    <div class="wl-sum-stat-lbl">Items</div>
+                </div>
+                <div class="wl-sum-stat">
+                    <div class="wl-sum-stat-num" id="sumTotal">₹0</div>
+                    <div class="wl-sum-stat-lbl">Total Value</div>
+                </div>
+                <div class="wl-sum-stat">
+                    <div class="wl-sum-stat-num" id="sumSave" style="color:var(--green)">₹0</div>
+                    <div class="wl-sum-stat-lbl">You Save</div>
+                </div>
+                <div class="wl-sum-stat">
+                    <div class="wl-sum-stat-num" id="sumAvg">₹0</div>
+                    <div class="wl-sum-stat-lbl">Avg. Price</div>
+                </div>
+            </div>
+            <button class="wl-sum-atc-all" onclick="addAllToCart()">
+                <i class="fa-solid fa-shopping-bag"></i> Add All to Cart
+            </button>
+        </div>
+
+        <!-- WISHLIST GRID -->
+        <div class="wl-grid grid-4" id="wlGrid"></div>
+
+        <!-- EMPTY STATE -->
+        <div class="wl-empty" id="wlEmpty">
+            <div class="wl-empty-icon"><i class="fa-regular fa-heart"></i></div>
+            <h2>Your Wishlist is Empty</h2>
+            <p>Start saving pieces you love! Browse our handcrafted collections and tap the heart icon to add them to
+                your wishlist.</p>
+            <div class="empty-btns">
+                <a href="shop.html" class="btn-clay"><i class="fa-solid fa-shop"></i> Browse Collections</a>
+                <a href="shop.html?sort=popular" class="btn-outline"><i class="fa-solid fa-arrow-trend-up"></i> Trending
+                    Now</a>
+            </div>
+        </div>
+
+        <!-- RECENTLY VIEWED / YOU MAY ALSO LIKE -->
+        <div class="wl-rec-section reveal" id="recsSection">
+            <div class="wl-sec-hd">
+                <div class="wl-sec-title"><i class="fa-solid fa-sparkles" style="color:var(--gold)"></i> You May Also
+                    Love</div>
+                <a href="shop.html" class="wl-sec-link">View All <i class="fa-solid fa-arrow-right"
+                        style="font-size:.65rem"></i></a>
+            </div>
+            <div class="wl-rec-grid" id="recsGrid"></div>
+        </div>
+
+    </div>
+
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer>
+        <div class="ft-main">
+            <div class="ft-brand-col">
+                <div class="ft-bl">
+                    <img src="matikala.png" alt="Matikala" onerror="this.style.display='none'" />
+                    <div class="ft-bn">MATI<em>K</em>ALA</div>
+                </div>
+                <div class="ft-tg">"Quiet Sculpture for Modern Spaces"</div>
+                <p class="ft-desc">Handcrafted clay sculptures founded in 2026 in India. Artisanal craftsmanship,
+                    thoughtful design, lasting beauty.</p>
+                <div class="ft-socs">
+                    <a href="https://instagram.com/matikala.sculpture" class="ft-soc ft-ig" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="ft-soc ft-fb"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="ft-soc ft-yt"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="ft-soc ft-wa"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="ft-soc ft-xx"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div>
+                <div class="ft-ch">Quick Links</div>
+                <ul class="ft-links">
+                    <li><a href="index.html"><i class="fa-solid fa-chevron-right"></i>Home</a></li>
+                    <li><a href="shop.html"><i class="fa-solid fa-chevron-right"></i>All Collections</a></li>
+                    <li><a href="shop.html?sort=newest"><i class="fa-solid fa-chevron-right"></i>New Arrivals</a></li>
+                    <li><a href="shop.html?badge=sale"><i class="fa-solid fa-chevron-right"></i>Today's Deals</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="ft-ch">Customer Service</div>
+                <ul class="ft-links">
+                    <li><a href="shipping.html"><i class="fa-solid fa-chevron-right"></i>Shipping Policy</a></li>
+                    <li><a href="return-refund.html"><i class="fa-solid fa-chevron-right"></i>Returns & Refunds</a></li>
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Track Order</a></li>
+                    <li><a href="faq.html"><i class="fa-solid fa-chevron-right"></i>FAQ</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="ft-ch">Policies</div>
+                <ul class="ft-links">
+                    <li><a href="privacy-policy.html"><i class="fa-solid fa-chevron-right"></i>Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html"><i class="fa-solid fa-chevron-right"></i>Terms of Service</a>
+                    </li>
+                    <li><a href="cancellation.html"><i class="fa-solid fa-chevron-right"></i>Cancellation Policy</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <div class="ft-ch">Contact</div>
+                <ul class="ft-links">
+                    <li><a href="mailto:hello@matikala.com"><i
+                                class="fa-solid fa-chevron-right"></i>hello@matikala.com</a></li>
+                    <li><a href="tel:+919458509527"><i class="fa-solid fa-chevron-right"></i>+91 94585 09527</a></li>
+                    <li><a href="https://instagram.com/matikala.sculpture" target="_blank"><i
+                                class="fa-solid fa-chevron-right"></i>@matikala.sculpture</a></li>
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Mon–Sat · 10am–6pm IST</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="ft-bot"
+            style="justify-content:center;flex-direction:column;align-items:center;gap:.65rem;padding:1rem 1.2rem">
+            <div class="ft-tbadges">
+                <div class="ftb"><i class="fa-solid fa-lock"></i> SSL Secured</div>
+                <div class="ftb"><i class="fa-solid fa-shield-halved"></i> Secure Checkout</div>
+                <div class="ftb"><i class="fa-solid fa-rotate-left"></i> Easy Returns</div>
+                <div class="ftb"><i class="fa-solid fa-award"></i> 100% Handmade</div>
+            </div>
+            <div class="ft-pay" style="gap:.38rem">
+                <span class="ft-pay-lbl">We Accept</span>
+                <span class="pchip">UPI</span>
+                <span class="pchip"><i class="fa-brands fa-cc-visa" style="color:#1A1F71;font-size:.85rem"></i>
+                    Visa</span>
+                <span class="pchip"><i class="fa-brands fa-cc-mastercard" style="font-size:.85rem"></i> MC</span>
+                <span class="pchip">PhonePe</span><span class="pchip">GPay</span><span class="pchip">Paytm</span>
+            </div>
+        </div>
+        <div class="ft-copy-row">
+            <span class="ft-copy">© 2026 Matikala. All rights reserved. Handcrafted with love in India.</span>
+            <div class="ft-leg"><a href="privacy-policy.html">Privacy</a><a href="terms-of-service.html">Terms</a><a
+                    href="cookies.html">Cookies</a></div>
+        </div>
+    </footer>
+
+    <!-- ══════════════ MOBILE BOTTOM NAV ══════════════ -->
+    <nav class="mob-bar">
+        <div class="mob-row">
+            <a href="index.html" class="mb-btn"><i class="fa-solid fa-house"></i>Home</a>
+            <a href="shop.html" class="mb-btn"><i class="fa-solid fa-shop"></i>Shop</a>
+            <a href="account.html" class="mb-btn"><i class="fa-solid fa-user"></i>Account</a>
+            <a href="wishlist.html" class="mb-btn on"><i class="fa-solid fa-heart"></i>Wishlist</a>
+            <a href="cart.html" class="mb-btn"><span style="position:relative"><i
+                        class="fa-solid fa-shopping-bag"></i><span class="mb-badge"
+                        id="mobCartBadge">3</span></span>Cart</a>
+        </div>
+    </nav>
+
+    <!-- ══════════════ MOBILE DRAWER ══════════════ -->
+    <div class="m-ov" id="mOv" onclick="closeDr()">
+        <div class="m-drawer" onclick="event.stopPropagation()">
+            <div class="mdr-hd">
+                <div class="mdr-brand">
+                    <img src="matikala.png" alt="Matikala" onerror="this.style.display='none'" />
+                    <div>
+                        <div class="mdr-brand-name">MATIKALA</div><span class="mdr-brand-tag">Handcrafted Clay</span>
+                    </div>
+                </div>
+                <button class="mdr-close" onclick="closeDr()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="mdr-srch"><i class="fa-solid fa-magnifying-glass"></i><input type="text"
+                    placeholder="Search sculptures…"
+                    onkeydown="if(event.key==='Enter'){window.location='shop.html?q='+encodeURIComponent(this.value)}" />
+            </div>
+            <div class="mdr-user">
+                <div class="mdr-user-info"><i class="fa-solid fa-user-circle"></i>Sign in for personalised picks</div>
+                <div class="mdr-ucta">
+                    <div class="mdr-ubtn" onclick="window.location='account.html'">Sign Up</div>
+                    <div class="mdr-ubtn ol" onclick="window.location='account.html'">Login</div>
+                </div>
+            </div>
+            <div class="mdr-sh">Shop Categories</div>
+            <div class="mdr-cat">
+                <div class="mdr-cat-hd" onclick="toggleMdrCat(this)">
+                    <div class="mdr-cat-hd-l"><span class="mdr-ico ic1"><i
+                                class="fa-solid fa-chess-rook"></i></span>Clay Sculptures</div><i
+                        class="fa-solid fa-chevron-down mdr-cat-arr"></i>
+                </div>
+                <div class="mdr-cat-body">
+                    <a href="shop.html?cat=Figurative+Totems" class="mdr-sub">Figurative Totems</a>
+                    <a href="shop.html?cat=Abstract+Forms" class="mdr-sub">Abstract Forms</a>
+                    <a href="shop.html?sort=newest" class="mdr-sub" style="color:var(--clay);font-weight:600">✦ New
+                        Arrivals</a>
+                </div>
+            </div>
+            <div class="mdr-cat">
+                <div class="mdr-cat-hd" onclick="toggleMdrCat(this)">
+                    <div class="mdr-cat-hd-l"><span class="mdr-ico ic2"><i
+                                class="fa-solid fa-wine-bottle"></i></span>Textured Vessels</div><i
+                        class="fa-solid fa-chevron-down mdr-cat-arr"></i>
+                </div>
+                <div class="mdr-cat-body"><a href="shop.html?cat=Textured+Vessels" class="mdr-sub">All Vessels</a></div>
+            </div>
+            <div class="mdr-cat">
+                <div class="mdr-cat-hd" onclick="toggleMdrCat(this)">
+                    <div class="mdr-cat-hd-l"><span class="mdr-ico ic3"><i class="fa-solid fa-house"></i></span>Home
+                        Décor</div><i class="fa-solid fa-chevron-down mdr-cat-arr"></i>
+                </div>
+                <div class="mdr-cat-body"><a href="shop.html?cat=Home+D%C3%A9cor" class="mdr-sub">Table Sculptures</a>
+                </div>
+            </div>
+            <div class="mdr-cat">
+                <div class="mdr-cat-hd" onclick="toggleMdrCat(this)">
+                    <div class="mdr-cat-hd-l"><span class="mdr-ico ic4"><i class="fa-solid fa-gift"></i></span>Gift Sets
+                    </div><i class="fa-solid fa-chevron-down mdr-cat-arr"></i>
+                </div>
+                <div class="mdr-cat-body">
+                    <a href="shop.html?cat=Gift+Sets" class="mdr-sub">Wedding Gifts</a>
+                    <a href="shop.html?cat=Gift+Sets" class="mdr-sub">Diwali Special</a>
+                </div>
+            </div>
+            <a href="shop.html?badge=sale" class="mdr-link mdr-link-hot">
+                <div class="mdr-link-l"><span class="mdr-ico ic7"><i class="fa-solid fa-fire"></i></span>Today's Deals
+                </div><i class="fa-solid fa-chevron-right arr"></i>
+            </a>
+            <a href="shop.html?sort=popular" class="mdr-link">
+                <div class="mdr-link-l"><span class="mdr-ico ic8"><i
+                            class="fa-solid fa-arrow-trend-up"></i></span>Trending Now</div><i
+                    class="fa-solid fa-chevron-right arr"></i>
+            </a>
+            <div class="mdr-sh">My Account</div>
+            <a href="#" class="mdr-link">
+                <div class="mdr-link-l"><span class="mdr-ico ic2"><i class="fa-solid fa-box"></i></span>My Orders</div>
+                <i class="fa-solid fa-chevron-right arr"></i>
+            </a>
+            <a href="wishlist.html" class="mdr-link" style="color:var(--clay)">
+                <div class="mdr-link-l"><span class="mdr-ico ic4"><i class="fa-solid fa-heart"></i></span>Wishlist <span
+                        style="font-size:.6rem;background:var(--clay);color:#fff;padding:.08rem .38rem;border-radius:10px;margin-left:.3rem"
+                        id="mdrWlBadge">5</span></div><i class="fa-solid fa-chevron-right arr"></i>
+            </a>
+            <div class="mdr-sh">Language</div>
+            <div class="mdr-lang">
+                <div class="mdr-lo on" onclick="setLang('EN',this)">English <span class="code">EN</span></div>
+                <div class="mdr-lo" onclick="setLang('HI',this)">हिन्दी <span class="code">HI</span></div>
+                <div class="mdr-lo" onclick="setLang('TA',this)">தமிழ் <span class="code">TA</span></div>
+                <div class="mdr-lo" onclick="setLang('TE',this)">తెలుగు <span class="code">TE</span></div>
+                <div class="mdr-lo" onclick="setLang('KN',this)">ಕನ್ನಡ <span class="code">KN</span></div>
+                <div class="mdr-lo" onclick="setLang('ML',this)">മലയാളം <span class="code">ML</span></div>
+                <div class="mdr-lo" onclick="setLang('BN',this)">বাংলা <span class="code">BN</span></div>
+                <div class="mdr-lo" onclick="setLang('MR',this)">मराठी <span class="code">MR</span></div>
+            </div>
+            <div class="mdr-tog">
+                <span class="mdr-tog-lbl"><i class="fa-solid fa-moon"></i> Dark / Light Mode</span>
+                <div class="tog" id="togM" onclick="toggleTheme()">
+                    <div class="tog-knob"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast & Back-to-top -->
+    <div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMsg">Done!</span></div>
+    <button id="bttBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i
+            class="fa-solid fa-chevron-up"></i></button>
+
+    <script>
+        /* ══════════════════════════════════════════
+           WISHLIST DATA
+        ══════════════════════════════════════════ */
+        let wishlistItems = [
+            { id: 1, name: 'Twin Spirit Vessel', cat: 'Figurative Totems', price: 4800, mrp: 5500, rating: 4.8, reviews: 124, size: 'Medium', finish: 'Natural Clay', badge: 'new', inStock: true, lowStock: false, addedDate: '2 days ago', img: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&q=80' },
+            { id: 2, name: 'Cracked Earth Bottle Set', cat: 'Textured Vessels', price: 7200, mrp: 8800, rating: 4.6, reviews: 87, size: 'Large', finish: 'Cracked Clay', badge: 'sale', inStock: true, lowStock: true, addedDate: '5 days ago', img: 'https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?w=400&q=80' },
+            { id: 3, name: 'Orbit Sculpture Series', cat: 'Abstract Forms', price: 8400, mrp: 9800, rating: 4.9, reviews: 212, size: 'Large', finish: 'Natural Clay', badge: 'hot', inStock: true, lowStock: false, addedDate: '1 week ago', img: 'https://images.unsplash.com/photo-1608501078713-8e445a709b39?w=400&q=80' },
+            { id: 4, name: 'Heritage Figure Statue', cat: 'Figurative Totems', price: 12500, mrp: 14000, rating: 5.0, reviews: 56, size: 'XL', finish: 'Terracotta', badge: '', inStock: false, lowStock: false, addedDate: '2 weeks ago', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80' },
+            { id: 5, name: 'Festive Gift Curation', cat: 'Gift Sets', price: 6800, mrp: 8500, rating: 4.7, reviews: 143, size: 'Set', finish: 'Mixed Clay', badge: 'sale', inStock: true, lowStock: false, addedDate: '3 weeks ago', img: 'https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=400&q=80' },
+        ];
+
+        const recProducts = [
+            { id: 10, name: 'Horizon Form I', cat: 'Abstract Forms', price: 7200, img: 'https://images.unsplash.com/photo-1608501078713-8e445a709b39?w=400&q=80' },
+            { id: 11, name: 'Silent Totem No.3', cat: 'Figurative Totems', price: 5600, img: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&q=80' },
+            { id: 12, name: 'Blue Globe Vessel', cat: 'Textured Vessels', price: 4200, img: 'https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?w=400&q=80' },
+            { id: 13, name: 'Clay Bowl Collection', cat: 'Home Décor', price: 3800, img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80' },
+            { id: 14, name: 'Terracotta Gift Box', cat: 'Gift Sets', price: 5500, img: 'https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=400&q=80' },
+        ];
+
+        let activeView = 'grid-4';
+        let activeFilters = { inStock: false, onSale: false };
+        let activeCatFilter = 'all';
+
+        /* ══ RENDER WISHLIST ══ */
+        function renderWishlist() {
+            const grid = document.getElementById('wlGrid');
+            const empty = document.getElementById('wlEmpty');
+            const summary = document.getElementById('wlSummary');
+            const recsSection = document.getElementById('recsSection');
+
+            let items = [...wishlistItems];
+
+            // Search filter
+            const q = document.getElementById('wlSearchInput').value.trim().toLowerCase();
+            if (q) items = items.filter(i => i.name.toLowerCase().includes(q) || i.cat.toLowerCase().includes(q));
+
+            // Category filter
+            if (activeCatFilter !== 'all') items = items.filter(i => i.cat === activeCatFilter);
+
+            // In-stock filter
+            if (activeFilters.inStock) items = items.filter(i => i.inStock);
+
+            // On-sale filter
+            if (activeFilters.onSale) items = items.filter(i => i.badge === 'sale' || (i.mrp && i.mrp > i.price));
+
+            // Sort
+            const sort = document.getElementById('wlSort').value;
+            if (sort === 'price-low') items.sort((a, b) => a.price - b.price);
+            else if (sort === 'price-high') items.sort((a, b) => b.price - a.price);
+            else if (sort === 'discount') items.sort((a, b) => ((b.mrp - b.price) / b.mrp || 0) - ((a.mrp - a.price) / a.mrp || 0));
+            else if (sort === 'name') items.sort((a, b) => a.name.localeCompare(b.name));
+
+            if (items.length === 0) {
+                grid.innerHTML = '';
+                empty.classList.add('show');
+                summary.style.display = 'none';
+                recsSection.style.display = '';
+            } else {
+                empty.classList.remove('show');
+                summary.style.display = '';
+                recsSection.style.display = '';
+
+                const isList = activeView === 'grid-list';
+
+                grid.innerHTML = items.map(item => {
+                    const disc = item.mrp ? Math.round((1 - item.price / item.mrp) * 100) : 0;
+                    const stars = renderStars(item.rating);
+                    const badgeHtml = item.badge ? `<span class="wl-badge ${item.badge}">${item.badge === 'new' ? 'New' : item.badge === 'sale' ? 'Sale' : item.badge === 'hot' ? 'Hot' : item.badge === 'eco' ? 'Eco' : item.badge}</span>` : '';
+                    const outBadge = !item.inStock ? `<span class="wl-badge out">Out of Stock</span>` : '';
+                    const stockHtml = item.lowStock
+                        ? `<div class="wl-stock-warn"><i class="fa-solid fa-triangle-exclamation"></i> Only a few left!</div>`
+                        : item.inStock ? `<div class="wl-stock-ok"><i class="fa-solid fa-circle-check"></i> In Stock</div>` : `<div class="wl-stock-warn"><i class="fa-solid fa-ban"></i> Out of Stock</div>`;
+
+                    const infoBlock = `
+                        <div class="wl-card-cat">${item.cat}</div>
+                        <div class="wl-card-name" onclick="window.location='product.html'">${item.name}</div>
+                        <div class="wl-card-stars">${stars}<span>(${item.reviews})</span></div>
+                        ${stockHtml}
+                        <div class="wl-card-price-row">
+                            <div class="wl-card-price">₹${item.price.toLocaleString('en-IN')}</div>
+                            ${item.mrp ? `<div class="wl-card-mrp">₹${item.mrp.toLocaleString('en-IN')}</div><div class="wl-card-disc">${disc}% off</div>` : ''}
+                        </div>
+                        <div class="wl-card-meta">
+                            <span class="wl-meta-tag"><i class="fa-solid fa-ruler"></i>${item.size}</span>
+                            <span class="wl-meta-tag"><i class="fa-solid fa-palette"></i>${item.finish}</span>
+                        </div>
+                        <div class="wl-added"><i class="fa-regular fa-clock"></i> Added ${item.addedDate}</div>`;
+
+                    const footerBlock = `
+                        <div class="wl-card-footer">
+                            <button class="wl-atc-btn ${!item.inStock ? 'out-of-stock' : ''}" onclick="${item.inStock ? `addToCartFromWL(${item.id})` : 'showToast(\'Back in stock soon!\')'}">
+                                <i class="fa-solid fa-${item.inStock ? 'shopping-bag' : 'bell'}"></i>
+                                ${item.inStock ? 'Add to Cart' : 'Notify Me'}
+                            </button>
+                            <button class="wl-remove-link" onclick="removeFromWL(${item.id})">
+                                <i class="fa-solid fa-trash-can" style="font-size:.62rem"></i> Remove from wishlist
+                            </button>
+                        </div>`;
+
+                    if (isList) {
+                        return `<div class="wl-card reveal" id="wli-${item.id}">
+                            <div class="wl-card-img" onclick="window.location='product.html'">
+                                <img src="${item.img}" alt="${item.name}" loading="lazy"/>
+                                <div class="wl-card-badges">${badgeHtml}${outBadge}</div>
+                                <div class="wl-card-actions">
+                                    <button class="wl-card-act-btn" onclick="event.stopPropagation();shareItem('${item.name}')" title="Share"><i class="fa-solid fa-share-nodes"></i></button>
+                                    <button class="wl-card-act-btn remove" onclick="event.stopPropagation();removeFromWL(${item.id})" title="Remove"><i class="fa-solid fa-heart-crack"></i></button>
+                                </div>
+                            </div>
+                            <div class="wl-card-body">
+                                <div class="wl-card-info">${infoBlock}</div>
+                                <div class="wl-card-right">${footerBlock}</div>
+                            </div>
+                        </div>`;
+                    }
+
+                    return `<div class="wl-card reveal" id="wli-${item.id}">
+                        <div class="wl-card-img" onclick="window.location='product.html'">
+                            <img src="${item.img}" alt="${item.name}" loading="lazy"/>
+                            <div class="wl-card-badges">${badgeHtml}${outBadge}</div>
+                            <div class="wl-card-actions">
+                                <button class="wl-card-act-btn" onclick="event.stopPropagation();shareItem('${item.name}')" title="Share"><i class="fa-solid fa-share-nodes"></i></button>
+                                <button class="wl-card-act-btn remove" onclick="event.stopPropagation();removeFromWL(${item.id})" title="Remove"><i class="fa-solid fa-heart-crack"></i></button>
+                            </div>
+                        </div>
+                        <div class="wl-card-body">
+                            ${infoBlock}
+                            ${footerBlock}
+                        </div>
+                    </div>`;
+                }).join('');
+            }
+
+            updateSummary();
+            updateHero();
+            updateBadges();
+            renderCatChips();
+            triggerReveal();
+        }
+
+        /* ══ STARS ══ */
+        function renderStars(r) {
+            let html = '';
+            for (let i = 1; i <= 5; i++) {
+                if (r >= i) html += '<i class="fa-solid fa-star"></i>';
+                else if (r >= i - 0.5) html += '<i class="fa-solid fa-star-half-stroke"></i>';
+                else html += '<i class="fa-regular fa-star"></i>';
+            }
+            return html;
+        }
+
+        /* ══ CATEGORY CHIPS ══ */
+        function renderCatChips() {
+            const cats = ['all', ...new Set(wishlistItems.map(i => i.cat))];
+            const container = document.getElementById('wlCats');
+            container.innerHTML = cats.map(cat => {
+                const count = cat === 'all' ? wishlistItems.length : wishlistItems.filter(i => i.cat === cat).length;
+                const icon = getCatIcon(cat);
+                return `<button class="wl-chip ${activeCatFilter === cat ? 'on' : ''}" onclick="setCatFilter('${cat}')">
+                    <i class="${icon}"></i>
+                    ${cat === 'all' ? 'All' : cat}
+                    <span class="cnt">${count}</span>
+                </button>`;
+            }).join('');
+        }
+
+        function getCatIcon(cat) {
+            const map = { 'all': 'fa-solid fa-th-large', 'Figurative Totems': 'fa-solid fa-chess-rook', 'Textured Vessels': 'fa-solid fa-wine-bottle', 'Abstract Forms': 'fa-solid fa-shapes', 'Home Décor': 'fa-solid fa-home', 'Gift Sets': 'fa-solid fa-gift' };
+            return map[cat] || 'fa-solid fa-tag';
+        }
+
+        function setCatFilter(cat) {
+            activeCatFilter = cat;
+            renderWishlist();
+        }
+
+        /* ══ SUMMARY ══ */
+        function updateSummary() {
+            const total = wishlistItems.reduce((s, i) => s + i.price, 0);
+            const mrpTotal = wishlistItems.reduce((s, i) => s + (i.mrp || i.price), 0);
+            const save = mrpTotal - total;
+            const avg = wishlistItems.length ? Math.round(total / wishlistItems.length) : 0;
+            document.getElementById('sumItems').textContent = wishlistItems.length;
+            document.getElementById('sumTotal').textContent = '₹' + total.toLocaleString('en-IN');
+            document.getElementById('sumSave').textContent = '₹' + save.toLocaleString('en-IN');
+            document.getElementById('sumAvg').textContent = '₹' + avg.toLocaleString('en-IN');
+        }
+
+        /* ══ HERO STATS ══ */
+        function updateHero() {
+            const total = wishlistItems.reduce((s, i) => s + i.price, 0);
+            const mrpTotal = wishlistItems.reduce((s, i) => s + (i.mrp || i.price), 0);
+            const save = mrpTotal - total;
+            document.getElementById('heroCount').textContent = wishlistItems.length;
+            document.getElementById('heroValue').textContent = total >= 1000 ? '₹' + Math.round(total / 1000) + 'K' : '₹' + total;
+            document.getElementById('heroSaving').textContent = save >= 1000 ? '₹' + Math.round(save / 1000) + 'K' : '₹' + save;
+        }
+
+        /* ══ BADGES ══ */
+        function updateBadges() {
+            const count = wishlistItems.length;
+            document.getElementById('wlBadge').textContent = count;
+            document.getElementById('wlBadge').style.display = count > 0 ? 'flex' : 'none';
+            if (document.getElementById('mdrWlBadge')) document.getElementById('mdrWlBadge').textContent = count;
+        }
+
+        /* ══ ITEM ACTIONS ══ */
+        function removeFromWL(id) {
+            const el = document.getElementById('wli-' + id);
+            if (el) {
+                el.style.transition = 'all .35s';
+                el.style.opacity = '0';
+                el.style.transform = 'scale(.92)';
+                setTimeout(() => {
+                    wishlistItems = wishlistItems.filter(i => i.id !== id);
+                    renderWishlist();
+                }, 340);
+            }
+            showToast('Removed from wishlist');
+        }
+
+        function addToCartFromWL(id) {
+            const item = wishlistItems.find(i => i.id === id);
+            if (!item) return;
+            const badge = document.getElementById('cartBadge');
+            badge.textContent = parseInt(badge.textContent || 0) + 1;
+            document.getElementById('mobCartBadge').textContent = badge.textContent;
+            showToast(`"${item.name}" added to cart!`);
+        }
+
+        function addAllToCart() {
+            const inStock = wishlistItems.filter(i => i.inStock);
+            if (!inStock.length) { showToast('No in-stock items to add!'); return; }
+            const badge = document.getElementById('cartBadge');
+            badge.textContent = parseInt(badge.textContent || 0) + inStock.length;
+            document.getElementById('mobCartBadge').textContent = badge.textContent;
+            showToast(`${inStock.length} items added to cart!`);
+        }
+
+        function clearAllWishlist() {
+            if (!wishlistItems.length) return;
+            if (!confirm('Remove all items from your wishlist?')) return;
+            wishlistItems = [];
+            activeCatFilter = 'all';
+            renderWishlist();
+            showToast('Wishlist cleared');
+        }
+
+        function filterWishlist() { renderWishlist(); }
+
+        function toggleFilter(type) {
+            activeFilters[type] = !activeFilters[type];
+            const btn = document.getElementById(type + 'Btn');
+            btn.classList.toggle('on', activeFilters[type]);
+            renderWishlist();
+        }
+
+        function shareItem(name) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(window.location.href);
+                showToast(`"${name}" link copied!`);
+            } else {
+                showToast(`Share link copied for "${name}"!`);
+            }
+        }
+
+        function copyWishlistLink() {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(window.location.href);
+                showToast('Wishlist link copied!');
+            } else {
+                showToast('Link copied!');
+            }
+        }
+
+        /* ══ VIEW TOGGLE ══ */
+        function setView(v) {
+            activeView = v;
+            const grid = document.getElementById('wlGrid');
+            grid.className = 'wl-grid ' + v;
+            ['vGrid4', 'vGrid2', 'vList'].forEach(id => document.getElementById(id).classList.remove('on'));
+            if (v === 'grid-4') document.getElementById('vGrid4').classList.add('on');
+            else if (v === 'grid-3') document.getElementById('vGrid2').classList.add('on');
+            else document.getElementById('vList').classList.add('on');
+            renderWishlist();
+        }
+
+        /* ══ RECOMMENDATIONS ══ */
+        function renderRecs() {
+            const inWL = new Set(wishlistItems.map(i => i.id));
+            document.getElementById('recsGrid').innerHTML = recProducts.map(p => {
+                const inList = inWL.has(p.id);
+                return `<div class="wl-rec-card reveal" onclick="window.location='product.html'">
+                    <div class="wl-rec-img"><img src="${p.img}" alt="${p.name}" loading="lazy"/></div>
+                    <div class="wl-rec-body">
+                        <div class="wl-rec-cat">${p.cat}</div>
+                        <div class="wl-rec-name">${p.name}</div>
+                        <div class="wl-rec-price">₹${p.price.toLocaleString('en-IN')}</div>
+                        <button class="wl-rec-wl ${inList ? 'added' : ''}" onclick="event.stopPropagation();addRecToWL(${p.id},'${p.name}','${p.cat}',${p.price},'${p.img}',this)">
+                            <i class="fa-${inList ? 'solid' : 'regular'} fa-heart"></i>
+                            ${inList ? 'Saved' : 'Add to Wishlist'}
+                        </button>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function addRecToWL(id, name, cat, price, img, btn) {
+            if (wishlistItems.find(i => i.id === id)) {
+                showToast(`"${name}" already in wishlist`);
+                return;
+            }
+            wishlistItems.unshift({ id, name, cat, price, mrp: 0, rating: 4.5, reviews: 0, size: 'Medium', finish: 'Natural Clay', badge: 'new', inStock: true, lowStock: false, addedDate: 'just now', img });
+            btn.innerHTML = '<i class="fa-solid fa-heart"></i> Saved';
+            btn.style.background = 'var(--clay)';
+            btn.style.color = '#fff';
+            renderWishlist();
+            showToast(`"${name}" added to wishlist!`);
+        }
+
+        /* ══ REVEAL ANIMATION ══ */
+        function triggerReveal() {
+            requestAnimationFrame(() => {
+                const ro = new IntersectionObserver(es => es.forEach(e => {
+                    if (e.isIntersecting) { e.target.classList.add('show'); ro.unobserve(e.target); }
+                }), { threshold: 0.03 });
+                document.querySelectorAll('.reveal:not(.show)').forEach(el => ro.observe(el));
+            });
+        }
+
+        /* ══ TOAST ══ */
+        let toastTimer;
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            t.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+        }
+
+        /* ══ NAV DROPDOWN ══ */
+        function toggleDrop(id) {
+            const m = document.getElementById(id);
+            const was = m.classList.contains('open');
+            document.querySelectorAll('.dp-menu.open').forEach(x => x.classList.remove('open'));
+            if (!was) m.classList.add('open');
+        }
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.dp')) document.querySelectorAll('.dp-menu.open').forEach(m => m.classList.remove('open'));
+        });
+
+        /* ══ DRAWER ══ */
+        function openDr() { document.getElementById('mOv').classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function closeDr() { document.getElementById('mOv').classList.remove('open'); document.body.style.overflow = ''; }
+        function toggleMdrCat(hd) {
+            const cat = hd.closest('.mdr-cat');
+            const isOpen = cat.classList.contains('open');
+            document.querySelectorAll('.mdr-cat.open').forEach(c => c.classList.remove('open'));
+            if (!isOpen) cat.classList.add('open');
+        }
+
+        /* ══ LANGUAGE ══ */
+        function setLang(code, el) {
+            document.getElementById('curLang').textContent = code;
+            document.querySelectorAll('.dp-li,.mdr-lo').forEach(i => i.classList.remove('on'));
+            if (el) el.classList.add('on');
+            document.querySelectorAll('.dp-menu.open').forEach(m => m.classList.remove('open'));
+        }
+
+        /* ══ THEME ══ */
+        function toggleTheme() {
+            const dark = document.documentElement.dataset.theme === 'dark';
+            document.documentElement.dataset.theme = dark ? 'light' : 'dark';
+            document.getElementById('themeIcon').className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            const togM = document.getElementById('togM');
+            if (togM) togM.classList.toggle('on', !dark);
+            localStorage.setItem('mk_theme', document.documentElement.dataset.theme);
+        }
+        (() => {
+            const t = localStorage.getItem('mk_theme');
+            if (t) {
+                document.documentElement.dataset.theme = t;
+                const ic = document.getElementById('themeIcon');
+                if (ic) ic.className = t === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+                if (t === 'dark') { const togM = document.getElementById('togM'); if (togM) togM.classList.add('on'); }
+            }
+        })();
+
+        /* ══ BACK TO TOP ══ */
+        window.addEventListener('scroll', () => {
+            document.getElementById('bttBtn').classList.toggle('show', window.scrollY > 400);
+        });
+
+        /* ══ INIT ══ */
+        renderWishlist();
+        renderRecs();
+    </script>
+</body>
+
+</html>
