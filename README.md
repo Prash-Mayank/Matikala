@@ -120,3 +120,5 @@ This project is licensed under the **MIT License** — see the [LICENSE](./LICEN
 [![GitHub](https://img.shields.io/badge/GitHub-prash--mayank-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/prash-mayank)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-prashmayank-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/prashmayank)
 [![Email](https://img.shields.io/badge/Email-mayank.prash%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mayank.prash@gmail.com)
+
+> Email me for collab
