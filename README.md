@@ -2,7 +2,7 @@
 
 > *"Where Earth Meets Art"* — A full-featured e-commerce platform for handcrafted clay, terracotta & sustainable decor products.
 
-![MATIKALA Banner](./other/imag.png)
+![MATIKALA Banner](./other/image.png)
 
 ---
 
@@ -109,7 +109,7 @@ Live at: `https://matikala.web.app` or `matikala.com`
 
 ## License
 
-  MIT License
+This project is licensed under the **MIT License** — see the [LICENSE](./LICENSE) file for details.
 
 ---
 
@@ -117,6 +117,6 @@ Live at: `https://matikala.web.app` or `matikala.com`
 
 **Mayank Prashar**
 
-- GitHub: [github.com/prash-mayank](https://github.com/prash-mayank)
-- LinkedIn: [linkedin.com/in/prashmayank](https://www.linkedin.com/in/prashmayank)
-- Email: [mayank.prash@gmail.com](mailto:mayank.prash@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-prash--mayank-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/prash-mayank)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-prashmayank-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/prashmayank)
+[![Email](https://img.shields.io/badge/Email-mayank.prash%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mayank.prash@gmail.com)
