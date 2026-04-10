@@ -122,3 +122,6 @@ This project is licensed under the **MIT License** — see the [LICENSE](./LICEN
 [![Email](https://img.shields.io/badge/Email-mayank.prash%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mayank.prash@gmail.com)
 
 > Email me for collab
+
+<p align="center">Crafted with love by <strong>Mayank Prashar</strong></p>
+<p align="center">© 2026 Matikala. All rights reserved.</p>
